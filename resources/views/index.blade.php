@@ -16,7 +16,9 @@
     @include('header/header')
     @yield('conteudo')
     @include('footer/footer')
-<script src="{{asset('site/jquery.js')}}"></script>
-<script src="{{asset('site/bootstrap.js')}}"></script>
+
+    <script src="{{asset('site/jquery.js')}}"></script>
+    <script src="{{asset('site/bootstrap.js')}}"></script>
+    @yield('js')
 </body>
 </html>
