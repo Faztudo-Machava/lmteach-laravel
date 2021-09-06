@@ -9,114 +9,6 @@
     @include('header/header')
 @endsection
 @section('conteudo')
-    <div class="bg-primary mt-0">
-        <div class="container my-5 text-white">
-            <div class="row hero mt-5">
-                <div class="col-lg-5">
-                    <div class="text mt-5 pt-5" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
-                        <span class="subheading">Bem vindo ao lmteach</span>
-                        <h1 class="mb-4">Best Online Education Expertise </h1>
-                        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                            Consonantia,
-                            there live the blind texts.</p>
-                        <p>
-                            <button class="btn btn-principle p-4 py-3 text-white rounded-pill h-float"
-                                data-bs-toggle="modal" data-bs-target="#pedidoModal">
-                                <span>FAZER PEDIDO </span> <i class="bi bi-arrow-right-short"></i>
-                            </button>
-                            <a href="{{ route('pedidos') }}"
-                                class="btn btn-outline-light p-4 py-3  rounded-pill h-float">TRABALHOS</a>
-                        </p>
-                    </div>
-                </div>
-                <!-- Section One -->
-                <div class="col-lg-5 mx-auto ml-3 heroImg">
-                    <img class="img img-fluid d-block banner-img" src="{{ asset('img/gk.png') }}" alt="Mo">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="d-flex bg-white py-5">
-        <div class="container-fluid row mt-5 mx-auto text-dark">
-            <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-right" data-aos-duration="1300"
-                data-aos-delay="300">
-                <div class="p-3 text-center">
-                    <h3>Faça seu pedido</h3>
-                    <p>Quer saber quais são os procedimentos para fazer o seu pedido? é muito simples é só seguir os passos
-                        e já está.</p>
-                </div>
-                <div class="stepsImg">
-                    <img class="img img-fluid" src="{{ asset('img/stepping.svg') }}" alt="steps">
-                </div>
-            </div>
-            <div class="col-lg-6 shadow p-3" data-aos="fade-left" data-aos-duration="1300">
-                <div class="p-2 row shadow-sm m-2" data-aos="fade-up" data-aos-duration="1600">
-                    <div class="row justify-content-center col-lg-2">
-                        <p
-                            class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
-                            1</p>
-                    </div>
-                    <div class="col-lg row justify-content-center">
-                        <p>Faça o pedido através do formulário em nosso site</p>
-                    </div>
-                </div>
-                <div class="py-3 text-center" data-aos="fade-up" data-aos-duration="1600">
-                    <i class="bi bi-arrow-down text-principle"></i>
-                </div>
-                <div class=" p-2 row shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
-                    <div class="row justify-content-center col-lg-2">
-                        <p
-                            class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
-                            2</p>
-                    </div>
-                    <div class="col-lg">
-                        <p>Pague 50% do custo do trabalho. Saiba mais sobre as formas de pagamento</p> <a
-                            href="#mais">aqui</a>
-                    </div>
-                </div>
-                <div class="py-3 text-center" data-aos="fade-up" data-aos-duration="1600">
-                    <i class="bi bi-arrow-down text-principle"></i>
-                </div>
-                <div class="p-2 row shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
-                    <div class="row justify-content-center col-lg-2">
-                        <p
-                            class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
-                            3</p>
-                    </div>
-                    <div class="row align-items-center col-lg">
-                        <p>Aguarde alguns dias para que nossos especialistas concluam seu pedido</p>
-                    </div>
-                </div>
-                <div class="py-3 text-center" data-aos="fade-up" data-aos-duration="1600">
-                    <i class="bi bi-arrow-down text-principle"></i>
-                </div>
-                <div class=" p-2 row shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
-                    <div class="row justify-content-center col-lg-2">
-                        <p
-                            class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
-                            4</p>
-                    </div>
-                    <div class="col-lg">
-                        <p>Antes de receber o trabalho, você deve pagar os 50% restantes do custo do trabalho.</p>
-                    </div>
-                </div>
-                <div class="py-3 text-center" data-aos="fade-up" data-aos-duration="1600">
-                    <i class="bi bi-arrow-down text-principle"></i>
-                </div>
-                <div class=" p-2 row shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
-                    <div class="row justify-content-center col-lg-2">
-                        <p
-                            class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
-                            5</p>
-                    </div>
-                    <div class="col-lg">
-                        <p>Resta preparar-se bem para a defesa e executá-la brilhantemente</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="bg-light">
         <div class="py-5 container">
             <div class="row justify-content-center">
@@ -142,10 +34,9 @@
                                                         data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><i
                                                             class="bi bi-info"></i></button>
                                                 </span>
-                                                <span
-                                                    class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
+                                                <span class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
                                             </div>
-
+    
                                         </div>
                                     </div>
                                 </div>
@@ -158,8 +49,8 @@
                                             <div class="modal-header">
                                                 <div>
                                                     <p class="text-muted mb-1">{{ $pedido->pedi_assunto }}</p>
-                                                    <h4 class="h4 text-dark font-weight-bold mb-1">
-                                                        {{ $pedido->pedi_tipo }}</h4>
+                                                    <h4 class="h4 text-dark font-weight-bold mb-1">{{ $pedido->pedi_tipo }}
+                                                    </h4>
                                                 </div>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -225,7 +116,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
+                <div class="p-2 col-lg-3"  data-aos="zoom-in" data-aos-duration="1200">
                     <div class="card p-4 h-transDown">
                         <div class="img text-center m-2 my-4">
                             <i class="fa fa-hat-cowboy text-principle fs-1"></i>
@@ -239,7 +130,7 @@
                             </small>
                         </div>
                         <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                            data-bs-target="#pedidoModal">Pedir</button>
+                        data-bs-target="#pedidoModal">Pedir</button>
                     </div>
                 </div>
                 <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
@@ -256,7 +147,7 @@
                             </small>
                         </div>
                         <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                            data-bs-target="#pedidoModal">Pedir</button>
+                        data-bs-target="#pedidoModal">Pedir</button>
                     </div>
                 </div>
                 <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
@@ -273,7 +164,7 @@
                             </small>
                         </div>
                         <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                            data-bs-target="#pedidoModal">Pedir</button>
+                        data-bs-target="#pedidoModal">Pedir</button>
                     </div>
                 </div>
                 <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
@@ -290,7 +181,7 @@
                             </small>
                         </div>
                         <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                            data-bs-target="#pedidoModal">Pedir</button>
+                        data-bs-target="#pedidoModal">Pedir</button>
                     </div>
                 </div>
             </div>
@@ -402,8 +293,7 @@
                                         <label for="pedi_arquivo">
                                             <i class="bi bi-file-earmark-pdf"></i> Anexar Arquivo
                                         </label>
-                                        <input class="arquivo" type="file" name="pedi_arquivo" id="pedi_arquivo" required
-                                            style="display: none;">
+                                        <input class="arquivo" type="file" name="pedi_arquivo" id="pedi_arquivo" required style="display: none;">
                                     </div>
                                 </div>
                                 @if (session('user'))
@@ -420,16 +310,12 @@
                                 @endif
                                 <div class="col-lg-12 p-3">
                                     <div class="form-group">
-                                        <textarea id="my-textarea" class="form-control"
-                                            placeholder="Descricao do pedido (Oque deve ser feito no seu trabalho.)"
-                                            name="pedi_descricao" rows="3"></textarea>
+                                        <textarea id="my-textarea" class="form-control" placeholder="Descricao do pedido (Oque deve ser feito no seu trabalho.)" name="pedi_descricao" rows="3"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" id="submeter" class="btn btn-sm btn-principle"> <span
-                                        class="text-white">Submeter</span> <img class="img d-none load"
-                                        src="{{ asset('img/ajax-loader.gif') }}" alt=""> </button>
+                                <button type="submit" id="submeter" class="btn btn-sm btn-principle"> <span class="text-white">Submeter</span> <img class="img d-none load" src="{{asset('img/ajax-loader.gif')}}" alt=""> </button>
                             </div>
                         </form>
                     </div>

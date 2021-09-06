@@ -2,20 +2,51 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\especialidade;
+use App\Models\instituicao;
+use App\Models\pedidos;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
+
+
+    private $objPedidos;
+    private $objEspecialidade;
+    private $objInstituicao;
+
+    public function __construct()
+    {
+        $this->objPedidos = new Pedidos();
+        $this->objEspecialidade = new Especialidade();
+        $this->objInstituicao = new Instituicao();
+    }
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        return view('user.userDash');
+    {   
+        $listaEspecialidades = $this->objEspecialidade->all();
+        $listaInstituicao = $this->objInstituicao->all();
+        return view('user.userDash', compact('listaInstituicao', 'listaEspecialidades'));
+    }
+
+    public function indexPedidos(){
+        if (session('user')->user_tipo == 'cliente'){
+            $listaPedidos = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->sortByDesc('pedi_prazo');
+            $numPedidos = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->count();
+        } else{
+            $listaPedidos = $this->objPedidos->all()->sortByDesc('pedi_prazo');
+            $numPedidos = $this->objPedidos->all()->count();
+        }
+        
+        $listaEspecialidades = $this->objEspecialidade->all();
+        $listaInstituicao = $this->objInstituicao->all();
+        return view('pedidos.userPedidos', compact('listaPedidos', 'numPedidos', 'listaInstituicao', 'listaEspecialidades'));
     }
 
     /**
@@ -38,17 +69,22 @@ class UserController extends Controller
     {
         $utilizador = new User();
         $utilizador->user_nome = $request->input('cli_nome');
-        $utilizador->user_email = $request->input('cli_email');
-        $utilizador->user_senha = Hash::make($request->input('cli_senha'));
+        $utilizador->email = $request->input('cli_email');
+        $utilizador->password = Hash::make($request->input('cli_senha'));
         $utilizador->user_tipo = 'cliente';
+        $email = User::all()->where('email','=',$utilizador->user_email)->count();
+        if($email > 0){
+            $addCliente['success'] = false;
+            $addCliente['mensagem'] = 'Esse email já esta registado no sistema.';
+            return response()->json($addCliente);    
+        }
         $utilizador->save();
         $addCliente['success'] = true;
         $addCliente['mensagem'] = 'Cliente registado com sucesso';
-        echo json_encode($addCliente);
-        return;
+        return response()->json($addCliente);
     }
 
-    /**
+     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -56,7 +92,24 @@ class UserController extends Controller
      */
     public function storeEspecialista(Request $request)
     {
-        //
+        $utilizador = new User();
+        $utilizador->user_nome = $request->input('esp_nome');
+        $utilizador->email = $request->input('esp_email');
+        $utilizador->user_telefone = $request->input('esp_telefone');
+        $utilizador->user_especialidade = $request->input('esp_especialidade');
+        $utilizador->user_instituicao = $request->input('esp_instituicao');
+        $utilizador->password = Hash::make($request->input('esp_senha'));
+        $utilizador->user_tipo = 'especialista';
+        $email = User::all()->where('email','=',$utilizador->user_email)->count();
+        if($email > 0){
+            $addEspecialista['success'] = false;
+            $addEspecialista['mensagem'] = 'Esse email já esta registado no sistema.';
+            return response()->json($addEspecialista);    
+        }
+        $utilizador->save();
+        $addEspecialista['success'] = true;
+        $addEspecialista['mensagem'] = 'Especialista registado com sucesso';
+        return response()->json($addEspecialista);
     }
 
     /**

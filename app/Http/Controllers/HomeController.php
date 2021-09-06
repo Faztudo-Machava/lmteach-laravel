@@ -2,10 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Especialidade;
+use App\Models\instituicao;
+use App\Models\pedidos;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+
+    private $objEspecialidade;
+    private $objInstituicao;
+    private $objPedidos;
+
+    public function __construct(){
+        $this->objEspecialidade = new Especialidade();
+        $this->objInstituicao = new Instituicao();
+        $this->objPedidos = new Pedidos();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home.homePage');
+        $listaEspecialidades = $this->objEspecialidade->all();
+        $listaInstituicao = $this->objInstituicao->all();
+        $listaPedidos = $this->objPedidos->all()->where('pedi_status','=',0);
+        $numPedidos = $this->objPedidos->all()->where('pedi_status','=',0)->count();
+        return view('home.homePage', compact('listaEspecialidades','listaInstituicao', 'listaPedidos', 'numPedidos'));
     }
 
     /**

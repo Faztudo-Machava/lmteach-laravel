@@ -6,19 +6,25 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('titulo')</title>
     <link rel="stylesheet" href="{{asset('site/bootstrap.css')}}">
-    <link rel="stylesheet" href="{{asset('site/font-awesome/font-awesome.min.css')}}">
     <link rel="stylesheet" href="{{asset('site/index.css')}}">
+    <link rel="stylesheet" href="{{asset('site/css/catto.css')}}">
+    <link rel="stylesheet" href="{{asset('site/css/aos.css')}}">
     <link rel="stylesheet" href="{{asset('site/font-awesome/css/all.css')}}">
     <link rel="stylesheet" href="{{asset('site/bootstrap-icons/bootstrap-icons.css')}}">
     @yield('css')
 </head>
-<body class="bg-primary">
-    @include('header/header')
+<body class="">
+    @yield('header')
     @yield('conteudo')
-    @include('footer/footer')
-
+    @yield('footer')
     <script src="{{asset('site/jquery.js')}}"></script>
     <script src="{{asset('site/bootstrap.js')}}"></script>
+    <script src="{{asset('site/js/pedido.js')}}"></script>
+    <script src="{{asset('site/js/aos.js')}}"></script>
+    <script>
+        AOS.init();
+    </script>
+
     @yield('js')
 </body>
 </html>
