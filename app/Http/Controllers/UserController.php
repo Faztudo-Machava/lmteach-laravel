@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
+use App\Mail\VerifyMail;
 use App\Models\especialidade;
 use App\Models\instituicao;
 use App\Models\pedidos;
 use App\Models\User;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
 {
@@ -59,6 +63,10 @@ class UserController extends Controller
         //
     }
 
+    // private function verifyEmail() {
+        
+    // }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -72,16 +80,21 @@ class UserController extends Controller
         $utilizador->email = $request->input('cli_email');
         $utilizador->password = Hash::make($request->input('cli_senha'));
         $utilizador->user_tipo = 'cliente';
-        $email = User::all()->where('email','=',$utilizador->user_email)->count();
+        $email = User::all()->where('email','=',$utilizador->email)->count();
         if($email > 0){
             $addCliente['success'] = false;
             $addCliente['mensagem'] = 'Esse email já esta registado no sistema.';
             return response()->json($addCliente);    
         }
-        $utilizador->save();
-        $addCliente['success'] = true;
-        $addCliente['mensagem'] = 'Cliente registado com sucesso';
-        return response()->json($addCliente);
+        if($utilizador->save()){
+            session(['user' => $this->user]);
+            $login['mensagem'] = 'Confirme o email, verifique o inbox do seu email';
+            $login['success'] = true;
+            Mail::to($utilizador->email)->send(new VerifyMail());
+        }
+        
+        
+        return response()->json($login);
     }
 
      /**
@@ -100,7 +113,7 @@ class UserController extends Controller
         $utilizador->user_instituicao = $request->input('esp_instituicao');
         $utilizador->password = Hash::make($request->input('esp_senha'));
         $utilizador->user_tipo = 'especialista';
-        $email = User::all()->where('email','=',$utilizador->user_email)->count();
+        $email = User::all()->where('email','=',$utilizador->email)->count();
         if($email > 0){
             $addEspecialista['success'] = false;
             $addEspecialista['mensagem'] = 'Esse email já esta registado no sistema.';

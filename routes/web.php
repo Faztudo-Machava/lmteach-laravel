@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\UserController;
+use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -36,5 +39,7 @@ Route::post('/addicionarEspecialista', [UserController::class, 'storeEspecialist
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::post('/addPedido', [PedidosController::class, 'store'])->name('fazerPedido');
 Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos');
+Route::post('/enviarEmail', [ContactController::class, 'enviarEmail'])->name('enviarEmail');
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('/email/verify', [AuthController::class, 'verifyEmail'] )->middleware('auth')->name('verification.notice');
