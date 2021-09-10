@@ -2,23 +2,29 @@
 @section('conteudo')
     <div class="d-flex" id="wrapper">
         {{-- Side bar starts here --}}
-            <div class="bg-principle" id="sidebar-wrapper">
-                <div class="sidebar-heading text-center py-4 px-3 text-white fw-bold text-uppercase">
-                    <i class="fas fa-user-secret me-2"></i> LMTEACH
-                </div>
-                <div class="list-group list-group-flush my-3">
-                    <a href="{{route('usuario')}}" class="list-group-item list-group-item-action bg-transparent second-text active">
-                        <i class="fas fa-user me-2"></i> Perfil
-                    </a>
-                    <a href="{{route('usuarioPedidos')}}" class="list-group-item list-group-item-action bg-transparent text-white">
-                        <i class="fas fa-project-diagram me-2"></i> Pedidos
-                    </a>
-                    <a href="{{route('logout')}}" class="list-group-item list-group-item-action bg-transparent text-white">
-                        <i class="fas fa-project-diagram me-2"></i> Logout
-                    </a>
-                </div>
-
+        <div class="bg-principle" id="sidebar-wrapper">
+            <div class="sidebar-heading text-center py-4 px-3 text-white fw-bold text-uppercase">
+                <i class="fas fa-user-secret me-2"></i> LMTEACH
             </div>
+            <div class="list-group list-group-flush my-3">
+                <a href="{{ route('usuario') }}"
+                    class="list-group-item list-group-item-action bg-transparent second-text active">
+                    <i class="fas fa-user me-2"></i> Perfil
+                </a>
+                @if (session('user')->user_tipo != 'especialista')
+                <a href="{{ route('usuarioPedidos') }}"
+                    class="list-group-item list-group-item-action bg-transparent text-white">
+                    <i class="fas fa-project-diagram me-2"></i> Pedidos
+                </a>
+                @else
+                <a href="{{ route('usuarioPedidos') }}"
+                    class="list-group-item list-group-item-action bg-transparent text-white">
+                    <i class="fas fa-project-diagram me-2"></i> Trabalhos
+                </a>
+                @endif
+            </div>
+
+        </div>
         {{-- Side bar end here --}}
 
         {{-- Page content starts here --}}
@@ -27,31 +33,39 @@
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left text-principle me-3 fs-3" id="menu-toggle"></i>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                    aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item-dropdown">
-                            <a href="#" class="nav-link dropdown-toggle second-text fw-bold" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user me-2"></i> {{session('user')->user_nome}}
+                        <li class="nav-item">
+                            <a href="" class="nav-link"><i class=" bi bi-bell-fill "></i></a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navdropdown" role="button"
+                                data-toggle="dropdown">
+                                <span class="">
+                                    <img src="{{asset('img/avatar.png')}}" class="img-fluid rounded-pill img-user" alt="">
+                                </span>
+                            
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{{route('logout')}}">Perfil</a></li>
-                                <li><a class="dropdown-item" href="#">Logout</a></li>
-                            </ul>
+                            <div class="drop-menu bg-white rounded border-1 border-principle" aria-labelledby="navdropdown">
+                                <a href="{{route('logout')}}" class="dropdown-item nav-link mb-2"><i class="bi bi-box-arrow-in-left"></i> <small>Logout</small></a>
+                            </div>
                         </li>
                     </ul>
                 </div>
             </nav>
             <div class="">
-                <div class="container-fluid px-4">
-                    @yield('content')
-                </div>
+                <div class=" container-fluid px-4">
+                @yield('content')
             </div>
         </div>
-        {{-- Page content end here --}}
+    </div>
+    {{-- Page content end here --}}
     </div>
     <div class="modais">
         <div class="modal fade" id="pedidoModal" tabindex="-1" aria-labelledby="pedidoModal" aria-hidden="true">
@@ -88,12 +102,12 @@
                                         @endforeach
                                     </select>
                                 </div>
-    
+
                                 <div class="col-lg-6 p-3">
                                     <input type="date" name="pedi_prazo" id="pedi_prazo" class="form-control pl-3"
                                         placeholder="Prazo" required>
                                 </div>
-    
+
                                 <div class="col-lg-6 p-3">
                                     <input type="text" name="pedi_assunto" id="pedi_assunto"
                                         class="form-control pl-3 inputs" placeholder="Assunto(Ex: Informatica)" required>
@@ -111,8 +125,8 @@
                                         <label for="pedi_arquivo">
                                             <i class="bi bi-file-earmark-pdf"></i> Anexar Arquivo
                                         </label>
-                                        <input class="arquivo" type="file" name="pedi_arquivo" id="pedi_arquivo" required
-                                            style="display: none;">
+                                        <input class="arquivo" type="file" name="pedi_arquivo" id="pedi_arquivo"
+                                            required style="display: none;">
                                     </div>
                                 </div>
                                 @if (session('user'))
@@ -175,7 +189,8 @@
                             <div class="col-lg-12 mt-3" name="user-mensagem" id="user-mensagem">
                             </div>
                             <div class="col-lg-12 mt-3 justify-content-center">
-                                <button class="btn btn-success" type="submit" name="submeter" id="submeterUpdate">Atualizar</button>
+                                <button class="btn btn-success" type="submit" name="submeter"
+                                    id="submeterUpdate">Atualizar</button>
                             </div>
                         </form>
                     </div>
@@ -183,7 +198,10 @@
             </div>
         </div>
     </div>
-    <button class="btn btn-principle d-flex align-items-center justify-content-center" id="addPedido" data-bs-toggle="modal" data-bs-target="#pedidoModal"><i class="bi bi-plus text-white fs-2"></i></button>
+    @if (session('user')->user_tipo != 'especialista')
+    <button class="btn btn-principle d-flex align-items-center justify-content-center" id="addPedido" data-bs-toggle="modal"
+    data-bs-target="#pedidoModal"><i class="bi bi-plus text-white fs-2"></i></button>
+    @endif
 
 @endsection
 @section('js')
@@ -191,7 +209,7 @@
         var el = document.getElementById("wrapper")
         var toggleButton = document.getElementById("menu-toggle")
 
-        toggleButton.onclick = function(){
+        toggleButton.onclick = function() {
             el.classList.toggle("toggled")
         }
     </script>

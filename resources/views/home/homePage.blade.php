@@ -403,12 +403,8 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-6 p-3">
-                                    <div class="text-center">
-                                        <label for="pedi_arquivo">
-                                            <i class="bi bi-file-earmark-pdf"></i> Anexar Arquivo
-                                        </label>
-                                        <input class="arquivo" type="file" name="pedi_arquivo" id="pedi_arquivo" required
-                                            style="display: none;">
+                                    <div class="form-group">
+                                        <input class="form-control" type="file" name="pedi_arquivo" id="pedi_arquivo" placeholder="Anexar arquivo" required>
                                     </div>
                                 </div>
                                 @if (session('user'))
@@ -432,9 +428,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" id="submeter" class="btn btn-sm btn-principle"> <span
-                                        class="text-white">Submeter</span> <img class="img d-none load"
-                                        src="{{ asset('img/ajax-loader.gif') }}" alt=""> </button>
+                                <button type="submit" id="submeter" class="btn btn-sm btn-principle"> <span class="text-white">Submeter</span> <img class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}" alt=""> </button>
                             </div>
                         </form>
                     </div>

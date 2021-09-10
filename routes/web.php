@@ -31,6 +31,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 Route::get('/usuario', [UserController::class, 'index'])->name('usuario');
 Route::get('/usuarioPedidos', [UserController::class, 'indexPedidos'])->name('usuarioPedidos');
+Route::get('/verificar',[AuthController::class, 'verificarUser'])->name('verificarUser');
 
 
 Route::get('/usuarioLay', [UserController::class, 'indexLayout']);
@@ -42,4 +43,4 @@ Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos');
 Route::post('/enviarEmail', [ContactController::class, 'enviarEmail'])->name('enviarEmail');
 
 
-Route::get('/email/verify', [AuthController::class, 'verifyEmail'] )->middleware('auth')->name('verification.notice');
+// Route::get('/email/verify', [AuthController::class, 'verifyEmail'] )->middleware('auth')->name('verification.notice');

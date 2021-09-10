@@ -78,8 +78,13 @@ class UserController extends Controller
         $utilizador = new User();
         $utilizador->user_nome = $request->input('cli_nome');
         $utilizador->email = $request->input('cli_email');
+        $emailSend = $request->input('cli_email');
         $utilizador->password = Hash::make($request->input('cli_senha'));
         $utilizador->user_tipo = 'cliente';
+        $utilizador->verification_code = sha1(time());
+        //$utilizador->user_img = $request->file('cli_img')->store('usuarios/'.$emailSend);
+        $utilizador->user_img = "yah";
+        
         $email = User::all()->where('email','=',$utilizador->email)->count();
         if($email > 0){
             $addCliente['success'] = false;
@@ -87,14 +92,22 @@ class UserController extends Controller
             return response()->json($addCliente);    
         }
         if($utilizador->save()){
-            session(['user' => $this->user]);
-            $login['mensagem'] = 'Confirme o email, verifique o inbox do seu email';
-            $login['success'] = true;
-            Mail::to($utilizador->email)->send(new VerifyMail());
+            $detalhes = [
+                'nome' => $utilizador->user_nome,
+                'assunto' => 'Confirmação do email',
+                'verification_code' => $utilizador->verification_code
+            ];
+            // session(['user' => $utilizador]);
+            //Mail::to($emailSend)->send(new VerifyMail($detalhes));
+            $addCliente['mensagem'] = 'Cadastrado com sucesso, porfavor confirme o seu email.';
+            $addCliente['success'] = true;
+            return response()->json($addCliente);
         }
+        $addCliente['mensagem'] = 'Houve um problema no seu registo.';
+        $addCliente['success'] = false;
+        return response()->json($addCliente);
         
         
-        return response()->json($login);
     }
 
      /**
@@ -113,13 +126,21 @@ class UserController extends Controller
         $utilizador->user_instituicao = $request->input('esp_instituicao');
         $utilizador->password = Hash::make($request->input('esp_senha'));
         $utilizador->user_tipo = 'especialista';
+        $utilizador->verification_code = sha1(time());
         $email = User::all()->where('email','=',$utilizador->email)->count();
+        $utilizador->user_img = "yah";
         if($email > 0){
             $addEspecialista['success'] = false;
             $addEspecialista['mensagem'] = 'Esse email já esta registado no sistema.';
             return response()->json($addEspecialista);    
         }
         $utilizador->save();
+        $detalhes = [
+            'nome' => $utilizador->user_nome,
+            'assunto' => 'Confirmação do email',
+            'verification_code' => $utilizador->verification_code
+        ];
+        //Mail::to($utilizador->email)->send(new VerifyMail($detalhes));
         $addEspecialista['success'] = true;
         $addEspecialista['mensagem'] = 'Especialista registado com sucesso';
         return response()->json($addEspecialista);

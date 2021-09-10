@@ -23,6 +23,9 @@ class CreateUsersTable extends Migration
             $table->string('user_tipo');
             $table->foreignId('user_instituicao')->nullable(true)->constrained('instituicaos', 'inst_id');
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('verification_code');
+            $table->string('user_img');
+            $table->Integer('is_verified')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

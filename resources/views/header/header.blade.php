@@ -1,8 +1,8 @@
 <!-- ======= Header ======= -->
 <header class="header">
-    <div class="" id="page-conteudo">
+    <div class="" id=" page-conteudo">
         <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 px-4 shadow-sm">
-        
+
             <div class="d-flex align-items-center">
                 <a class="navbar-brand font-weight-bold" href="{{ url('/') }}">LMTEACH</a>
             </div>
@@ -33,7 +33,7 @@
                     </li>
                 </ul>
             </div>
-    </nav>
+        </nav>
     </div>
 </header><!-- Fim Header -->
 
@@ -76,8 +76,9 @@
                             </div>
                             <div class="d-grid">
                                 <button class="btn btn-principle text-uppercase fw-bold rounded-pill text-white"
-                                    type="submit"><span class="text-white">Entrar</span> <img class="img d-none load"
-                                        src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
+                                    type="submit"><span class="text-white">Entrar</span> <img
+                                        class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}"
+                                        alt=""></button>
                             </div>
                             <hr class="my-4">
                             <div class="row d-flex justify-content-center">
@@ -133,17 +134,27 @@
                         <div class="row text-center">
                             <div class="alert alert-danger alert-dismissible fade show ml-4 me-4 messageBox d-none"
                                 role="alert"></div>
-                            <form id="regCliente">
+                            <form id="regCliente" class="py-3">
                                 @csrf
-                                <input type="email" name="cli_email" class="form-control my-2"
-                                    placeholder="Endereço de e-mail" required="required" id="cli_email">
-                                <input type="password" name="cli_senha" class="form-control my-2" minlength="6"
-                                    placeholder="Sua senha" required="required" id="cli_senha">
-                                <input type="password" name="cli_csenha" class="form-control my-2" minlength="6"
-                                    placeholder="confirmar Senha" required="required" id="cli_csenha">
-                                <p class="text-danger d-none" id="txtConfirm">A senha não corresponde</p>
-                                <input type="text" name="cli_nome" class="form-control my-2" placeholder="Nome Completo"
-                                    id="cli_nome">
+                                <div class="row">
+                                    <div class="col-sm">
+                                        <input class="form-control my-1" type="file" name="cli_img" id="cli_img" required>
+                                        <div class="img-holder mb-2" name>
+                                        </div>
+                                        <p class="errorFileType d-none alert-danger">Ficheiro invalido</p>
+                                    </div>
+                                    <div class="col-sm">
+                                        <input type="email" name="cli_email" class="form-control my-2"
+                                            placeholder="Endereço de e-mail" required="required" id="cli_email">
+                                        <input type="password" name="cli_senha" class="form-control my-2" minlength="6"
+                                            placeholder="Sua senha" required="required" id="cli_senha">
+                                        <input type="password" name="cli_csenha" class="form-control my-2" minlength="6"
+                                            placeholder="confirmar Senha" required="required" id="cli_csenha">
+                                        <p class="text-danger d-none" id="txtConfirm">A senha não corresponde</p>
+                                        <input type="text" name="cli_nome" class="form-control my-2"
+                                            placeholder="Nome Completo" id="cli_nome">
+                                    </div>
+                                </div>
                                 <div class="text-left">
                                     <input type="checkbox" name="ruser_checkc" class="checkbox"> Eu concordo com o
                                     contrato de oferta
@@ -153,9 +164,7 @@
                                     privacidade
                                 </div>
                                 <div class="my-3 justify-content-center">
-                                    <button type="submit" class="text-center btn btn-principle" id="btnRegCliente"><span
-                                            class="text-white">Submeter</span> <img class="img d-none load"
-                                            src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
+                                    <button type="submit" class="text-center btn btn-principle" id="btnRegCliente"><span class="text-white">Submeter</span> <img class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
                                 </div>
                                 {{-- <small class="d-none text-danger">A senha deve ter pelomenos 6 caracteres</small><br>
                                 <small class="d-none text-danger">Todos os campos são obrigatórios</small> --}}
@@ -166,7 +175,7 @@
                         <div class="row">
                             <div class="alert alert-danger alert-dismissible fade show ml-4 me-4 espError d-none"
                                 role="alert"></div>
-                            <form class="form-group" id="regEspecialista">
+                            <form id="regEspecialista">
                                 @csrf
                                 <div class="border-bottom text-left p-2 tab" id="tab1">
                                     <div>
@@ -209,9 +218,11 @@
                                         <p>
                                             <select class="form-control m-2 selecao" name="esp_instituicao"
                                                 id="esp_instituicao" required="required">
-                                                <option class="form-control" value="">Instituição educacional</option>
+                                                <option class="form-control" value="">Instituição educacional
+                                                </option>
                                                 @foreach ($listaInstituicao as $instituicao)
-                                                    <option class="form-control" value="{{ $instituicao->inst_id }}">
+                                                    <option class="form-control"
+                                                        value="{{ $instituicao->inst_id }}">
                                                         {{ $instituicao->inst_nome }}</option>
                                                 @endforeach
                                             </select>
@@ -263,8 +274,9 @@
                                             <button class="btn btn-primary m-2" type="button"
                                                 id="ante2">Anterior</button>
                                             <button class="btn btn-principle m-2" type="submit"><span
-                                                    class="text-white">Submeter</span> <img class="img d-none load"
-                                                    src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
+                                                    class="text-white">Submeter</span> <img
+                                                    class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}"
+                                                    alt=""></button>
                                         </div>
                                     </div>
                                 </div>

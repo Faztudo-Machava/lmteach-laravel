@@ -8,9 +8,10 @@
 </head>
 <body>
     <div>
-        <h4>Verificação do email</h4>
+        <p>Oi {{$detalhes['nome']}}</p>
+        <br><br>
         <p>Seja bem vindo ao lmteach, uma plataforma com o objectivo de auxiliar aos estudantes na sua tarefa, porfavor confirme o seu email para prosseguir na plataforma.</p>
-        <a href="#">Link de confirmacao do email</a>
+        <a href="{{route('home')}}/verificar?code={{$detalhes['verification_code']}}">Link de confirmação do email</a>
     </div>
 </body>
 </html>

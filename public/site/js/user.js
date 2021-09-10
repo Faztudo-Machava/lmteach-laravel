@@ -41,6 +41,7 @@ $(function() {
             data: new FormData(this),
             contentType: false,
             processData: false,
+            enctype: "multipart/form-data",
             beforeSend: function() {
                 $('.load').removeClass('d-none')
             },
@@ -67,6 +68,7 @@ $(function() {
             data: new FormData(this),
             contentType: false,
             processData: false,
+            enctype: "multipart/form-data",
             beforeSend: function() {
                 $('.load').removeClass('d-none')
             },
@@ -82,6 +84,30 @@ $(function() {
                 console.log(response)
             }
         })
+    })
+
+    $('input[type="file"][name="cli_img"]').val('');
+    $('input[type="file"][name="cli_img"]').change(function() {
+        var img_path = $(this)[0].value
+        console.log($('input[type="file"][name="cli_img"]'))
+        var img_holder = $('.img-holder')
+        var extension = img_path.substring(img_path.lastIndexOf('.') + 1).toLowerCase()
+        if (extension == 'jpeg' || extension == 'jpg' || extension == 'png') {
+            if (typeof(FileReader) != 'undefined') {
+                img_holder.empty()
+                var reader = new FileReader()
+                reader.onload = function(e) {
+                    $('<img/>', { 'src': e.target.result, 'class': 'img-fluid', 'style': 'max-width:150px; margin-bottom: 10px;' }).appendTo(img_holder);
+                }
+                img_holder.show()
+                reader.readAsDataURL($(this)[0].files[0])
+            } else {
+                $(img_holder).html('Esse ficheiro não suporte leitura de ficheiro')
+            }
+        } else {
+            $('.errorFileType').removeClass('d-none')
+            $(img_holder).empty()
+        }
     })
 })
 
