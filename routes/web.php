@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\Auth\WhatsappContactController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PedidosController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\Authenticate;
+use App\Http\Middleware\verificarAdmin;
+use App\Http\Middleware\verificarCliente;
+use App\Http\Middleware\verificarEspecialista;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,26 +26,34 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
-Route::post('/login', [AuthController::class, 'login'])->name('login');
-
-Route::get('/usuario', [UserController::class, 'index'])->name('usuario');
-Route::get('/usuarioPedidos', [UserController::class, 'indexPedidos'])->name('usuarioPedidos');
-Route::get('/verificar',[AuthController::class, 'verificarUser'])->name('verificarUser');
-
-
-Route::get('/usuarioLay', [UserController::class, 'indexLayout']);
 Route::post('/addicionarCliente', [UserController::class, 'storeCliente'])->name('cliente.add');
 Route::post('/addicionarEspecialista', [UserController::class, 'storeEspecialista'])->name('especialista.add');
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::post('/addPedido', [PedidosController::class, 'store'])->name('fazerPedido');
 Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos');
 Route::post('/enviarEmail', [ContactController::class, 'enviarEmail'])->name('enviarEmail');
+Route::get('cadastrarAdmin', [UserController::class, 'cadAdmin']);
+Route::get('/verificar',[AuthController::class, 'verificarUser'])->name('verificarUser');
+Route::post('/resetPassword',[ContactController::class, 'emailPassreset'])->name('resetPassword');
+Route::get('/resetPasswordPage',[AuthController::class, 'passResetPage'])->name('resetPasswordPage');
+Route::get('/emailReset',[AuthController::class, 'reset'])->name('emailReset');
 
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/resetPasswordMain', [UserController::class, 'resetPassword'])->name('resetPasswordMain');
 
-// Route::get('/email/verify', [AuthController::class, 'verifyEmail'] )->middleware('auth')->name('verification.notice');
+Route::middleware([Authenticate::class])->group(function () {
+    Route::get('/usuario', [UserController::class, 'index'])->name('usuario');
+    Route::get('/usuarioPedidos', [UserController::class, 'indexPedidos'])->name('usuarioPedidos');
+    Route::get('/especialistaPedidos', [UserController::class, 'indexEspecialista'])->name('especialistaPedidos')->middleware(verificarEspecialista::class);
+    Route::get('resolver/{pedido_id}', [PedidosController::class, 'resolver'])->name('resolver')->middleware(verificarEspecialista::class);
+    Route::get('arquivoPedido/{id}', [PedidosController::class, 'show']);
+    Route::get('arquivoResolvido/{id}', [PedidosController::class, 'resolucao'])->middleware(verificarCliente::class);
+    Route::get('cancelarTrabalho/{id}', [PedidosController::class, 'cancelar'])->middleware([verificarEspecialista::class]);
+    Route::get('procurarPedido', [PedidosController::class, 'procurar']);
+    Route::post('enviarTrabalho', [PedidosController::class, 'enviarTrabalho'])->middleware(verificarAdmin::class);
+    Route::get('/usuarioLay', [UserController::class, 'indexLayout']);
+    Route::post('/addPedido', [PedidosController::class, 'store'])->name('fazerPedido')->middleware(verificarCliente::class);
+    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/updateUser', [UserController::class, 'update']);
+    Route::get('/ContacteNos', [WhatsappContactController::class, 'WhatsappContact'])->name('ContactUs');
+
+});

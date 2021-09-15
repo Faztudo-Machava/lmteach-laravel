@@ -10,6 +10,8 @@ use App\Models\pedidos;
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 
@@ -52,6 +54,14 @@ class UserController extends Controller
         $listaInstituicao = $this->objInstituicao->all();
         return view('pedidos.userPedidos', compact('listaPedidos', 'numPedidos', 'listaInstituicao', 'listaEspecialidades'));
     }
+    public function indexEspecialista(){
+        
+        $listaPedidos = $this->objPedidos->all()->where('pedi_especialista','=',session('user')->user_id)->sortByDesc('pedi_prazo');
+        $numPedidos = $this->objPedidos->all()->where('pedi_especialista','=',session('user')->user_id)->count(); 
+        $listaEspecialidades = $this->objEspecialidade->all();
+        $listaInstituicao = $this->objInstituicao->all();
+        return view('pedidos.especialistaPedidos', compact('listaPedidos', 'numPedidos', 'listaInstituicao', 'listaEspecialidades'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -82,9 +92,7 @@ class UserController extends Controller
         $utilizador->password = Hash::make($request->input('cli_senha'));
         $utilizador->user_tipo = 'cliente';
         $utilizador->verification_code = sha1(time());
-        //$utilizador->user_img = $request->file('cli_img')->store('usuarios/'.$emailSend);
-        $utilizador->user_img = "yah";
-        
+        $utilizador->user_img = $request->file('cli_img')->store('usuarios/'.$emailSend);
         $email = User::all()->where('email','=',$utilizador->email)->count();
         if($email > 0){
             $addCliente['success'] = false;
@@ -128,7 +136,7 @@ class UserController extends Controller
         $utilizador->user_tipo = 'especialista';
         $utilizador->verification_code = sha1(time());
         $email = User::all()->where('email','=',$utilizador->email)->count();
-        $utilizador->user_img = "yah";
+        $utilizador->user_img = $request->file('esp_img')->store('usuarios/'.$utilizador->email);
         if($email > 0){
             $addEspecialista['success'] = false;
             $addEspecialista['mensagem'] = 'Esse email já esta registado no sistema.';
@@ -175,9 +183,38 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $usuario_id = $request->input('usuario_id');
+
+        //Atualizacao dos dados do cliente
+        if(session('user')->user_tipo == 'cliente'){
+            $nome = $request->input('ruser_name');
+            $resultado = DB::update('update users set user_nome = ? where user_id = ?', [$nome, $usuario_id]);
+            if($resultado){
+                session('user')->user_nome = $nome;
+                $upCliente['mensagem'] = 'Dados atualizados com sucesso.';
+                $upCliente['success'] = true;
+                return response()->json($upCliente);
+            }
+            $upCliente['mensagem'] = 'Houve algum problema no processo de actualização.';
+            $upCliente['success'] = false;
+            return response()->json($upCliente);
+        } 
+
+        //Atualizacao dos dados do especialista
+        $nome = $request->input('ruser_name');
+        $telefone = $request->input('ruser_telefone');
+        $resultado = DB::update('update users set user_nome = ?, user_telefone = ? where user_id = ?', [$nome, $telefone, $usuario_id]);
+        if($resultado){
+            session('user')->user_nome = $nome;
+            $upEspecialista['mensagem'] = 'Dados atualizados com sucesso.';
+            $upEspecialista['success'] = true;
+            return response()->json($upEspecialista);
+        }
+        $upEspecialista['mensagem'] = 'Houve algum problema no processo de actualização.';
+        $upEspecialista['success'] = false;
+        return response()->json($upEspecialista);
     }
 
     /**
@@ -189,5 +226,41 @@ class UserController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function cadAdmin(){
+        $utilizador = new User();
+        $utilizador->user_nome = 'Admin';
+        $utilizador->email = 'secreto.admin@gmail.com';
+        $utilizador->password = Hash::make('Secret@007');
+        $utilizador->user_tipo = 'admin';
+        $utilizador->verification_code = sha1(time());
+        $utilizador->is_verified = 1;
+        $utilizador->user_img = '';
+        if($utilizador->save()){
+            return response()->json(['Mensagem' => 'Administrador registado com sucesso'], Response::HTTP_OK);
+        } else{
+            return response()->json(['Mensagem' => 'Deu merda.'], Response::HTTP_OK);
+        }
+    }
+
+    public function resetPassword(Request $request){
+        $code = $request->input('verification_code');
+        $numUser = User::all()->where('verification_code','=',$code)->count();
+        if($numUser > 0){
+            $senha = Hash::make($request->input('user_pass'));
+            if(DB::update('update users set password = ? where verification_code = ?', [$senha, $code])){
+                $resposta['success'] = true;
+                $resposta['mensagem'] = 'Senha alterada com sucesso, já pode iniciar a secção usando a nova senha.';
+                return response()->json($resposta);    
+            }
+            $resposta['success'] = false;
+            $resposta['mensagem'] = 'Houve algum problema na atualização da senha';
+            return response()->json($resposta);
+
+        }
+        $resposta['success'] = false;
+        $resposta['mensagem'] = 'Esse utilizador não encontrado.';
+        return response()->json($resposta);
     }
 }

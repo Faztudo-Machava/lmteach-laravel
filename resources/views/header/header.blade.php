@@ -63,7 +63,7 @@
                             </div>
                             <div class="mb-3">
                                 <div class="nav-item">
-                                    <a class="btn btn-link" href="#">
+                                    <a class="btn btn-link" href="{{route('emailReset')}}">
                                         {{ __('Esqueceu a senha?') }}
                                     </a>
                                 </div>
@@ -138,7 +138,8 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-sm">
-                                        <input class="form-control my-1" type="file" name="cli_img" id="cli_img" required>
+                                        <input class="form-control my-1" type="file" name="cli_img" id="cli_img"
+                                            required>
                                         <div class="img-holder mb-2" name>
                                         </div>
                                         <p class="errorFileType d-none alert-danger">Ficheiro invalido</p>
@@ -156,15 +157,16 @@
                                     </div>
                                 </div>
                                 <div class="text-left">
-                                    <input type="checkbox" name="ruser_checkc" class="checkbox"> Eu concordo com o
-                                    contrato de oferta
+                                    <input type="checkbox" name="ruser_checkc" class="checkbox" required> <span>Eu concordo com o <a class="nav-link" href="#">contrato de oferta</a></span>
                                 </div>
                                 <div class="text-left">
                                     <input type="checkbox" name="ruser_checkp" class="checkbox"> Politica de
                                     privacidade
                                 </div>
                                 <div class="my-3 justify-content-center">
-                                    <button type="submit" class="text-center btn btn-principle" id="btnRegCliente"><span class="text-white">Submeter</span> <img class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
+                                    <button type="submit" class="text-center btn btn-principle" id="btnRegCliente"><span
+                                            class="text-white">Submeter</span> <img class="img d-none load"
+                                            src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
                                 </div>
                                 {{-- <small class="d-none text-danger">A senha deve ter pelomenos 6 caracteres</small><br>
                                 <small class="d-none text-danger">Todos os campos são obrigatórios</small> --}}
@@ -255,6 +257,13 @@
                                 <div class="border-bottom text-left p-2 tab" id="tab3">
                                     <div>
                                         <h2>Perfil</h2>
+                                        <p>
+                                            <input class="form-control my-1" type="file" name="esp_img" id="esp_img"
+                                                required>
+                                            <div class="img-holder-esp mb-2" name>
+                                        </div>
+                                        <p class="errorFileType-esp d-none alert-danger">Ficheiro invalido</p>
+                                        </p>
                                         <p>
                                             <textarea name="esp_sobre" id="esp_sobre" class="form-control p-2" rows="4"
                                                 placeholder="Sobre"></textarea>

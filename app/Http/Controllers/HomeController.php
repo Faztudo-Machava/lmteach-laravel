@@ -29,8 +29,8 @@ class HomeController extends Controller
     {
         $listaEspecialidades = $this->objEspecialidade->all();
         $listaInstituicao = $this->objInstituicao->all();
-        $listaPedidos = $this->objPedidos->all()->where('pedi_status','=',0);
-        $numPedidos = $this->objPedidos->all()->where('pedi_status','=',0)->count();
+        $listaPedidos = $this->objPedidos->all()->where('pedi_status','=',2);
+        $numPedidos = $this->objPedidos->all()->where('pedi_status','=',2)->count();
         return view('home.homePage', compact('listaEspecialidades','listaInstituicao', 'listaPedidos', 'numPedidos'));
     }
 

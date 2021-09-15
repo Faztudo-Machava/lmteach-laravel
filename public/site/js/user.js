@@ -16,6 +16,7 @@ $(function() {
             success: function(response) {
                 console.log(response)
                 if (response.success === true) {
+                    // $('#root').load("/usuario")
                     window.location.href = "/usuario"
                 } else {
                     $('#logError').removeClass('d-none').html(response.mensagem)
@@ -59,6 +60,33 @@ $(function() {
         })
     })
 
+    $('#sendEmailPassReset').submit(function(e) {
+        e.preventDefault();
+
+        $.ajax({
+            url: "/resetPassword",
+            method: 'POST',
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            enctype: "multipart/form-data",
+            beforeSend: function() {
+                $('.load').removeClass('d-none')
+            },
+            complete: function() {
+                $('.load').addClass('d-none')
+            },
+            success: function(response) {
+                if (response.success === true) {
+                    $('#answer').removeClass('d-none').html(response.mensagem)
+                } else {
+                    $('#answer').removeClass('d-none').html(response.mensagem)
+                }
+                console.log(response)
+            }
+        })
+    })
+
     $('#regEspecialista').submit(function(e) {
         e.preventDefault();
 
@@ -86,6 +114,43 @@ $(function() {
         })
     })
 
+
+
+    $('#resetPass').submit(function(e) {
+        e.preventDefault();
+        var senha = $('#user_pass').val()
+        var csenha = $('#user_cpass').val()
+
+        if (senha != csenha) {
+            $('#err_msg').addClass('animate__animated animate__bounce')
+            $('#err_msg').removeClass('d-none')
+            return
+        }
+
+        $.ajax({
+            url: "/resetPasswordMain",
+            method: 'POST',
+            data: new FormData(this),
+            contentType: false,
+            processData: false,
+            enctype: "multipart/form-data",
+            beforeSend: function() {
+                $('#loadReset').removeClass('d-none')
+            },
+            complete: function() {
+                $('#loadReset').addClass('d-none')
+            },
+            success: function(response) {
+                if (response.success === true) {
+                    $('#mensagensResetPass').addClass('alert-success').removeClass('d-none').html(response.mensagem)
+                } else {
+                    $('#mensagensResetPass').addClass('alert-danger').removeClass('d-none').html(response.mensagem)
+                }
+                console.log(response)
+            }
+        })
+    })
+
     $('input[type="file"][name="cli_img"]').val('');
     $('input[type="file"][name="cli_img"]').change(function() {
         var img_path = $(this)[0].value
@@ -106,6 +171,30 @@ $(function() {
             }
         } else {
             $('.errorFileType').removeClass('d-none')
+            $(img_holder).empty()
+        }
+    })
+
+    $('input[type="file"][name="esp_img"]').val('');
+    $('input[type="file"][name="esp_img"]').change(function() {
+        var img_path = $(this)[0].value
+        console.log($('input[type="file"][name="esp_img"]'))
+        var img_holder = $('.img-holder-esp')
+        var extension = img_path.substring(img_path.lastIndexOf('.') + 1).toLowerCase()
+        if (extension == 'jpeg' || extension == 'jpg' || extension == 'png') {
+            if (typeof(FileReader) != 'undefined') {
+                img_holder.empty()
+                var reader = new FileReader()
+                reader.onload = function(e) {
+                    $('<img/>', { 'src': e.target.result, 'class': 'img-fluid', 'style': 'max-width:150px; margin-bottom: 10px;' }).appendTo(img_holder);
+                }
+                img_holder.show()
+                reader.readAsDataURL($(this)[0].files[0])
+            } else {
+                $(img_holder).html('Tipo de ficheiro invalido')
+            }
+        } else {
+            $('.errorFileType-esp').removeClass('d-none')
             $(img_holder).empty()
         }
     })

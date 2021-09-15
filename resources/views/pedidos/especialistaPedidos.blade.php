@@ -5,21 +5,12 @@
         <div class="row justify-content-center">
             <div class="p-4" id="conteudoPedidos">
                 <div class="">
-                    @if (session('user')->user_tipo == 'especialista' || session('user')->user_tipo == 'admin')
-                        <h3 class=" h3">Trabalhos</h3>
-                    @else
-                    <h3 class=" h3">Pedidos</h3>   
-                    @endif
+                    <h3 class=" h3">Trabalhos</h3>
                     <form action="" id="procurarPedido-form">
                         <div class="form-group">
                             <select id="tipo_pedido" class="form-control" name="estado_pedi" required>
-                                @if(session('user')->user_tipo == 'especialista' || session('user')->user_tipo == 'admin')
                                 <option value="3">Selecione o estado do trabalho</option>
-                                @else
-                                <option value="">Selecione o estado do pedido</option>
-                                @endif
                                 <option value="1">No processo de resolução</option>
-                                <option value="0">Pendente</option>
                                 <option value="2">Resolvido</option>
                                 <option value="3">Todos</option>
                             </select>
@@ -107,6 +98,10 @@
                                                     <div class="my-5"> <p>Pretende resolver o trabalho? <a href="/resolver/{{ $pedido->pedi_id }}">clique aqui</a></p>
                                                     </div>
                                                 @endif
+                                                @if ((session('user')->user_tipo === 'especialista' && $pedido->pedi_status == 1) || session('user')->user_tipo === 'admin' && $pedido->pedi_status == 1)
+                                                    <div class="my-5"><a class="btn btn-danger" href="/cancelarTrabalho/{{ $pedido->pedi_id }}">Cancelar subscrição</a>
+                                                    </div>
+                                                @endif
                                                 @if (session('user')->user_tipo === 'admin' && $pedido->pedi_status === 1)
                                                     <div class="my-5">
                                                         <form id="formTrabResolvido">
@@ -114,7 +109,7 @@
                                                             <div id="errorEnvioResolucao" class="alert alert-danger d-none">Houve algum problema no momento de submissão do trabalho
                                                             </div>
                                                             <div id="sucessoEnvioRsolucao"
-                                                                class="alert alert-success d-none">Trabalho enviado para o cliente.</div>
+                                                                class="alert alert-success d-none">Trabalho submetido com sucesso</div>
                                                             <div class="form-group my-2">
                                                                 <label for="my-select fs-2">Anexar a resolução</label>
                                                                 <input type="file" name="fileTrabResolvido" id="anexo"
@@ -139,9 +134,7 @@
                                             <div class="dropdown-divider"></div>
                                             <div class="my-4">
                                                 <div class="text-center">
-                                                    @if ($pedido->pedi_status == 0)
                                                     <p>Analise o trabalho antes de resolver</p>
-                                                    @endif
                                                     <a href="/arquivoPedido/{{ $pedido->pedi_id }}"
                                                         class="btn btn-principle text-white rounded-pill px-3 py-2"><span class="me-2">Baixar</span><i class="bi bi-download"></i>
                                                     </a>
@@ -165,7 +158,7 @@
                     </div>
                 @else
                     <div class="alert alert-info">
-                        Sem pedidos efectuados até o momento.
+                        Sem trabalhos no momento.
                     </div>
                 @endif
             </div>

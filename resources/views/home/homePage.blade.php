@@ -10,15 +10,13 @@
 @endsection
 @section('conteudo')
     <div class="bg-primary mt-0">
-        <div class="container my-5 text-white">
-            <div class="row hero mt-5">
+        <div class="container mb-5 text-white">
+            <div class="row hero">
                 <div class="col-lg-5">
                     <div class="text mt-5 pt-5" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
                         <span class="subheading">Bem vindo ao lmteach</span>
-                        <h1 class="mb-4">Best Online Education Expertise </h1>
-                        <p class="mb-4">Far far away, behind the word mountains, far from the countries Vokalia and
-                            Consonantia,
-                            there live the blind texts.</p>
+                        <h1 class="mb-4">Melhor plataforma de ajuda academica</h1>
+                        <p class="mb-4"></p>
                         <p>
                             <button class="btn btn-principle p-4 py-3 text-white rounded-pill h-float"
                                 data-bs-toggle="modal" data-bs-target="#pedidoModal">
@@ -39,7 +37,7 @@
 
     <div class="d-flex bg-white py-5">
         <div class="container-fluid row mt-5 mx-auto text-dark">
-            <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-right" data-aos-duration="1300"
+            <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-duration="1300"
                 data-aos-delay="300">
                 <div class="p-3 text-center">
                     <h3>Faça seu pedido</h3>
@@ -50,7 +48,7 @@
                     <img class="img img-fluid" src="{{ asset('img/stepping.svg') }}" alt="steps">
                 </div>
             </div>
-            <div class="col-lg-6 shadow p-3" data-aos="fade-left" data-aos-duration="1300">
+            <div class="col-lg-6 shadow p-3" data-aos="fade-up" data-aos-duration="1300">
                 <div class="p-2 row shadow-sm m-2" data-aos="fade-up" data-aos-duration="1600">
                     <div class="row justify-content-center col-lg-2">
                         <p
@@ -142,10 +140,9 @@
                                                         data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><i
                                                             class="bi bi-info"></i></button>
                                                 </span>
-                                                <span
-                                                    class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
+                                                <span class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
                                             </div>
-
+    
                                         </div>
                                     </div>
                                 </div>
@@ -158,8 +155,8 @@
                                             <div class="modal-header">
                                                 <div>
                                                     <p class="text-muted mb-1">{{ $pedido->pedi_assunto }}</p>
-                                                    <h4 class="h4 text-dark font-weight-bold mb-1">
-                                                        {{ $pedido->pedi_tipo }}</h4>
+                                                    <h4 class="h4 text-dark font-weight-bold mb-1">{{ $pedido->pedi_tipo }}
+                                                    </h4>
                                                 </div>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
@@ -219,7 +216,7 @@
     </div>
     <div class="bg-white py-4" id="servicos">
         <div class="container">
-            <div class="row justify-content-center pb-5">
+            <div class="row justify-content-center pb-5" data-aos="fade-up" data-aos-duration="1200">
                 <div class="col-md-7 text-center">
                     <h2 class="mb-3">Nossos Serviços</h2>
                 </div>
@@ -298,8 +295,7 @@
     </div>
     <div class="bg-white" id="contacto">
         <div class="container">
-            <div class="row py-5">
-
+            <div class="row py-5" data-aos="fade-up" data-aos-duration="1200">
                 <div class="col-lg-4">
                     <div class="info text-principle">
                         <div class="email row">

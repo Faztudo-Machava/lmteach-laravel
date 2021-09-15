@@ -4,23 +4,36 @@
         {{-- Side bar starts here --}}
         <div class="bg-principle" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 px-3 text-white fw-bold text-uppercase">
-                <i class="fas fa-user-secret me-2"></i> LMTEACH
+                LMTEACH
             </div>
             <div class="list-group list-group-flush my-3">
                 <a href="{{ route('usuario') }}"
                     class="list-group-item list-group-item-action bg-transparent second-text active">
                     <i class="fas fa-user me-2"></i> Perfil
                 </a>
-                @if (session('user')->user_tipo != 'especialista')
-                <a href="{{ route('usuarioPedidos') }}"
-                    class="list-group-item list-group-item-action bg-transparent text-white">
-                    <i class="fas fa-project-diagram me-2"></i> Pedidos
-                </a>
+                @if (session('user')->user_tipo === 'cliente')
+                    <a href="{{ route('usuarioPedidos') }}"
+                        class="list-group-item list-group-item-action bg-transparent text-white">
+                        <i class="bi bi-collection me-2"></i>Meus Pedidos
+                    </a>
+                @elseif (session('user')->user_tipo === 'especialista')
+                    <a href="{{ route('usuarioPedidos') }}"
+                        class="list-group-item list-group-item-action bg-transparent text-white">
+                        <i class="bi bi-collection me-2"></i> Trabalhos
+                    </a>
+                    <a href="{{ route('especialistaPedidos') }}"
+                        class="list-group-item list-group-item-action bg-transparent text-white">
+                        <i class="bi bi-collection me-2"></i>Meus Trabalhos
+                    </a>
+                    <a href="{{ route('ContactUs') }}"
+                        class="list-group-item list-group-item-action bg-transparent text-white">
+                        <i class="bi bi-envelope-fill me-2"></i>Contacte nos
+                    </a>
                 @else
-                <a href="{{ route('usuarioPedidos') }}"
-                    class="list-group-item list-group-item-action bg-transparent text-white">
-                    <i class="fas fa-project-diagram me-2"></i> Trabalhos
-                </a>
+                    <a href="{{ route('usuarioPedidos') }}"
+                        class="list-group-item list-group-item-action bg-transparent text-white">
+                        <i class="bi bi-collection me-2"></i> Trabalhos
+                    </a>
                 @endif
             </div>
 
@@ -47,13 +60,21 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navdropdown" role="button"
                                 data-toggle="dropdown">
-                                <span class="">
-                                    <img src="{{asset('img/avatar.png')}}" class="img-fluid rounded-pill img-user" alt="">
+                                <span
+                                    class="">
+                                    @if (session('user')->user_tipo == 'admin')
+                                    <img src="
+                                    {{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user" alt="">
+                                @else
+                                    <img src="{{ asset('storage/' . session('user')->user_img) }}"
+                                        class="img-fluid rounded-pill img-user" alt="">
+                                    @endif
                                 </span>
-                            
+
                             </a>
                             <div class="drop-menu bg-white rounded border-1 border-principle" aria-labelledby="navdropdown">
-                                <a href="{{route('logout')}}" class="dropdown-item nav-link mb-2"><i class="bi bi-box-arrow-in-left"></i> <small>Logout</small></a>
+                                <a href="{{ route('logout') }}" class="dropdown-item nav-link mb-2"><i
+                                        class="bi bi-box-arrow-in-left"></i> <small>Logout</small></a>
                             </div>
                         </li>
                     </ul>
@@ -168,29 +189,31 @@
                         <h5 class="modal-title text-dark" id="exampleModalCenterTitle">Atualização de dados</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="alert alert-danger d-none mx-4" id="updateUserFail"></div>
+                    <div class="alert alert-success d-none mx-4" id="updateUserDone"></div>
                     <div class="modal-body">
-                        <form class="form-group col-lg-12 text-white cli-cade" name="cada-cli" id="cada-cli" method="post">
-                            <input type="hidden" name="ruser_tipo" value="cliente">
-                            <div class="form-group mt-3">
-                                <label class="text-dark" for="">Email</label>
-                                <input type="email" name="ruser_email" class="form-control m-2"
-                                    placeholder="Endereço de e-mail" required="required" value="">
-                            </div>
+                        <form id="atualizarUser">
+                            @csrf
+                            <input type="hidden" name="usuario_id" value="{{ session('user')->user_id }}">
+                            <input type="hidden" name="usuario_tipo" value="{{ session('user')->user_tipo }}">
                             <div class="form-group mt-3">
                                 <label class="text-dark" for="">Nome</label>
                                 <input type="text" name="ruser_name" class="form-control m-2" placeholder="Nome Completo"
-                                    value="">
+                                    value="{{ session('user')->user_nome }}">
                             </div>
-                            <div class="form-group mt-3">
-                                <label class="text-dark" for="">Telefone</label>
-                                <input type="text" name="ruser_telefone" class="form-control m-2" placeholder="Telefone"
-                                    value="">
-                            </div>
+                            @if (session('user')->user_telefone)
+                                <div class="form-group mt-3">
+                                    <label class="text-dark" for="">Telefone</label>
+                                    <input type="text" name="ruser_telefone" class="form-control m-2" placeholder="Telefone"
+                                        value="{{ session('user')->user_telefone }}">
+                                </div>
+                            @endif
                             <div class="col-lg-12 mt-3" name="user-mensagem" id="user-mensagem">
                             </div>
                             <div class="col-lg-12 mt-3 justify-content-center">
-                                <button class="btn btn-success" type="submit" name="submeter"
-                                    id="submeterUpdate">Atualizar</button>
+                                <button class="btn btn-success" type="submit" name="submeter">
+                                    <span>Atualizar</span> <img class="img d-none load"
+                                        src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
                             </div>
                         </form>
                     </div>
@@ -198,14 +221,41 @@
             </div>
         </div>
     </div>
-    @if (session('user')->user_tipo != 'especialista')
-    <button class="btn btn-principle d-flex align-items-center justify-content-center" id="addPedido" data-bs-toggle="modal"
-    data-bs-target="#pedidoModal"><i class="bi bi-plus text-white fs-2"></i></button>
+    @if (session('user')->user_tipo == 'cliente')
+        <button class="btn btn-principle d-flex align-items-center justify-content-center" id="addPedido"
+            data-bs-toggle="modal" data-bs-target="#pedidoModal"><i class="bi bi-plus text-white fs-2"></i></button>
     @endif
-
 @endsection
 @section('js')
     <script>
+        $(function() {
+            $('#atualizarUser').submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: "/updateUser",
+                    method: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    processData: false,
+                    enctype: "multipart/form-data",
+                    beforeSend: function() {
+                        $('.load').removeClass('d-none')
+                    },
+                    complete: function() {
+                        $('.load').addClass('d-none')
+                    },
+                    success: function(response) {
+                        if (response.success === true) {
+                            $('#updateUserDone').removeClass('d-none').html(response.mensagem)
+                        } else {
+                            $('#updateUserFail').removeClass('d-none').html(response.mensagem)
+                        }
+                        console.log(response)
+                    }
+                })
+            })
+        })
         var el = document.getElementById("wrapper")
         var toggleButton = document.getElementById("menu-toggle")
 

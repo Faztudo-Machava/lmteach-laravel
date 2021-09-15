@@ -21,6 +21,7 @@ class CreatePedidosTable extends Migration
             $table->string('pedi_tipo');
             $table->date('pedi_prazo');
             $table->string('pedi_arquivo');
+            $table->string('pedi_resolucao');
             $table->foreignId('pedi_instituicao')->nullable(false)->constrained('inst_id','instituicaos');
             $table->text('pedi_descricao');
             $table->text('pedi_assunto');

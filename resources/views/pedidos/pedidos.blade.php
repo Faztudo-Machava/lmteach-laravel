@@ -189,8 +189,7 @@
     </div>
     <div class="bg-white" id="contacto">
         <div class="container">
-            <div class="row py-5">
-
+            <div class="row py-5" data-aos="fade-up" data-aos-duration="1200">
                 <div class="col-lg-4">
                     <div class="info text-principle">
                         <div class="email row">
@@ -205,27 +204,32 @@
                 </div>
 
                 <div class="col-lg-8 mt-5 mt-lg-0">
-
-                    <form action="" method="post" role="form" class="php-email-form">
+                    <div class="alert alert-success d-none" id="mailSuccess">Mensagem enviada com sucesso</div>
+                    <div class="alert alert-danger d-none" id="mailFalha">Falha no envio da mensagem</div>
+                    <form id="contactForm">
+                        @csrf
                         <div class="row">
                             <div class="col-md-6 form-group">
-                                <input type="text" name="name" class="form-control" id="name" placeholder="Nome" required>
+                                <input type="text" name="mail_nome" class="form-control" id="nome" placeholder="Nome" required>
                             </div>
                             <div class="col-md-6 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email"
+                                <input type="email" class="form-control" name="mail_email" id="email" placeholder="Email"
                                     required>
                             </div>
                         </div>
                         <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="subject" id="subject" placeholder="Assunto"
+                            <input type="text" class="form-control" name="mail_assunto" id="assunto" placeholder="Assunto"
                                 required>
                         </div>
                         <div class="form-group mt-3">
-                            <textarea class="form-control" name="message" rows="5" placeholder="Mensagem"
+                            <textarea class="form-control" name="mail_mensagem" rows="5" placeholder="Mensagem"
                                 required></textarea>
                         </div>
                         <div class="text-center form-group mt-3">
-                            <button class="btn btn-principle text-white" type="submit">Enviar</button>
+                            <button class="btn btn-principle text-white" type="submit">
+                                <span
+                                class="text-white">Enviar</span> <img class="img d-none load"
+                                src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
                         </div>
                     </form>
 

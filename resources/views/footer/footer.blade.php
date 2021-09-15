@@ -3,7 +3,7 @@
         <div class="row text-center center-content my-5 text-white">
             <div class="col-lg-3 flex-column">
                 <div class="text-center">
-                    <i class="fa fa-support"></i>
+                    <i class="bi bi-gear fs-1"></i>
                 </div>
                 <div class="text-center">
                     <div class="text-uppercase">Suporte ao cliente</div>
@@ -13,7 +13,7 @@
 
             <div class="col-lg-3 flex-column">
                 <div class="text-center">
-                    <i class="fa fa-thumbs-up"></i>
+                    <i class="bi bi-hand-thumbs-up fs-1"></i>
                 </div>
                 <div class="text-center">
                     <div class="text-uppercase">Garantia da qualidade</div>
@@ -21,9 +21,9 @@
                 </div>
             </div>
 
-            <div class="col-lg-3 flex-column">
+            <div class="col-lg-3 flex-column mt-3">
                 <div class="text-center">
-                    <i class="fa fa-dollar-sign"></i>
+                    <i class="fa fa-dollar-sign fs-1"></i>
                 </div>
                 <div class="text-center">
                     <div class="text-uppercase">PREÇOS DEMOCRÁTICOS</div>
@@ -32,7 +32,7 @@
             </div>
             <div class="col-lg-3 flex-column align-items-center">
                 <div class="text-center">
-                    <i class="fa fa-edit"></i>
+                    <i class="bi bi-pencil-square fs-1"></i>
                 </div>
                 <div class="text-center">
                     <div class="text-uppercase">EDIÇOES GRATUITAS</div>

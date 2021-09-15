@@ -4,11 +4,15 @@
         <div class="container">
             <div class="main-body">
                 <div class="gutters-sm">
-                    <div class="mb-3" data-aos="fade-down" data-aos-duration="1000">
+                    <div class="mb-3">
                         <div class="card bg-transparent border-none">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="{{ asset('img/avatar.png') }}" class="imgperfil">
+                                    @if (session('user')->user_tipo)
+                                    <img src="{{asset('img/avatar.png')}}" class="img-fluid rounded-pill imgperfil" alt="">
+                                    @else
+                                    <img src="{{asset('storage/'.session('user')->user_img)}}" class="img-fluid rounded-pill imgperfil" alt="">
+                                    @endif
                                     <div class="mt-3">
                                         <h4>{{ session('user')->user_nome }}</h4>
                                         <p class="text-secondary mb-1">{{ session('user')->email }}</p>
@@ -18,7 +22,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="" data-aos="fade-down" data-aos-duration="1200">
+                    <div class="">
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div class="row">
@@ -39,7 +43,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                                @if (session('user')->user_tipo != 'cliente')
+                                @if (session('user')->user_tipo == 'especialista')
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Telefone</h6>
@@ -59,7 +63,7 @@
                                     </div>
                                 </div>
                                 <hr>
-                                @if (session('user')->user_tipo != 'cliente')
+                                @if (session('user')->user_tipo == 'especialista')
                                     <div class="row">
                                         <div class="col-sm-3">
                                             <h6 class="mb-0">Instituição</h6>
