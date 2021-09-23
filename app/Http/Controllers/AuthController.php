@@ -13,19 +13,24 @@ class AuthController extends Controller
 {
     public function login(Request $request){
         $userLog  = User::all()->where('email', '=', $request->input('log_email'))->first();
-        if($userLog->is_verified == 1 ){
-            $credencias = [
-                'email' => $request->input('log_email'),
-                'password' => $request->input('log_senha')
-            ];
-            if(Auth::attempt($credencias)){
-                $user = Auth::user();
-                session(['user' => $user]);
-                $login['success'] = true;
-                return response()->json($login);
-                //return redirect()->route('usuario');
-            }
-        } 
+        if($userLog){
+            if($userLog->is_verified == 1 ){
+                $credencias = [
+                    'email' => $request->input('log_email'),
+                    'password' => $request->input('log_senha')
+                ];
+                if(Auth::attempt($credencias)){
+                    $user = Auth::user();
+                    session(['user' => $user]);
+                    $login['success'] = true;
+                    return response()->json($login);
+                    //return redirect()->route('usuario');
+                }
+            } 
+            $login['success'] = false;
+            $login['mensagem'] = 'Dados invalidos';
+            return response()->json($login);
+        }
         $login['success'] = false;
         $login['mensagem'] = 'Dados invalidos';
         return response()->json($login);

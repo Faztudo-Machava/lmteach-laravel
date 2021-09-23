@@ -1,6 +1,5 @@
 @extends('layouts.userLayout')
 @section('content')
-    <div class="">
     <div class=" py-5 container">
         <div class="row justify-content-center">
             <div class="p-4" id="conteudoPedidos">
@@ -10,7 +9,7 @@
                         <div class="form-group">
                             <select id="tipo_pedido" class="form-control" name="estado_pedi" required>
                                 <option value="3">Selecione o estado do trabalho</option>
-                                <option value="1">No processo de resolução</option>
+                                <option value="1">Em resolução</option>
                                 <option value="2">Resolvido</option>
                                 <option value="3">Todos</option>
                             </select>
@@ -20,7 +19,7 @@
                 <div class="dropdown-divider my-5"></div>
                 @if ($numPedidos > 0)
                     <div id="pedidos" class="cards row">
-                        <div class="d-none">{{ $delay = 100 }}</div>
+                        <div class="d-none">{{ $delay = 50 }}</div>
                         @foreach ($listaPedidos as $pedido)
                             {{-- @php
                                 $user = $pedido->find($pedido->pedi_cliente)->relUser;
@@ -45,7 +44,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-none">{{ $delay = $delay + 100 }}</div>
+                            <div class="d-none">{{ $delay = $delay + 50 }}</div>
                             <div class="modal fade" id="viewPedido{{ $pedido->pedi_id }}" tabindex="-1"
                                 aria-labelledby="viewPedido{{ $pedido->pedi_id }}" aria-hidden="true">
                                 <br>
@@ -95,21 +94,28 @@
                                                     {{ $pedido->pedi_descricao }}
                                                 </div>
                                                 @if (session('user')->user_tipo === 'especialista' && $pedido->pedi_status == 0)
-                                                    <div class="my-5"> <p>Pretende resolver o trabalho? <a href="/resolver/{{ $pedido->pedi_id }}">clique aqui</a></p>
+                                                    <div class="my-5">
+                                                        <p>Pretende resolver o trabalho? <a
+                                                                href="/resolver/{{ $pedido->pedi_id }}">clique aqui</a>
+                                                        </p>
                                                     </div>
                                                 @endif
-                                                @if ((session('user')->user_tipo === 'especialista' && $pedido->pedi_status == 1) || session('user')->user_tipo === 'admin' && $pedido->pedi_status == 1)
-                                                    <div class="my-5"><a class="btn btn-danger" href="/cancelarTrabalho/{{ $pedido->pedi_id }}">Cancelar subscrição</a>
+                                                @if ((session('user')->user_tipo === 'especialista' && $pedido->pedi_status == 1) || (session('user')->user_tipo === 'admin' && $pedido->pedi_status == 1))
+                                                    <div class="my-5"><a class="btn btn-danger"
+                                                            href="/cancelarTrabalho/{{ $pedido->pedi_id }}">Cancelar
+                                                            subscrição</a>
                                                     </div>
                                                 @endif
                                                 @if (session('user')->user_tipo === 'admin' && $pedido->pedi_status === 1)
                                                     <div class="my-5">
                                                         <form id="formTrabResolvido">
                                                             @csrf
-                                                            <div id="errorEnvioResolucao" class="alert alert-danger d-none">Houve algum problema no momento de submissão do trabalho
+                                                            <div id="errorEnvioResolucao" class="alert alert-danger d-none">
+                                                                Houve algum problema no momento de submissão do trabalho
                                                             </div>
                                                             <div id="sucessoEnvioRsolucao"
-                                                                class="alert alert-success d-none">Trabalho submetido com sucesso</div>
+                                                                class="alert alert-success d-none">Trabalho submetido com
+                                                                sucesso</div>
                                                             <div class="form-group my-2">
                                                                 <label for="my-select fs-2">Anexar a resolução</label>
                                                                 <input type="file" name="fileTrabResolvido" id="anexo"
@@ -136,20 +142,24 @@
                                                 <div class="text-center">
                                                     <p>Analise o trabalho antes de resolver</p>
                                                     <a href="/arquivoPedido/{{ $pedido->pedi_id }}"
-                                                        class="btn btn-principle text-white rounded-pill px-3 py-2"><span class="me-2">Baixar</span><i class="bi bi-download"></i>
+                                                        class="btn btn-principle text-white rounded-pill px-3 py-2"><span
+                                                            class="me-2">Baixar</span><i
+                                                            class="bi bi-download"></i>
                                                     </a>
                                                 </div>
                                             </div>
                                         @endif
                                         @if (session('user')->user_tipo === 'cliente' && $pedido->pedi_status == 2)
-                                        <div class="my-4">
-                                            <div class="text-center">
-                                                <p>Encontre abaixo a resolucão do trabalho</p>
-                                                <a href="/arquivoResolvido/{{ $pedido->pedi_id }}"
-                                                    class="btn btn-principle text-white rounded-pill px-3 py-2"><span class="me-2">Baixar</span><i class="bi bi-download"></i>
-                                                </a>
+                                            <div class="my-4">
+                                                <div class="text-center">
+                                                    <p>Encontre abaixo a resolucão do trabalho</p>
+                                                    <a href="/arquivoResolvido/{{ $pedido->pedi_id }}"
+                                                        class="btn btn-principle text-white rounded-pill px-3 py-2"><span
+                                                            class="me-2">Baixar</span><i
+                                                            class="bi bi-download"></i>
+                                                    </a>
+                                                </div>
                                             </div>
-                                        </div>
                                         @endif
                                     </div>
                                 </div>
@@ -163,6 +173,55 @@
                 @endif
             </div>
         </div>
-    </div>
+        {{-- <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="text-center col mr-2">
+                                <div class="text-xs font-weight-bold text-principle text-uppercase mb-1">
+                                    Pedidos</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $numPedidos }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-collection-fill fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="text-center col mr-2">
+                                <div class="text-xs font-weight-bold text-principle text-uppercase mb-1">
+                                    Pedidos em resolução</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $numPedidosEm }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-collection-fill fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="text-center col mr-2">
+                                <div class="text-xs font-weight-bold text-principle text-uppercase mb-1">
+                                    Pedidos resolvidos</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $numPedidosResolvido }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-collection-fill fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
     </div>
 @endsection

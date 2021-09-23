@@ -45,22 +45,28 @@ class UserController extends Controller
         if (session('user')->user_tipo == 'cliente'){
             $listaPedidos = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->sortByDesc('pedi_prazo');
             $numPedidos = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->count();
+            $numPedidosPendentes = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->where('pedi_status','=', 0)->count();
+            $numPedidosResolvido = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->where('pedi_status','=', 2)->count();
+            $numPedidosEm = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->where('pedi_status','=', 1)->count();
         } else{
             $listaPedidos = $this->objPedidos->all()->sortByDesc('pedi_prazo');
             $numPedidos = $this->objPedidos->all()->count();
+            $numPedidosPendentes = $this->objPedidos->all()->where('pedi_status','=', 0)->count();
+            $numPedidosResolvido = $this->objPedidos->all()->where('pedi_status','=', 2)->count();
+            $numPedidosEm = $this->objPedidos->all()->where('pedi_status','=', 1)->count();
         }
-        
         $listaEspecialidades = $this->objEspecialidade->all();
         $listaInstituicao = $this->objInstituicao->all();
-        return view('pedidos.userPedidos', compact('listaPedidos', 'numPedidos', 'listaInstituicao', 'listaEspecialidades'));
+        return view('pedidos.userPedidos', compact('listaPedidos', 'numPedidos', 'listaInstituicao', 'listaEspecialidades', 'numPedidosPendentes', 'numPedidosResolvido', 'numPedidosEm'));
     }
-    public function indexEspecialista(){
-        
+    public function indexEspecialista(){ 
         $listaPedidos = $this->objPedidos->all()->where('pedi_especialista','=',session('user')->user_id)->sortByDesc('pedi_prazo');
-        $numPedidos = $this->objPedidos->all()->where('pedi_especialista','=',session('user')->user_id)->count(); 
+        $numPedidos = $this->objPedidos->all()->where('pedi_especialista','=',session('user')->user_id)->count();
+        $numPedidosResolvido = $this->objPedidos->all()->where('pedi_status','=', 2)->count();
+        $numPedidosEm = $this->objPedidos->all()->where('pedi_status','=', 1)->count();
         $listaEspecialidades = $this->objEspecialidade->all();
         $listaInstituicao = $this->objInstituicao->all();
-        return view('pedidos.especialistaPedidos', compact('listaPedidos', 'numPedidos', 'listaInstituicao', 'listaEspecialidades'));
+        return view('pedidos.especialistaPedidos', compact('listaPedidos', 'numPedidos', 'listaInstituicao', 'listaEspecialidades', 'numPedidosResolvido', 'numPedidosEm'));
     }
 
     /**
@@ -105,8 +111,8 @@ class UserController extends Controller
                 'assunto' => 'Confirmação do email',
                 'verification_code' => $utilizador->verification_code
             ];
-            // session(['user' => $utilizador]);
-            //Mail::to($emailSend)->send(new VerifyMail($detalhes));
+            //session(['user' => $utilizador]);
+            Mail::to($emailSend)->send(new VerifyMail($detalhes));
             $addCliente['mensagem'] = 'Cadastrado com sucesso, porfavor confirme o seu email.';
             $addCliente['success'] = true;
             return response()->json($addCliente);
@@ -148,7 +154,7 @@ class UserController extends Controller
             'assunto' => 'Confirmação do email',
             'verification_code' => $utilizador->verification_code
         ];
-        //Mail::to($utilizador->email)->send(new VerifyMail($detalhes));
+        Mail::to($utilizador->email)->send(new VerifyMail($detalhes));
         $addEspecialista['success'] = true;
         $addEspecialista['mensagem'] = 'Especialista registado com sucesso';
         return response()->json($addEspecialista);

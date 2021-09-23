@@ -14,7 +14,6 @@ $(function() {
                 $('.load').addClass('d-none')
             },
             success: function(response) {
-                console.log(response)
                 if (response.success === true) {
                     // $('#root').load("/usuario")
                     window.location.href = "/usuario"
@@ -55,7 +54,6 @@ $(function() {
                 } else {
                     $('.messageBox').removeClass('d-none').html(response.mensagem)
                 }
-                console.log(response)
             }
         })
     })
@@ -82,7 +80,6 @@ $(function() {
                 } else {
                     $('#answer').removeClass('d-none').html(response.mensagem)
                 }
-                console.log(response)
             }
         })
     })
@@ -109,7 +106,6 @@ $(function() {
                 } else {
                     $('.espError').removeClass('d-none').html(response.mensagem)
                 }
-                console.log(response)
             }
         })
     })
@@ -146,7 +142,6 @@ $(function() {
                 } else {
                     $('#mensagensResetPass').addClass('alert-danger').removeClass('d-none').html(response.mensagem)
                 }
-                console.log(response)
             }
         })
     })

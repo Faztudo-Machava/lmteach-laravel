@@ -20,7 +20,6 @@ $(function() {
                 } else {
                     $('#mailFalha').removeClass('d-none')
                 }
-                console.log(response)
             }
         })
     })

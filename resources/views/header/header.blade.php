@@ -1,10 +1,10 @@
 <!-- ======= Header ======= -->
 <header class="header">
     <div class="" id=" page-conteudo">
-        <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 px-4 shadow-sm">
+        <nav class="navbar navbar-expand-lg navbar-light py-2 px-4 shadow-sm bg-light">
 
             <div class="d-flex align-items-center">
-                <a class="navbar-brand font-weight-bold" href="{{ url('/') }}">LMTEACH</a>
+                <a class="navbar-brand font-weight-bold" href="{{ url('/') }}">LMTEACHER</a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHomeContent"
                 aria-controls="navbarHomeContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -17,7 +17,6 @@
                     <li class="nav-item"><a class="nav-link" href="">Sobre</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="">Ajuda</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
                     <li class="nav-item dropdown">
                         <a href="#" class="nav-link dropdown-toggle" id="navdropdown" role="button"
                             data-toggle="dropdown">Usuario</a>
@@ -46,11 +45,15 @@
             <div class="modal-content login">
                 <div class="row modal-body p-0 bg-principle">
                     <div class="col-lg p-4 pr-2 bg-white rounded">
+                        <div class="">
+                            <button type="button" class="btn-close float-right" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
                         <div class="d-flex justify-content-center">
                             <i class="bi bi-person-circle fs-1 text-principle"></i>
                         </div>
                         <div class="my-4 d-flex flex-column justify-content-center p-4">
-                            <div class="alert alert-danger fade show ml-4 me-4 d-none" role="alert" id="logError"></div>
+                            <div class="alert alert-danger fade show ml-4 me-4 d-none" role="alert" id="logError"
+                                data-aos="fade-right" data-aos-duration="1200"></div>
                             <div class="form-floating mb-3">
                                 <input type="email" class="form-control" id="log_email" name="log_email"
                                     placeholder="nome@example.com" required>
@@ -63,7 +66,7 @@
                             </div>
                             <div class="mb-3">
                                 <div class="nav-item">
-                                    <a class="btn btn-link" href="{{route('emailReset')}}">
+                                    <a class="btn btn-link" href="{{ route('emailReset') }}">
                                         {{ __('Esqueceu a senha?') }}
                                     </a>
                                 </div>
@@ -116,6 +119,9 @@
 <div class="modal fade" id="cadUsers" tabindex="-1" aria-labelledby="addUser" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered login-modal">
         <div class="modal-content">
+            <div class="p-2">
+                <button type="button" class="btn-close float-right" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
             <div class="p-4">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
@@ -138,8 +144,7 @@
                                 @csrf
                                 <div class="row">
                                     <div class="col-sm">
-                                        <input class="form-control my-1" type="file" name="cli_img" id="cli_img"
-                                            required>
+                                        <input class="form-control my-1" type="file" name="cli_img" id="cli_img">
                                         <div class="img-holder mb-2" name>
                                         </div>
                                         <p class="errorFileType d-none alert-danger">Ficheiro invalido</p>
@@ -156,11 +161,12 @@
                                             placeholder="Nome Completo" id="cli_nome">
                                     </div>
                                 </div>
-                                <div class="text-left">
+                                {{-- <div class="text-left">
                                     <input type="checkbox" name="ruser_checkc" class="checkbox" required> <span>Eu concordo com o <a class="nav-link" href="#">contrato de oferta</a></span>
-                                </div>
+                                </div> --}}
                                 <div class="text-left">
-                                    <input type="checkbox" name="ruser_checkp" class="checkbox"> Politica de
+                                    <input type="checkbox" name="ruser_checkp" class="checkbox" required> Politica
+                                    de
                                     privacidade
                                 </div>
                                 <div class="my-3 justify-content-center">
@@ -258,9 +264,8 @@
                                     <div>
                                         <h2>Perfil</h2>
                                         <p>
-                                            <input class="form-control my-1" type="file" name="esp_img" id="esp_img"
-                                                required>
-                                            <div class="img-holder-esp mb-2" name>
+                                            <input class="form-control my-1" type="file" name="esp_img" id="esp_img">
+                                        <div class="img-holder-esp mb-2" name>
                                         </div>
                                         <p class="errorFileType-esp d-none alert-danger">Ficheiro invalido</p>
                                         </p>

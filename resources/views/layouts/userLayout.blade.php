@@ -54,23 +54,27 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="" class="nav-link"><i class=" bi bi-bell-fill "></i></a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" id="navdropdown" role="button"
                                 data-toggle="dropdown">
-                                <span
-                                    class="">
+                                <span class="">
                                     @if (session('user')->user_tipo == 'admin')
-                                    <img src="
-                                    {{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user" alt="">
-                                @else
-                                    <img src="{{ asset('storage/' . session('user')->user_img) }}"
-                                        class="img-fluid rounded-pill img-user" alt="">
+                                            <img src="
+                                        {{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user" alt="">
+                                    @else
+                                        @if (session('user')->user_img)
+                                            <img src="{{ asset('storage/' . session('user')->user_img) }}"
+                                                class="img-fluid rounded-pill img-user" alt="">
+                                        @else
+                                            <img src="
+                                                {{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user"
+                                                alt="">
+                                        @endif
                                     @endif
                                 </span>
-
                             </a>
                             <div class="drop-menu bg-white rounded border-1 border-principle" aria-labelledby="navdropdown">
                                 <a href="{{ route('logout') }}" class="dropdown-item nav-link mb-2"><i
@@ -95,7 +99,7 @@
                 <div class="modal-content card bg-white">
                     <div class="modal-header">
                         <h4 class="modal-titlefont-weight-bold" id="exampleModalCenterTitle">DEIXE
-                            O SEU PEDIDO E LIGAREMOS DE VOLTA</h4>
+                            O SEU PEDIDO</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -131,7 +135,7 @@
 
                                 <div class="col-lg-6 p-3">
                                     <input type="text" name="pedi_assunto" id="pedi_assunto"
-                                        class="form-control pl-3 inputs" placeholder="Assunto(Ex: Informatica)" required>
+                                        class="form-control pl-3 inputs" placeholder="Disciplina (Ex: Informatica)" required>
                                 </div>
                                 <div class="col-lg-6 p-3">
                                     <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
@@ -143,11 +147,7 @@
                                 </div>
                                 <div class="col-lg-6 p-3">
                                     <div class="text-center">
-                                        <label for="pedi_arquivo">
-                                            <i class="bi bi-file-earmark-pdf"></i> Anexar Arquivo
-                                        </label>
-                                        <input class="arquivo" type="file" name="pedi_arquivo" id="pedi_arquivo"
-                                            required style="display: none;">
+                                        <input class="form-control" type="file" name="pedi_arquivo" id="pedi_arquivo" required>
                                     </div>
                                 </div>
                                 @if (session('user'))

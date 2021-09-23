@@ -9,11 +9,11 @@
     @include('header/header')
 @endsection
 @section('conteudo')
-    <div class="bg-primary mt-0">
-        <div class="container mb-5 text-white">
-            <div class="row hero">
+    <div class="bg-primary mt-0 hero">
+        <div class="container text-white">
+            <div class="row">
                 <div class="col-lg-5">
-                    <div class="text mt-5 pt-5" data-aos="fade-up" data-aos-delay="200" data-aos-duration="1000">
+                    <div class="text mt-5 pt-5" data-aos="fade-up" data-aos-duration="400">
                         <span class="subheading">Bem vindo ao lmteach</span>
                         <h1 class="mb-4">Melhor plataforma de ajuda academica</h1>
                         <p class="mb-4"></p>
@@ -34,11 +34,9 @@
             </div>
         </div>
     </div>
-
-    <div class="d-flex bg-white py-5">
+    <div class="d-flex bg-light py-3">
         <div class="container-fluid row mt-5 mx-auto text-dark">
-            <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-duration="1300"
-                data-aos-delay="300">
+            <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-duration="1000">
                 <div class="p-3 text-center">
                     <h3>Faça seu pedido</h3>
                     <p>Quer saber quais são os procedimentos para fazer o seu pedido? é muito simples é só seguir os passos
@@ -48,8 +46,8 @@
                     <img class="img img-fluid" src="{{ asset('img/stepping.svg') }}" alt="steps">
                 </div>
             </div>
-            <div class="col-lg-6 shadow p-3" data-aos="fade-up" data-aos-duration="1300">
-                <div class="p-2 row shadow-sm m-2" data-aos="fade-up" data-aos-duration="1600">
+            <div class="col-lg-6 shadow p-3" data-aos="fade-up" data-aos-duration="1000">
+                <div class="p-2 row shadow-sm m-2" data-aos="fade-up" data-aos-duration="1300">
                     <div class="row justify-content-center col-lg-2">
                         <p
                             class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
@@ -124,7 +122,7 @@
                     </div>
                     @if ($numPedidos > 0)
                         <div class="cards row">
-                            <div class="d-none">{{ $delay = 300 }}</div>
+                            <div class="d-none">{{ $delay = 50 }}</div>
                             @foreach ($listaPedidos as $pedido)
                                 <div class="col-sm-3 mb-3">
                                     <div class="card" data-aos="fade-right" data-aos-duration="1200"
@@ -214,7 +212,7 @@
             </div>
         </div>
     </div>
-    <div class="bg-white py-4" id="servicos">
+    <div class="bg-light py-4" id="servicos">
         <div class="container">
             <div class="row justify-content-center pb-5" data-aos="fade-up" data-aos-duration="1200">
                 <div class="col-md-7 text-center">
@@ -223,7 +221,7 @@
             </div>
             <div class="row">
                 <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown">
+                    <div class="card p-4 h-transDown shadow">
                         <div class="img text-center m-2 my-4">
                             <i class="fa fa-hat-cowboy text-principle fs-1"></i>
                         </div>
@@ -240,7 +238,7 @@
                     </div>
                 </div>
                 <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown">
+                    <div class="card p-4 h-transDown shadow">
                         <div class="text-center m-2 my-4 img">
                             <i class="fa fa-hat-cowboy text-principle fs-1"></i>
                         </div>
@@ -257,7 +255,7 @@
                     </div>
                 </div>
                 <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown">
+                    <div class="card p-4 h-transDown shadow">
                         <div class="img text-center m-2 my-4">
                             <i class="fa fa-hat-cowboy text-principle fs-1"></i>
                         </div>
@@ -274,7 +272,7 @@
                     </div>
                 </div>
                 <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown">
+                    <div class="card p-4 h-transDown shadow">
                         <div class="img text-center m-2 my-4">
                             <i class="fa fa-hat-cowboy text-principle fs-1"></i>
                         </div>
@@ -293,23 +291,14 @@
             </div>
         </div>
     </div>
-    <div class="bg-white" id="contacto">
-        <div class="container">
-            <div class="row py-5" data-aos="fade-up" data-aos-duration="1200">
-                <div class="col-lg-4">
-                    <div class="info text-principle">
-                        <div class="email row">
-                            <i class="bi bi-envelope"></i>
-                            <h4>Email:</h4>
-                        </div>
-                        <div class="phone row">
-                            <i class="bi bi-phone"></i>
-                            <h4>Contacto:</h4>
-                        </div>
-                    </div>
-                </div>
+    <div class="bg-light py-5" id="contacto">
 
-                <div class="col-lg-8 mt-5 mt-lg-0">
+        <div class="container">
+            <div class="row justify-content-center h2 mb-5">
+                Contacte-nos
+            </div>
+            <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1200">
+                <div class="mt-5 mt-lg-0">
                     <div class="alert alert-success d-none" id="mailSuccess">Mensagem enviada com sucesso</div>
                     <div class="alert alert-danger d-none" id="mailFalha">Falha no envio da mensagem</div>
                     <form id="contactForm">
@@ -332,7 +321,7 @@
                                 required></textarea>
                         </div>
                         <div class="text-center form-group mt-3">
-                            <button class="btn btn-principle text-white" type="submit">
+                            <button class="btn btn-principle text-white rounded-pill h-float btn-contacte" type="submit">
                                 <span
                                 class="text-white">Enviar</span> <img class="img d-none load"
                                 src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
@@ -352,7 +341,7 @@
                 <div class="modal-content card bg-white">
                     <div class="modal-header">
                         <h4 class="modal-titlefont-weight-bold" id="exampleModalCenterTitle">DEIXE
-                            O SEU PEDIDO E LIGAREMOS DE VOLTA</h4>
+                            O SEU PEDIDO</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -388,7 +377,7 @@
 
                                 <div class="col-lg-6 p-3">
                                     <input type="text" name="pedi_assunto" id="pedi_assunto"
-                                        class="form-control pl-3 inputs" placeholder="Assunto(Ex: Informatica)" required>
+                                        class="form-control pl-3 inputs" placeholder="Disciplina (Ex: Informatica)" required>
                                 </div>
                                 <div class="col-lg-6 p-3">
                                     <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>

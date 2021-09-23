@@ -1,7 +1,72 @@
 @extends('layouts.userLayout')
 @section('content')
-    <div class="">
-    <div class=" py-5 container">
+    <div class="py-5 container">
+        {{-- <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="text-center col mr-2">
+                                <div class="text-xs font-weight-bold text-principle text-uppercase mb-1">
+                                    Pedidos</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $numPedidos }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-collection-fill fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="text-center col mr-2">
+                                <div class="text-xs font-weight-bold text-principle text-uppercase mb-1">
+                                    Pedidos pendentes</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $numPedidosPendentes }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-collection-fill fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="text-center col mr-2">
+                                <div class="text-xs font-weight-bold text-principle text-uppercase mb-1">
+                                    Pedidos em resolução</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $numPedidosEm }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-collection-fill fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="text-center col mr-2">
+                                <div class="text-xs font-weight-bold text-principle text-uppercase mb-1">
+                                    Pedidos resolvidos</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $numPedidosResolvido }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-collection-fill fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> --}}
         <div class="row justify-content-center">
             <div class="p-4" id="conteudoPedidos">
                 <div class="">
@@ -18,7 +83,7 @@
                                 @else
                                 <option value="">Selecione o estado do pedido</option>
                                 @endif
-                                <option value="1">No processo de resolução</option>
+                                <option value="1">Em resolução</option>
                                 <option value="0">Pendente</option>
                                 <option value="2">Resolvido</option>
                                 <option value="3">Todos</option>
@@ -29,7 +94,7 @@
                 <div class="dropdown-divider my-5"></div>
                 @if ($numPedidos > 0)
                     <div id="pedidos" class="cards row">
-                        <div class="d-none">{{ $delay = 100 }}</div>
+                        <div class="d-none">{{ $delay = 50 }}</div>
                         @foreach ($listaPedidos as $pedido)
                             {{-- @php
                                 $user = $pedido->find($pedido->pedi_cliente)->relUser;
@@ -54,7 +119,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-none">{{ $delay = $delay + 100 }}</div>
+                            <div class="d-none">{{ $delay = $delay + 50 }}</div>
                             <div class="modal fade" id="viewPedido{{ $pedido->pedi_id }}" tabindex="-1"
                                 aria-labelledby="viewPedido{{ $pedido->pedi_id }}" aria-hidden="true">
                                 <br>
@@ -170,6 +235,5 @@
                 @endif
             </div>
         </div>
-    </div>
     </div>
 @endsection

@@ -41,25 +41,53 @@
             </div>
         </div>
     </div>
-    <div class="row bg-white">
-        <div class="line mb-3 mx-auto"></div>
-        <div class="d-md-flex px-5 justify-content-around col-md-12 mb-3">
-            <div class="p-2 flex-fill d-flex mb-5 mb-md-0 align-items-center">
-                <div>
-                    <h3>LMTEACH</h3>
+    <div class="row bg-principle">
+        <div class="container d-md-flex px-5 py-5 justify-content-around">
+            <div class="col-md-4 flex-column justify-content-center align-content-center">
+                <div class="d-flex justify-content-center">
+                    <h3 class="h3 text-white">LMTEACHER</h3>
+                </div>
+                <div class="my-3 d-flex justify-content-center">
+                    <span class="text-white"> <i class="bi bi-envelope-fill me-2"></i> lmteach@gmail.com </span>
+                </div>
+                <div class="d-flex flex-row justify-content-center">
+                    <i class="bi bi-facebook text-white fs-3 me-3"></i>
+                    <i class="bi bi-whatsapp text-white fs-3 me-3"></i>
+                    <i class="bi bi-instagram text-white fs-3"></i>
                 </div>
             </div>
-            <div class="p-2 flex-fill mb-3 mb-md-0 navbar-light">
+            <div class="col-md-4 d-flex justify-content-center">
+                <div class="servicos">
+                    <h3 class="text-white h3">Serviços</h3>
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link text-white"> Papéis de teste </a></li>
+                        <li class="nav-item"><a class="nav-link text-white"> Curso </a></li>
+                        <li class="nav-item"><a class="nav-link text-white"> Resolvendo problemas </a></li>
+                        <li class="nav-item"><a class="nav-link text-white"> Tarefas práticas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex justify-content-center">
+                <div>
+                    <h3 class="h3 text-white">Apoio, suporte</h3>
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link text-white"> Mapa do site </a></li>
+                        <!-- <li><a href="{$contact}">Contatos</a></li> -->
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {{-- <div class="d-md-flex px-5 justify-content-around mb-3">
+            <div class="p-2 flex-fill mb-3 mb-md-0 text-white">
                 <h5 class="places">Informação</h5>
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="">
-
+                        <a class="nav-link text-white" href="">
                             Promoções
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">
+                        <a class="nav-link text-white" href="">
                              Sobre a empresa
                         </a>
                     </li>
@@ -84,30 +112,17 @@
                 </ul>
             </div>
             <div class="p-2 flex-fill navbar-light mb-3 mb-md-0">
-                <h5 class="places">Outros</h5>
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link" href="">Relatórios </a></li>
-                    <li class="nav-item"><a class="nav-link" href=""> Projetos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">  Apresentações </a></li>
-                    <li class="nav-item"><a class="nav-link" href=""> Ensaios, composições</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">  Planos de negócios</a></li>
-                    <li class="nav-item"><a class="nav-link" href=""> Check-ins online </a></li>
-                    <li class="nav-item"><a class="nav-link" href=""> Exames on-line </a></li>
-                    <li class="nav-item"><a class="nav-link" href=""> Dissertações de mestrado</a></li>
-                </ul>
-            </div>
-            <div class="p-2 flex-fill navbar-light mb-3 mb-md-0">
                 <h5 class="places">Apoio, suporte</h5>
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link" href=""> Mapa do site </a></li>
                     <!-- <li><a href="{$contact}">Contatos</a></li> -->
                 </ul>
             </div>
-        </div>
+        </div> --}}
     </div>
     <div class="row bg-cinza py-4">
         <div class="d-flex justify-content-center text-principle">
-            LMTEACH &copy 2021 | Todos direitos reservados
+            LMTGROUP &copy 2021 | Todos direitos reservados
         </div>
     </div>
 </div>

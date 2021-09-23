@@ -22,7 +22,6 @@ $(function() {
                 } else {
                     $('#pedidoMsg').removeClass('d-none').html(response.mensagem)
                 }
-                console.log(response)
             }
         })
     })
@@ -48,7 +47,6 @@ $(function() {
                 } else {
                     $('#errorEnvioResolucao').removeClass('d-none')
                 }
-                console.log(response)
             }
         })
     })
