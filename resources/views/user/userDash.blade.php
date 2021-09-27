@@ -8,19 +8,21 @@
                         <div class="card bg-transparent border-none">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
-                                    @if (session('user')->user_tipo)
-                                        <img src="{{ asset('img/avatar.png') }}" class="img-fluid rounded-pill imgperfil"
-                                            alt="">
-                                    @else
-                                        @if (session('user')->user_img)
-                                            <img src="{{ asset('storage/' . session('user')->user_img) }}"
-                                                class="img-fluid rounded-pill img-user" alt="">
+                                    <div class="">
+                                        @if (session('user')->user_tipo == 'admin')
+                                            <img src="{{ asset('img/avatar.png') }}"
+                                                class="img-fluid imgperfil rounded-pill" alt="">
                                         @else
-                                            <img src="
-                                                    {{ asset('img/avatar.png') }}"
-                                                class="img-fluid rounded-pill img-user" alt="">
+                                            @if (session('user')->user_img)
+                                                <img src="{{ asset('storage/' . session('user')->user_img) }}"
+                                                    class="img-fluid imgperfil rounded-pill" alt="">
+                                            @else
+                                                <img src="
+                                                        {{ asset('img/avatar.png') }}"
+                                                    class="img-fluid imgperfil rounded-pill" alt="">
+                                            @endif
                                         @endif
-                                    @endif
+                                    </div>
                                     <div class="mt-3">
                                         <h4>{{ session('user')->user_nome }}</h4>
                                         <p class="text-secondary mb-1">{{ session('user')->email }}</p>

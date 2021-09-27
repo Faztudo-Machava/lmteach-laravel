@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Especialidade;
+use App\Models\especialidade;
 use App\Models\instituicao;
 use App\Models\pedidos;
 use Illuminate\Http\Request;
@@ -29,8 +29,8 @@ class HomeController extends Controller
     {
         $listaEspecialidades = $this->objEspecialidade->all();
         $listaInstituicao = $this->objInstituicao->all();
-        $listaPedidos = $this->objPedidos->all()->where('pedi_status','=',2);
-        $numPedidos = $this->objPedidos->all()->where('pedi_status','=',2)->count();
+        $listaPedidos = $this->objPedidos->all()->sortByDesc('created_at');
+        $numPedidos = $this->objPedidos->all()->count();
         return view('home.homePage', compact('listaEspecialidades','listaInstituicao', 'listaPedidos', 'numPedidos'));
     }
 

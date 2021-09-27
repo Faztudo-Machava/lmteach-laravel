@@ -1,8 +1,8 @@
 <!-- ======= Header ======= -->
 <header class="header">
-    <div class="" id=" page-conteudo">
-        <nav class="navbar navbar-expand-lg navbar-light py-2 px-4 shadow-sm bg-light">
-
+    <div class="">
+        <nav class=" navbar navbar-expand-lg navbar-light py-2 px-4 shadow-sm bg-light">
+        <div class="container">
             <div class="d-flex align-items-center">
                 <a class="navbar-brand font-weight-bold" href="{{ url('/') }}">LMTEACHER</a>
             </div>
@@ -21,17 +21,18 @@
                         <a href="#" class="nav-link dropdown-toggle" id="navdropdown" role="button"
                             data-toggle="dropdown">Usuario</a>
                         <div class="drop-menu bg-white rounded border-1 border-principle" aria-labelledby="navdropdown">
-                            <button class="dropdown-item nav-link drop-item mt-2" data-bs-toggle="modal"
+                            <button class="dropdown-item nav-link drop-item my-2 px-3" data-bs-toggle="modal"
                                 data-bs-target="#login"><i class="bi bi-box-arrow-in-right"></i> <small>
                                     Entrar</small></button>
                             <div class="dropdown-divider"></div>
-                            <button class="dropdown-item nav-link mb-2" data-bs-toggle="modal"
+                            <button class="dropdown-item nav-link my-2 px-3" data-bs-toggle="modal"
                                 data-bs-target="#cadUsers"><i class="bi bi-person-plus"></i>
                                 <small>Registrar-se</small></a>
                         </div>
                     </li>
                 </ul>
             </div>
+        </div>
         </nav>
     </div>
 </header><!-- Fim Header -->
@@ -41,12 +42,13 @@
 <form class="form" id="formLogin">
     <div class="modal fade" id="login" tabindex="-1" aria-labelledby="login" aria-hidden="true">
         @csrf
-        <div class="modal-dialog modal-dialog-centered login-modal">
+        <div class="modal-dialog modal-dialog-centered login-modal mx-xs-4 mx-sm-4 mx-md-auto mx-lg-auto">
             <div class="modal-content login">
                 <div class="row modal-body p-0 bg-principle">
                     <div class="col-lg p-4 pr-2 bg-white rounded">
                         <div class="">
-                            <button type="button" class="btn-close float-right" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" class="btn-close float-right"
+                            data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="d-flex justify-content-center">
                             <i class="bi bi-person-circle fs-1 text-principle"></i>
@@ -143,12 +145,12 @@
                             <form id="regCliente" class="py-3">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-sm">
+                                    {{-- <div class="col-sm">
                                         <input class="form-control my-1" type="file" name="cli_img" id="cli_img">
                                         <div class="img-holder mb-2" name>
                                         </div>
                                         <p class="errorFileType d-none alert-danger">Ficheiro invalido</p>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-sm">
                                         <input type="email" name="cli_email" class="form-control my-2"
                                             placeholder="Endereço de e-mail" required="required" id="cli_email">
@@ -263,12 +265,12 @@
                                 <div class="border-bottom text-left p-2 tab" id="tab3">
                                     <div>
                                         <h2>Perfil</h2>
-                                        <p>
+                                        {{-- <p>
                                             <input class="form-control my-1" type="file" name="esp_img" id="esp_img">
                                         <div class="img-holder-esp mb-2" name>
                                         </div>
                                         <p class="errorFileType-esp d-none alert-danger">Ficheiro invalido</p>
-                                        </p>
+                                        </p> --}}
                                         <p>
                                             <textarea name="esp_sobre" id="esp_sobre" class="form-control p-2" rows="4"
                                                 placeholder="Sobre"></textarea>

@@ -24,7 +24,6 @@ class AuthController extends Controller
                     session(['user' => $user]);
                     $login['success'] = true;
                     return response()->json($login);
-                    //return redirect()->route('usuario');
                 }
             } 
             $login['success'] = false;

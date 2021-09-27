@@ -22,6 +22,7 @@ $(function() {
                 } else {
                     $('#pedidoMsg').removeClass('d-none').html(response.mensagem)
                 }
+                console.log(response);
             }
         })
     })

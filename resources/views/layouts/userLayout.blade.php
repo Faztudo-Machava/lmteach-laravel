@@ -4,11 +4,14 @@
         {{-- Side bar starts here --}}
         <div class="bg-principle" id="sidebar-wrapper">
             <div class="sidebar-heading text-center py-4 px-3 text-white fw-bold text-uppercase">
-                LMTEACH
+                <a href="{{ route('home') }}"
+                    class="list-group-item list-group-item-action bg-transparent second-text active">
+                    <i class="fas fa-home me-2"></i> Home
+                </a>
             </div>
             <div class="list-group list-group-flush my-3">
                 <a href="{{ route('usuario') }}"
-                    class="list-group-item list-group-item-action bg-transparent second-text active">
+                    class="list-group-item list-group-item-action bg-transparent second-text text-white">
                     <i class="fas fa-user me-2"></i> Perfil
                 </a>
                 @if (session('user')->user_tipo === 'cliente')
@@ -54,31 +57,28 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        {{-- <li class="nav-item">
-                            <a href="" class="nav-link"><i class=" bi bi-bell-fill "></i></a>
-                        </li> --}}
                         <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" id="navdropdown" role="button"
-                                data-toggle="dropdown">
-                                <span class="">
+                            <a href="#" class="nav-link dropdown-toggle  float-xs-end float-sm-end" id="navdropdown"
+                                role="button" data-toggle="dropdown">
+                                <span
+                                    class="">
                                     @if (session('user')->user_tipo == 'admin')
                                             <img src="
-                                        {{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user" alt="">
+                                    {{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user" alt="">
+                                @else
+                                    @if (session('user')->user_img)
+                                        <img src="{{ asset('storage/' . session('user')->user_img) }}"
+                                            class="img-fluid rounded-pill img-user" alt="">
                                     @else
-                                        @if (session('user')->user_img)
-                                            <img src="{{ asset('storage/' . session('user')->user_img) }}"
-                                                class="img-fluid rounded-pill img-user" alt="">
-                                        @else
-                                            <img src="
-                                                {{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user"
-                                                alt="">
-                                        @endif
+                                        <img src="{{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user" alt="">
+                                    @endif
                                     @endif
                                 </span>
                             </a>
                             <div class="drop-menu bg-white rounded border-1 border-principle" aria-labelledby="navdropdown">
-                                <a href="{{ route('logout') }}" class="dropdown-item nav-link mb-2"><i
-                                        class="bi bi-box-arrow-in-left"></i> <small>Logout</small></a>
+                                <a href="{{ route('logout') }}" class="dropdown-item nav-link px-3 my-2"><i
+                                        class="bi bi-box-arrow-in-left"></i> <small>Logout</small>
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -135,7 +135,8 @@
 
                                 <div class="col-lg-6 p-3">
                                     <input type="text" name="pedi_assunto" id="pedi_assunto"
-                                        class="form-control pl-3 inputs" placeholder="Disciplina (Ex: Informatica)" required>
+                                        class="form-control pl-3 inputs" placeholder="Disciplina (Ex: Informatica)"
+                                        required>
                                 </div>
                                 <div class="col-lg-6 p-3">
                                     <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
@@ -147,7 +148,8 @@
                                 </div>
                                 <div class="col-lg-6 p-3">
                                     <div class="text-center">
-                                        <input class="form-control" type="file" name="pedi_arquivo" id="pedi_arquivo" required>
+                                        <input class="form-control" type="file" name="pedi_arquivo" id="pedi_arquivo"
+                                            required>
                                     </div>
                                 </div>
                                 @if (session('user'))
@@ -182,7 +184,7 @@
         </div>
         <div class="modal fade" id="userUpdateModal" tabindex="-1" aria-labelledby="pedidoModal" aria-hidden="true">
             <br>
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document"
+            <div class="modal-dialog modal-dialog-centered modal-lg mx-xs-3 mx-sm-3 mx-md-auto mx-lg-auto" role="document"
                 style="align-content: center; margin: auto;">
                 <div class="modal-content card">
                     <div class="modal-header">
@@ -205,9 +207,16 @@
                                 <div class="form-group mt-3">
                                     <label class="text-dark" for="">Telefone</label>
                                     <input type="text" name="ruser_telefone" class="form-control m-2" placeholder="Telefone"
-                                        value="{{ session('user')->user_telefone }}">
+                                        value="{{ session('user')->user_telefone }}" required>
                                 </div>
                             @endif
+                            <div class="form-group mt-3">
+                                <label for="update_img" class="text-dark">Imagem de perfil</label>
+                                <input class="form-control m-2" type="file" name="update_img" id="update_img" required>
+                                <div class="img-holder-esp mx-auto mb-2" name>
+                                </div>
+                                <p class="errorFileType-esp d-none alert-danger">Ficheiro invalido</p>
+                            </div>
                             <div class="col-lg-12 mt-3" name="user-mensagem" id="user-mensagem">
                             </div>
                             <div class="col-lg-12 mt-3 justify-content-center">
@@ -254,6 +263,34 @@
                         console.log(response)
                     }
                 })
+            })
+
+            $('input[type="file"][name="update_img"]').val('');
+            $('input[type="file"][name="update_img"]').change(function() {
+                var img_path = $(this)[0].value
+                console.log($('input[type="file"][name="update_img"]'))
+                var img_holder = $('.img-holder-esp')
+                var extension = img_path.substring(img_path.lastIndexOf('.') + 1).toLowerCase()
+                if (extension == 'jpeg' || extension == 'jpg' || extension == 'png') {
+                    if (typeof(FileReader) != 'undefined') {
+                        img_holder.empty()
+                        var reader = new FileReader()
+                        reader.onload = function(e) {
+                            $('<img/>', {
+                                'src': e.target.result,
+                                'class': 'img-fluid align-self-center',
+                                'style': 'max-width:150px; margin-bottom: 10px;'
+                            }).appendTo(img_holder);
+                        }
+                        img_holder.show()
+                        reader.readAsDataURL($(this)[0].files[0])
+                    } else {
+                        $(img_holder).html('Tipo de ficheiro invalido')
+                    }
+                } else {
+                    $('.errorFileType-esp').removeClass('d-none')
+                    $(img_holder).empty()
+                }
             })
         })
         var el = document.getElementById("wrapper")

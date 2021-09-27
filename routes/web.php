@@ -11,6 +11,7 @@ use App\Http\Middleware\verificarAdmin;
 use App\Http\Middleware\verificarCliente;
 use App\Http\Middleware\verificarEspecialista;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -39,7 +40,7 @@ Route::get('/emailReset',[AuthController::class, 'reset'])->name('emailReset');
 
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/resetPasswordMain', [UserController::class, 'resetPassword'])->name('resetPasswordMain');
-
+Route::post('/addPedido', [PedidosController::class, 'store'])->name('fazerPedido');
 Route::middleware([Authenticate::class])->group(function () {
     Route::get('/usuario', [UserController::class, 'index'])->name('usuario');
     Route::get('/usuarioPedidos', [UserController::class, 'indexPedidos'])->name('usuarioPedidos');
@@ -51,9 +52,24 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('procurarPedido', [PedidosController::class, 'procurar']);
     Route::post('enviarTrabalho', [PedidosController::class, 'enviarTrabalho'])->middleware(verificarAdmin::class);
     Route::get('/usuarioLay', [UserController::class, 'indexLayout']);
-    Route::post('/addPedido', [PedidosController::class, 'store'])->name('fazerPedido')->middleware(verificarCliente::class);
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/updateUser', [UserController::class, 'update']);
     Route::get('/ContacteNos', [WhatsappContactController::class, 'WhatsappContact'])->name('ContactUs');
 
+});
+
+Route::get('/clear-cache', function() {
+    $exitCode = Artisan::call('cache:clear');
+    $exitCode = Artisan::call('auth:clear-resets');
+    $exitCode = Artisan::call('event:clear');
+    $exitCode = Artisan::call('optimize:clear');
+    $exitCode = Artisan::call('route:cache');
+    $exitCode = Artisan::call('view:clear');
+    $exitCode = Artisan::call('clear-compiled');
+    $exitCode = Artisan::call('config:cache');
+    return 'DONE'; //Return anything
+});
+
+Route::get('/storage', function(){
+    $exitCode = Artisan::call('storage:link');
 });

@@ -43,7 +43,7 @@ class UserController extends Controller
 
     public function indexPedidos(){
         if (session('user')->user_tipo == 'cliente'){
-            $listaPedidos = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->sortByDesc('pedi_prazo');
+            $listaPedidos = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->sortBy('pedi_prazo');
             $numPedidos = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->count();
             $numPedidosPendentes = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->where('pedi_status','=', 0)->count();
             $numPedidosResolvido = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->where('pedi_status','=', 2)->count();
@@ -98,7 +98,8 @@ class UserController extends Controller
         $utilizador->password = Hash::make($request->input('cli_senha'));
         $utilizador->user_tipo = 'cliente';
         $utilizador->verification_code = sha1(time());
-        $utilizador->user_img = $request->file('cli_img')->store('usuarios/'.$emailSend);
+        //$utilizador->user_img = $request->file('cli_img')->store('usuarios/'.$emailSend);
+        $utilizador->user_img = "";
         $email = User::all()->where('email','=',$utilizador->email)->count();
         if($email > 0){
             $addCliente['success'] = false;
@@ -112,7 +113,11 @@ class UserController extends Controller
                 'verification_code' => $utilizador->verification_code
             ];
             //session(['user' => $utilizador]);
-            Mail::to($emailSend)->send(new VerifyMail($detalhes));
+            if(!!Mail::to($emailSend)->send(new VerifyMail($detalhes))){
+                $addCliente['mensagem'] = 'Houve algum problema no processo de envio de email de confimação.';
+                $addCliente['success'] = false;
+                return response()->json($addCliente);
+            }
             $addCliente['mensagem'] = 'Cadastrado com sucesso, porfavor confirme o seu email.';
             $addCliente['success'] = true;
             return response()->json($addCliente);
@@ -142,7 +147,8 @@ class UserController extends Controller
         $utilizador->user_tipo = 'especialista';
         $utilizador->verification_code = sha1(time());
         $email = User::all()->where('email','=',$utilizador->email)->count();
-        $utilizador->user_img = $request->file('esp_img')->store('usuarios/'.$utilizador->email);
+        //$utilizador->user_img = $request->file('esp_img')->store('usuarios/'.$utilizador->email);
+        $utilizador->user_img = "";
         if($email > 0){
             $addEspecialista['success'] = false;
             $addEspecialista['mensagem'] = 'Esse email já esta registado no sistema.';
@@ -154,9 +160,13 @@ class UserController extends Controller
             'assunto' => 'Confirmação do email',
             'verification_code' => $utilizador->verification_code
         ];
-        Mail::to($utilizador->email)->send(new VerifyMail($detalhes));
+        if(!! Mail::to($utilizador->email)->send(new VerifyMail($detalhes))){
+            $addCliente['mensagem'] = 'Houve algum problema no processo de envio de email de confimação.';
+            $addCliente['success'] = false;
+            return response()->json($addCliente);
+        }
         $addEspecialista['success'] = true;
-        $addEspecialista['mensagem'] = 'Especialista registado com sucesso';
+        $addEspecialista['mensagem'] = 'Especialista registado com sucesso, confirme o email apartir da sua caixa de mensagens.';
         return response()->json($addEspecialista);
     }
 
@@ -196,9 +206,11 @@ class UserController extends Controller
         //Atualizacao dos dados do cliente
         if(session('user')->user_tipo == 'cliente'){
             $nome = $request->input('ruser_name');
-            $resultado = DB::update('update users set user_nome = ? where user_id = ?', [$nome, $usuario_id]);
+            $img = $request->file('update_img')->store('usuarios\\'.session('user')->email);
+            $resultado = DB::update('update users set user_nome = ?, user_img = ? where user_id = ?', [$nome, $img, $usuario_id]);
             if($resultado){
                 session('user')->user_nome = $nome;
+                session('user')->user_img = $img;
                 $upCliente['mensagem'] = 'Dados atualizados com sucesso.';
                 $upCliente['success'] = true;
                 return response()->json($upCliente);
@@ -211,9 +223,12 @@ class UserController extends Controller
         //Atualizacao dos dados do especialista
         $nome = $request->input('ruser_name');
         $telefone = $request->input('ruser_telefone');
-        $resultado = DB::update('update users set user_nome = ?, user_telefone = ? where user_id = ?', [$nome, $telefone, $usuario_id]);
+        $img = $request->file('update_img')->store('usuarios\\'.session('user')->email);
+        $resultado = DB::update('update users set user_nome = ?, user_telefone = ?, user_img = ? where user_id = ?', [$nome, $telefone, $img, $usuario_id]);
         if($resultado){
             session('user')->user_nome = $nome;
+            session('user')->user_telefone = $telefone;
+            session('user')->user_img = $img;
             $upEspecialista['mensagem'] = 'Dados atualizados com sucesso.';
             $upEspecialista['success'] = true;
             return response()->json($upEspecialista);

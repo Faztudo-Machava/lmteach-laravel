@@ -9,33 +9,42 @@
     @include('header/header')
 @endsection
 @section('conteudo')
-    <div class="bg-primary mt-0 hero">
-        <div class="container text-white">
+    <div class="bg-primary pb-3">
+        <div class="container-lg text-white">
             <div class="row">
-                <div class="col-lg-5">
-                    <div class="text mt-5 pt-5" data-aos="fade-up" data-aos-duration="400">
-                        <span class="subheading">Bem vindo ao lmteach</span>
-                        <h1 class="mb-4">Melhor plataforma de ajuda academica</h1>
-                        <p class="mb-4"></p>
-                        <p>
-                            <button class="btn btn-principle p-4 py-3 text-white rounded-pill h-float"
-                                data-bs-toggle="modal" data-bs-target="#pedidoModal">
-                                <span>FAZER PEDIDO </span> <i class="bi bi-arrow-right-short"></i>
-                            </button>
-                            <a href="{{ route('pedidos') }}"
-                                class="btn btn-outline-light p-4 py-3  rounded-pill h-float">TRABALHOS</a>
-                        </p>
+                <div class="col-sm-12 col-lg-6 col-md-12">
+                    <div class="mt-sm-0 mt-md-5 mt-lg-5 pt-5 hero" data-aos="fade-up" data-aos-duration="400">
+                        <span class="fs-4">Bem vindo ao lmteacher</span>
+                        <h1 class="mb-4 heroTitle">Melhor plataforma <br> de ajuda <br> academica</h1>
+                        <div class="mb-4"></div>
+                        <div class="row">
+                            <span class="col-9">
+                                <span class="col-sm-12 col-md-6 col-lg-6 me-3 divBtnPedido">
+                                    <button
+                                        class="btn btn-xs btn-sm btn-md btn-lg btn-principle p-4 py-3 text-white rounded-pill h-float btn-pedido"
+                                        data-bs-toggle="modal" data-bs-target="#pedidoModal">
+                                        <span>FAZER PEDIDO</span> <i class="bi bi-arrow-right-short"></i>
+                                    </button>
+                                </span>
+                                <span class="col-sm-12 col-md-6 col-lg-6">
+                                    <a href="{{ route('pedidos') }}"
+                                        class="btn btn-outline-light p-4 py-3 btn-jobs rounded-pill h-float">TRABALHOS</a>
+                                </span>
+                            </span>
+                            <span class="col-3">
+                            </span>
+                        </div>
                     </div>
                 </div>
                 <!-- Section One -->
-                <div class="col-lg-5 mx-auto ml-3 heroImg">
-                    <img class="img img-fluid d-block banner-img" src="{{ asset('img/gk.png') }}" alt="Mo">
+                <div class="col-sm-12 col-lg-6 col-md-6 mx-auto divHeroImg">
+                    <img class="img img-fluid d-block banner-img img-hero" src="{{ asset('img/gk.png') }}" alt="Mo">
                 </div>
             </div>
         </div>
     </div>
     <div class="d-flex bg-light py-3">
-        <div class="container-fluid row mt-5 mx-auto text-dark">
+        <div class="container row mt-5 mx-auto text-dark">
             <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-duration="1000">
                 <div class="p-3 text-center">
                     <h3>Faça seu pedido</h3>
@@ -117,222 +126,111 @@
         <div class="py-5 container">
             <div class="row justify-content-center">
                 <div class="p-4">
-                    <div class="my-3 text-center">
-                        <h2 class="h2">Alguns pedidos resolvidos</h2>
+                    <div class="my-5 text-center">
+                        <h2 class="h2">Pedidos recentes</h2>
                     </div>
-                    @if ($numPedidos > 0)
-                        <div class="cards row">
-                            <div class="d-none">{{ $delay = 50 }}</div>
+                    <div class="d-flex justify-content-center">
+                        <div class="">
+                            @if ($numPedidos > 0)
+                                <div class="
+                            cards row">
+                            <div class="d-none">{{ $delay = 50 }} {{ $i = 0 }}</div>
                             @foreach ($listaPedidos as $pedido)
-                                <div class="col-sm-3 mb-3">
-                                    <div class="card" data-aos="fade-right" data-aos-duration="1200"
-                                        data-aos-delay="{{ $delay }}">
-                                        <div class="card-body">
-                                            <div class="mb-2">
-                                                <p class="text-muted">{{ $pedido->pedi_assunto }}</p>
-                                                <h5 class="card-title">{{ $pedido->pedi_tipo }}</h5>
+                                @if ($i < 4)
+                                    <div class="col-sm-12 col-md-6 col-lg-auto mb-3">
+                                        <div class="card jobsCard px-1" data-aos="fade-right" data-aos-duration="1200"
+                                            data-aos-delay="{{ $delay }}">
+                                            <div class="card-body">
+                                                <div class="mb-2">
+                                                    <p class="text-muted pedidoAssunto">{{ $pedido->pedi_assunto }}
+                                                    </p>
+                                                    <h5 class="card-title">{{ $pedido->pedi_tipo }}</h5>
+                                                </div>
+                                                <div class="row justify-content-between">
+                                                    <span class="col-sm">
+                                                        <button class="btn btn-info text-white" data-bs-toggle="modal"
+                                                            data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><i
+                                                                class="bi bi-info"></i></button>
+                                                    </span>
+                                                    <span
+                                                        class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
+                                                </div>
+
                                             </div>
-                                            <div class="row justify-content-between">
-                                                <span class="col-sm">
-                                                    <button class="btn btn-info text-white" data-bs-toggle="modal"
-                                                        data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><i
-                                                            class="bi bi-info"></i></button>
-                                                </span>
-                                                <span class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
-                                            </div>
-    
                                         </div>
                                     </div>
-                                </div>
-                                <div class="d-none">{{ $delay = $delay + 100 }}</div>
-                                <div class="modal fade" id="viewPedido{{ $pedido->pedi_id }}" tabindex="-1"
-                                    aria-labelledby="viewPedido{{ $pedido->pedi_id }}" aria-hidden="true">
-                                    <br>
-                                    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                        <div class="modal-content card bg-white">
-                                            <div class="modal-header">
-                                                <div>
-                                                    <p class="text-muted mb-1">{{ $pedido->pedi_assunto }}</p>
-                                                    <h4 class="h4 text-dark font-weight-bold mb-1">{{ $pedido->pedi_tipo }}
-                                                    </h4>
-                                                </div>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body row">
-                                                <div class="col-lg-6 row">
-                                                    <div class="row mb-3">
-                                                        <span class="text-muted col-lg-6">Numero pedido </span>
-                                                        <span class="col-lg-6">{{ $pedido->pedi_id }}</span>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <span class="text-muted col-lg-6">Tipo </span>
-                                                        <span class="col-lg-6">{{ $pedido->pedi_tipo }}</span>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <span class="text-muted col-lg-6">Assunto </span>
-                                                        <span class="col-lg-6">{{ $pedido->pedi_assunto }}</span>
-                                                    </div>
-                                                    <div class="row mb-3">
-                                                        <span class="text-muted col-lg-6">Estado </span>
-                                                        <span
-                                                            class="col-lg-6">{{ $pedido->pedi_status == 1 ? 'Pendente' : 'Resolvido' }}</span>
-                                                    </div>
-                                                </div>
-                                                <div class="col-lg-6">
-                                                    <div class="mb-3">
-                                                        <h4>Descrição</h4>
-                                                    </div>
+                                    <div class="d-none">{{ $delay = $delay + 100 }} {{ $i = $i + 1 }}</div>
+                                    <div class="modal fade" id="viewPedido{{ $pedido->pedi_id }}" tabindex="-1"
+                                        aria-labelledby="viewPedido{{ $pedido->pedi_id }}" aria-hidden="true">
+                                        <br>
+                                        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                            <div class="modal-content card bg-white">
+                                                <div class="modal-header">
                                                     <div>
-                                                        {{ $pedido->pedi_descricao }}
+                                                        <p class="text-muted mb-1">{{ $pedido->pedi_assunto }}</p>
+                                                        <h4 class="h4 text-dark font-weight-bold mb-1">
+                                                            {{ $pedido->pedi_tipo }}
+                                                        </h4>
+                                                    </div>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body row">
+                                                    <div class="col-lg-6 row">
+                                                        <div class="row mb-3">
+                                                            <span class="text-muted col-lg-6">Numero pedido </span>
+                                                            <span class="col-lg-6">{{ $pedido->pedi_id }}</span>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <span class="text-muted col-lg-6">Tipo </span>
+                                                            <span class="col-lg-6">{{ $pedido->pedi_tipo }}</span>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <span class="text-muted col-lg-6">Assunto </span>
+                                                            <span
+                                                                class="col-lg-6">{{ $pedido->pedi_assunto }}</span>
+                                                        </div>
+                                                        <div class="row mb-3">
+                                                            <span class="text-muted col-lg-6">Estado </span>
+                                                            <span
+                                                                class="col-lg-6">{{ $pedido->pedi_status == 1 ? 'Pendente' : 'Resolvido' }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-6">
+                                                        <div class="mb-3">
+                                                            <h4>Descrição</h4>
+                                                        </div>
+                                                        <div>
+                                                            {{ $pedido->pedi_descricao }}
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="my-4">
-                                                <div class="text-center">
-                                                    <p>Faça já o seu pedido</p>
-                                                    <button class="btn btn-principle text-white rounded-pill px-3 py-2"
-                                                        data-bs-toggle="modal" data-bs-target="#pedidoModal">
-                                                        <span>FAZER PEDIDO </span>
-                                                    </button>
+                                                <div class="dropdown-divider"></div>
+                                                <div class="my-4">
+                                                    <div class="text-center">
+                                                        <p>Faça já o seu pedido</p>
+                                                        <button class="btn btn-principle text-white rounded-pill px-3 py-2"
+                                                            data-bs-toggle="modal" data-bs-target="#pedidoModal">
+                                                            <span>FAZER PEDIDO </span>
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                @endif
                             @endforeach
                         </div>
                     @else
                         <div class="alert alert-info">
                             Sem pedidos resolvidos até o momento.
                         </div>
-                    @endif
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="bg-light py-4" id="servicos">
-        <div class="container">
-            <div class="row justify-content-center pb-5" data-aos="fade-up" data-aos-duration="1200">
-                <div class="col-md-7 text-center">
-                    <h2 class="mb-3">Nossos Serviços</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown shadow">
-                        <div class="img text-center m-2 my-4">
-                            <i class="fa fa-hat-cowboy text-principle fs-1"></i>
-                        </div>
-                        <div class="text-center h5 text-principle">Monografia</div>
-                        <div class="description text-center text-dark">
-                            <small>
-                                <p>Preço do trabalho a partir de: 4000MZN</p>
-                                <p>Prazo de conclusão a partir de : 15 dias</p>
-                                <p>Verificação antiplagiativo</p>
-                            </small>
-                        </div>
-                        <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                            data-bs-target="#pedidoModal">Pedir</button>
-                    </div>
-                </div>
-                <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown shadow">
-                        <div class="text-center m-2 my-4 img">
-                            <i class="fa fa-hat-cowboy text-principle fs-1"></i>
-                        </div>
-                        <div class="text-center h5 text-principle">Trabalho de curso</div>
-                        <div class="description text-center">
-                            <small>
-                                <p>Preço do trabalho a partir de: 2000MZN</p>
-                                <p>Prazo de conclusão a partir de : 10 dias</p>
-                                <p>Verificação antiplagiativo</p>
-                            </small>
-                        </div>
-                        <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                            data-bs-target="#pedidoModal">Pedir</button>
-                    </div>
-                </div>
-                <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown shadow">
-                        <div class="img text-center m-2 my-4">
-                            <i class="fa fa-hat-cowboy text-principle fs-1"></i>
-                        </div>
-                        <div class="text-center h5 text-principle">Teste</div>
-                        <div class="description text-center">
-                            <small>
-                                <p>Preço do trabalho a partir de: 200MZN</p>
-                                <p>Prazo de conclusão a partir de : 1 dia</p>
-                                <p>Verificação antiplagiativo</p>
-                            </small>
-                        </div>
-                        <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                            data-bs-target="#pedidoModal">Pedir</button>
-                    </div>
-                </div>
-                <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown shadow">
-                        <div class="img text-center m-2 my-4">
-                            <i class="fa fa-hat-cowboy text-principle fs-1"></i>
-                        </div>
-                        <div class="text-center text-principle h5">Trabalho de Mestrado</div>
-                        <div class="description text-center">
-                            <small>
-                                <p>Preço do trabalho a partir de: 5000MZN</p>
-                                <p>Prazo de conclusão a partir de : 30 dias</p>
-                                <p>Verificação antiplagiativo</p>
-                            </small>
-                        </div>
-                        <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                            data-bs-target="#pedidoModal">Pedir</button>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="bg-light py-5" id="contacto">
-
-        <div class="container">
-            <div class="row justify-content-center h2 mb-5">
-                Contacte-nos
-            </div>
-            <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1200">
-                <div class="mt-5 mt-lg-0">
-                    <div class="alert alert-success d-none" id="mailSuccess">Mensagem enviada com sucesso</div>
-                    <div class="alert alert-danger d-none" id="mailFalha">Falha no envio da mensagem</div>
-                    <form id="contactForm">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <input type="text" name="mail_nome" class="form-control" id="nome" placeholder="Nome" required>
-                            </div>
-                            <div class="col-md-6 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control" name="mail_email" id="email" placeholder="Email"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="mail_assunto" id="assunto" placeholder="Assunto"
-                                required>
-                        </div>
-                        <div class="form-group mt-3">
-                            <textarea class="form-control" name="mail_mensagem" rows="5" placeholder="Mensagem"
-                                required></textarea>
-                        </div>
-                        <div class="text-center form-group mt-3">
-                            <button class="btn btn-principle text-white rounded-pill h-float btn-contacte" type="submit">
-                                <span
-                                class="text-white">Enviar</span> <img class="img d-none load"
-                                src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
-                        </div>
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
     </div>
     <div class="modais">
         <div class="modal fade" id="pedidoModal" tabindex="-1" aria-labelledby="pedidoModal" aria-hidden="true">
@@ -377,7 +275,8 @@
 
                                 <div class="col-lg-6 p-3">
                                     <input type="text" name="pedi_assunto" id="pedi_assunto"
-                                        class="form-control pl-3 inputs" placeholder="Disciplina (Ex: Informatica)" required>
+                                        class="form-control pl-3 inputs" placeholder="Disciplina (Ex: Informatica)"
+                                        required>
                                 </div>
                                 <div class="col-lg-6 p-3">
                                     <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
@@ -389,7 +288,8 @@
                                 </div>
                                 <div class="col-lg-6 p-3">
                                     <div class="form-group">
-                                        <input class="form-control" type="file" name="pedi_arquivo" id="pedi_arquivo" placeholder="Anexar arquivo" required>
+                                        <input class="form-control" type="file" name="pedi_arquivo" id="pedi_arquivo"
+                                            placeholder="Anexar arquivo" required>
                                     </div>
                                 </div>
                                 @if (session('user'))
@@ -413,7 +313,9 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" id="submeter" class="btn btn-sm btn-principle"> <span class="text-white">Submeter</span> <img class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}" alt=""> </button>
+                                <button type="submit" id="submeter" class="btn btn-sm btn-principle"> <span
+                                        class="text-white">Submeter</span> <img class="img d-none load"
+                                        src="{{ asset('img/ajax-loader.gif') }}" alt=""> </button>
                             </div>
                         </form>
                     </div>

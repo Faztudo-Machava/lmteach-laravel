@@ -13,15 +13,15 @@
         <div class="py-5 container">
             <div class="row justify-content-center">
                 <div class="p-4">
-                    <div class="my-3 text-center">
-                        <h2 class="h2">Alguns pedidos resolvidos</h2>
+                    <div class="my-5 text-center">
+                        <h2 class="h2">Pedidos</h2>
                     </div>
                     @if ($numPedidos > 0)
                         <div class="cards row">
                             <div class="d-none">{{ $delay = 300 }}</div>
                             @foreach ($listaPedidos as $pedido)
-                                <div class="col-sm-3 mb-3">
-                                    <div class="card" data-aos="fade-right" data-aos-duration="1200"
+                                <div class="col-sm-12 col-md-6 col-lg-auto mb-3">
+                                    <div class="card jobsCard" data-aos="fade-right" data-aos-duration="1200"
                                         data-aos-delay="{{ $delay }}">
                                         <div class="card-body">
                                             <div class="mb-2">
@@ -106,137 +106,6 @@
                     @endif
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="bg-white py-4" id="servicos">
-        <div class="container">
-            <div class="row justify-content-center pb-5">
-                <div class="col-md-7 text-center">
-                    <h2 class="mb-3">Nossos Serviços</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="p-2 col-lg-3"  data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown">
-                        <div class="img text-center m-2 my-4">
-                            <i class="fa fa-hat-cowboy text-principle fs-1"></i>
-                        </div>
-                        <div class="text-center h5 text-principle">Monografia</div>
-                        <div class="description text-center text-dark">
-                            <small>
-                                <p>Preço do trabalho a partir de: 4000MZN</p>
-                                <p>Prazo de conclusão a partir de : 15 dias</p>
-                                <p>Verificação antiplagiativo</p>
-                            </small>
-                        </div>
-                        <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                        data-bs-target="#pedidoModal">Pedir</button>
-                    </div>
-                </div>
-                <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown">
-                        <div class="text-center m-2 my-4 img">
-                            <i class="fa fa-hat-cowboy text-principle fs-1"></i>
-                        </div>
-                        <div class="text-center h5 text-principle">Trabalho de curso</div>
-                        <div class="description text-center">
-                            <small>
-                                <p>Preço do trabalho a partir de: 2000MZN</p>
-                                <p>Prazo de conclusão a partir de : 10 dias</p>
-                                <p>Verificação antiplagiativo</p>
-                            </small>
-                        </div>
-                        <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                        data-bs-target="#pedidoModal">Pedir</button>
-                    </div>
-                </div>
-                <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown">
-                        <div class="img text-center m-2 my-4">
-                            <i class="fa fa-hat-cowboy text-principle fs-1"></i>
-                        </div>
-                        <div class="text-center h5 text-principle">Teste</div>
-                        <div class="description text-center">
-                            <small>
-                                <p>Preço do trabalho a partir de: 200MZN</p>
-                                <p>Prazo de conclusão a partir de : 1 dia</p>
-                                <p>Verificação antiplagiativo</p>
-                            </small>
-                        </div>
-                        <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                        data-bs-target="#pedidoModal">Pedir</button>
-                    </div>
-                </div>
-                <div class="p-2 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                    <div class="card p-4 h-transDown">
-                        <div class="img text-center m-2 my-4">
-                            <i class="fa fa-hat-cowboy text-principle fs-1"></i>
-                        </div>
-                        <div class="text-center text-principle h5">Trabalho de Mestrado</div>
-                        <div class="description text-center">
-                            <small>
-                                <p>Preço do trabalho a partir de: 5000MZN</p>
-                                <p>Prazo de conclusão a partir de : 30 dias</p>
-                                <p>Verificação antiplagiativo</p>
-                            </small>
-                        </div>
-                        <button class="btn btn-outline-principle rounded-pill h-float" data-bs-toggle="modal"
-                        data-bs-target="#pedidoModal">Pedir</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="bg-white" id="contacto">
-        <div class="container">
-            <div class="row py-5" data-aos="fade-up" data-aos-duration="1200">
-                <div class="col-lg-4">
-                    <div class="info text-principle">
-                        <div class="email row">
-                            <i class="bi bi-envelope"></i>
-                            <h4>Email:</h4>
-                        </div>
-                        <div class="phone row">
-                            <i class="bi bi-phone"></i>
-                            <h4>Contacto:</h4>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-lg-8 mt-5 mt-lg-0">
-                    <div class="alert alert-success d-none" id="mailSuccess">Mensagem enviada com sucesso</div>
-                    <div class="alert alert-danger d-none" id="mailFalha">Falha no envio da mensagem</div>
-                    <form id="contactForm">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-6 form-group">
-                                <input type="text" name="mail_nome" class="form-control" id="nome" placeholder="Nome" required>
-                            </div>
-                            <div class="col-md-6 form-group mt-3 mt-md-0">
-                                <input type="email" class="form-control" name="mail_email" id="email" placeholder="Email"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="form-group mt-3">
-                            <input type="text" class="form-control" name="mail_assunto" id="assunto" placeholder="Assunto"
-                                required>
-                        </div>
-                        <div class="form-group mt-3">
-                            <textarea class="form-control" name="mail_mensagem" rows="5" placeholder="Mensagem"
-                                required></textarea>
-                        </div>
-                        <div class="text-center form-group mt-3">
-                            <button class="btn btn-principle text-white" type="submit">
-                                <span
-                                class="text-white">Enviar</span> <img class="img d-none load"
-                                src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
-                        </div>
-                    </form>
-
-                </div>
-
-            </div>
-
         </div>
     </div>
     <div class="modais">
