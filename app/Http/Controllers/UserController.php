@@ -206,30 +206,54 @@ class UserController extends Controller
         //Atualizacao dos dados do cliente
         if(session('user')->user_tipo == 'cliente'){
             $nome = $request->input('ruser_name');
-            $img = $request->file('update_img')->store('usuarios\\'.session('user')->email);
-            $resultado = DB::update('update users set user_nome = ?, user_img = ? where user_id = ?', [$nome, $img, $usuario_id]);
+            // if($request->file('update_img')){
+            //     $img = $request->file('update_img')->store('usuarios\\'.session('user')->email);
+            // }
+            $resultado = DB::table('users')->where('user_id', $usuario_id)->update(['user_nome' => $nome]);
             if($resultado){
                 session('user')->user_nome = $nome;
-                session('user')->user_img = $img;
+                // session('user')->user_img = $img;
                 $upCliente['mensagem'] = 'Dados atualizados com sucesso.';
                 $upCliente['success'] = true;
                 return response()->json($upCliente);
+                  
             }
             $upCliente['mensagem'] = 'Houve algum problema no processo de actualização.';
             $upCliente['success'] = false;
-            return response()->json($upCliente);
+            return response()->json($upCliente); 
+            
+            
         } 
 
         //Atualizacao dos dados do especialista
         $nome = $request->input('ruser_name');
         $telefone = $request->input('ruser_telefone');
-        $img = $request->file('update_img')->store('usuarios\\'.session('user')->email);
-        $resultado = DB::update('update users set user_nome = ?, user_telefone = ?, user_img = ? where user_id = ?', [$nome, $telefone, $img, $usuario_id]);
+        // if($request->file('update_img')){
+        //     $img = $request->file('update_img')->store('usuarios\\'.session('user')->email);
+        // }
+        // else{
+        //     $img = DB::table('users')->where('user_id', '=', $usuario_id)->value('user_img');
+        // }
+        $resultado = DB::table('users')->where('user_id', $usuario_id)->update(['user_nome' => $nome, 'user_telefone' => $telefone]);
         if($resultado){
             session('user')->user_nome = $nome;
             session('user')->user_telefone = $telefone;
-            session('user')->user_img = $img;
             $upEspecialista['mensagem'] = 'Dados atualizados com sucesso.';
+            $upEspecialista['success'] = true;
+            return response()->json($upEspecialista);
+        }
+        $upEspecialista['mensagem'] = 'Houve algum problema no processo de actualização.';
+        $upEspecialista['success'] = false;
+        return response()->json($upEspecialista);
+    }
+
+    public function updateImg(Request $request){
+        $usuario_id = session('user')->user_id;
+        $img = $request->file('update_img')->store('usuarios\\'.session('user')->email);
+        $resultado = DB::table('users')->where('user_id', $usuario_id)->update(['user_img' => $img]);
+        if($resultado){
+            session('user')->user_img = $img;
+            $upEspecialista['mensagem'] = 'Imagem atualizada com sucesso.';
             $upEspecialista['success'] = true;
             return response()->json($upEspecialista);
         }

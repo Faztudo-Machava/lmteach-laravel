@@ -54,6 +54,7 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('/usuarioLay', [UserController::class, 'indexLayout']);
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::post('/updateUser', [UserController::class, 'update']);
+    Route::post('/updateImg', [UserController::class, 'updateImg']);
     Route::get('/ContacteNos', [WhatsappContactController::class, 'WhatsappContact'])->name('ContactUs');
 
 });

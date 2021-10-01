@@ -3,10 +3,10 @@
     <div class="d-flex" id="wrapper">
         {{-- Side bar starts here --}}
         <div class="bg-principle" id="sidebar-wrapper">
-            <div class="sidebar-heading text-center py-4 px-3 text-white fw-bold text-uppercase">
+            <div class="sidebar-heading pt-4 text-white text-uppercase">
                 <a href="{{ route('home') }}"
                     class="list-group-item list-group-item-action bg-transparent second-text active">
-                    <i class="fas fa-home me-2"></i> Home
+                    <i class="fas fa-home me-2"></i> LMTEACHER
                 </a>
             </div>
             <div class="list-group list-group-flush my-3">
@@ -49,40 +49,40 @@
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left text-principle me-3 fs-3" id="menu-toggle"></i>
                 </div>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
-                </button>
+                </button> --}}
+                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    
+                </div> --}}
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle  float-xs-end float-sm-end" id="navdropdown"
-                                role="button" data-toggle="dropdown">
-                                <span
-                                    class="">
-                                    @if (session('user')->user_tipo == 'admin')
-                                            <img src="
-                                    {{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user" alt="">
+                <ul class="ms-auto mb-2 d-flex flex-nowrap">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link img-perfil" role="button">
+                            <span
+                                class="">
+                                @if (session('user')->user_tipo == 'admin')
+                                        <img src="
+                                {{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user" alt="">
+                            @else
+                                @if (session('user')->user_img)
+                                    <img src="{{ asset('storage/' . session('user')->user_img) }}"
+                                        class="img-fluid rounded-pill img-user" alt="">
                                 @else
-                                    @if (session('user')->user_img)
-                                        <img src="{{ asset('storage/' . session('user')->user_img) }}"
-                                            class="img-fluid rounded-pill img-user" alt="">
-                                    @else
-                                        <img src="{{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user" alt="">
-                                    @endif
-                                    @endif
-                                </span>
-                            </a>
-                            <div class="drop-menu bg-white rounded border-1 border-principle" aria-labelledby="navdropdown">
-                                <a href="{{ route('logout') }}" class="dropdown-item nav-link px-3 my-2"><i
-                                        class="bi bi-box-arrow-in-left"></i> <small>Logout</small>
-                                </a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                                    <img src="{{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user"
+                                        alt="">
+                                @endif
+                                @endif
+                            </span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('logout') }}" role="button" class="nav-link text-center text-principle"><i class="fas fa-arrow-circle-left fs-5 mt-1"></i>
+                        </a>
+                    </li>
+                </ul>
             </nav>
             <div class="">
                 <div class=" container-fluid px-4">
@@ -103,7 +103,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-danger alert-dismissible fade show ml-4 me-4 espError d-none" role="alert"
+                        <div class="alert alert-dismissible fade show ml-4 me-4 espError d-none" role="alert"
                             id="pedidoMsg"></div>
                         <form class="card p-2" id="formPedido">
                             @csrf
@@ -210,6 +210,32 @@
                                         value="{{ session('user')->user_telefone }}" required>
                                 </div>
                             @endif
+                            <div class="col-lg-12 mt-3" name="user-mensagem" id="user-mensagem">
+                            </div>
+                            <div class="col-lg-12 mt-3 justify-content-center">
+                                <button class="btn btn-success" type="submit" name="submeter">
+                                    <span>Atualizar</span> <img class="img d-none load"
+                                        src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="userImgUpdateModal" tabindex="-1" aria-labelledby="pedidoModal" aria-hidden="true">
+            <br>
+            <div class="modal-dialog modal-dialog-centered modal-lg mx-xs-3 mx-sm-3 mx-md-auto mx-lg-auto" role="document"
+                style="align-content: center; margin: auto;">
+                <div class="modal-content card">
+                    <div class="modal-header">
+                        <h5 class="modal-title text-dark" id="exampleModalCenterTitle">Atualização da imagem do perfil</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="alert alert-danger d-none mx-4" id="updateUserImgFail"></div>
+                    <div class="alert alert-success d-none mx-4" id="updateUserImgDone"></div>
+                    <div class="modal-body">
+                        <form id="updatImgUser">
+                            @csrf
                             <div class="form-group mt-3">
                                 <label for="update_img" class="text-dark">Imagem de perfil</label>
                                 <input class="form-control m-2" type="file" name="update_img" id="update_img" required>
@@ -231,8 +257,8 @@
         </div>
     </div>
     @if (session('user')->user_tipo == 'cliente')
-        <button class="btn btn-principle d-flex align-items-center justify-content-center" id="addPedido"
-            data-bs-toggle="modal" data-bs-target="#pedidoModal"><i class="bi bi-plus text-white fs-2"></i></button>
+        <button class="btn btn-principle text-white" id="addPedido" data-bs-toggle="modal"
+            data-bs-target="#pedidoModal">Fazer pedido</button>
     @endif
 @endsection
 @section('js')
@@ -259,6 +285,33 @@
                             $('#updateUserDone').removeClass('d-none').html(response.mensagem)
                         } else {
                             $('#updateUserFail').removeClass('d-none').html(response.mensagem)
+                        }
+                        console.log(response)
+                    }
+                })
+            })
+
+            $('#updatImgUser').submit(function(e) {
+                e.preventDefault();
+
+                $.ajax({
+                    url: "/updateImg",
+                    method: 'POST',
+                    data: new FormData(this),
+                    contentType: false,
+                    processData: false,
+                    enctype: "multipart/form-data",
+                    beforeSend: function() {
+                        $('.load').removeClass('d-none')
+                    },
+                    complete: function() {
+                        $('.load').addClass('d-none')
+                    },
+                    success: function(response) {
+                        if (response.success === true) {
+                            $('#updateUserImgDone').removeClass('d-none').html(response.mensagem)
+                        } else {
+                            $('#updateUserImgFail').removeClass('d-none').html(response.mensagem)
                         }
                         console.log(response)
                     }
@@ -299,5 +352,9 @@
         toggleButton.onclick = function() {
             el.classList.toggle("toggled")
         }
+
+        $('#updateImgModel').click(function(){
+           $('#userImgUpdateModal').modal('toggle');
+        })
     </script>
 @endsection

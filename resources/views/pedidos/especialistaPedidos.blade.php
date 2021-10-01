@@ -34,9 +34,8 @@
                                         </div>
                                         <div class="row justify-content-between">
                                             <span class="col-sm">
-                                                <button class="btn btn-info text-white" data-bs-toggle="modal"
-                                                    data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><i
-                                                        class="bi bi-info"></i></button>
+                                                <button class="btn btn-primary text-white btn-job-detalhes" data-bs-toggle="modal"
+                                                    data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><img src="{{asset('img/word-office-ms-file-doc-icon.svg')}}" alt="" class="img img-fluid img-job-card"></button>
                                             </span>
                                             <span class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
                                         </div>

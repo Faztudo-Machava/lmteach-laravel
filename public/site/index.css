@@ -12,6 +12,12 @@ li {
     list-style: none;
 }
 
+button:focus,
+a:focus {
+    box-shadow: none !important;
+    outline: none !important;
+}
+
 
 /*--------------------------------------------------------------
 # Header
@@ -100,7 +106,6 @@ footer {
 }
 
 #sidebar-wrapper .sidebar-heading {
-    padding: 0.875rem 1.25rem;
     font-size: 1.2rem;
 }
 
@@ -137,9 +142,8 @@ footer {
     z-index: 1030;
     bottom: 30px;
     right: 30px;
-    border-radius: 100%;
-    width: 60px;
-    height: 60px;
+    width: 150px;
+    height: 40px;
 }
 
 @media(min-width: 768px) {
@@ -233,22 +237,16 @@ footer {
     box-shadow: none;
 }
 
-@media (max-width: 475px) {
+@media (max-width: 435px) {
     .btn-jobs {
-        margin-top: 20px;
-        width: 130px;
-        font-size: 10px;
+        margin-top: 25px;
     }
-    .btn-pedido {
-        width: 130px;
-        font-size: 10px;
+    .heroTitle {
+        font-size: 40px;
     }
 }
 
 @media (max-width: 576px) {
-    .heroTitle {
-        font-size: 2.2rem;
-    }
     .divBtnPedido {
         margin-bottom: 0.5rem;
     }
@@ -277,4 +275,28 @@ footer {
 
 .jobsCard {
     white-space: nowrap;
+}
+
+.card-img-service {
+    width: 117px;
+    height: 100px;
+}
+
+.img-job-card {
+    width: 35px;
+    height: 35px;
+}
+
+.img-perfil {
+    padding: 0.5rem 0rem;
+}
+
+.btn-job-detalhes {
+    padding: 0rem 0rem;
+}
+
+@media (min-width: 992px) {
+    .heroHome {
+        height: 92vh;
+    }
 }

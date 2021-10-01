@@ -18,9 +18,9 @@ $(function() {
             },
             success: function(response) {
                 if (response.success === true) {
-                    $('#pedidoMsg').removeClass('d-none').html(response.mensagem)
+                    $('#pedidoMsg').removeClass('d-none').addClass('alert-success').html(response.mensagem)
                 } else {
-                    $('#pedidoMsg').removeClass('d-none').html(response.mensagem)
+                    $('#pedidoMsg').removeClass('d-none').addClass('alert-danger').html(response.mensagem)
                 }
                 console.log(response);
             }
@@ -44,9 +44,9 @@ $(function() {
             },
             success: function(response) {
                 if (response.success === true) {
-                    $('#sucessoEnvioResolucao').removeClass('d-none')
+                    $('#sucessoEnvioResolucao').removeClass('d-none').html(response.mensagem)
                 } else {
-                    $('#errorEnvioResolucao').removeClass('d-none')
+                    $('#errorEnvioResolucao').removeClass('d-none').html(response.mensagem)
                 }
             }
         })

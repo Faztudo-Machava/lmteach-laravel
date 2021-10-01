@@ -5,21 +5,20 @@
             <div class="main-body">
                 <div class="gutters-sm">
                     <div class="mb-3">
-                        <div class="card bg-transparent border-none">
+                        <div class="card bg-transparent border-0">
                             <div class="card-body">
                                 <div class="d-flex flex-column align-items-center text-center">
                                     <div class="">
                                         @if (session('user')->user_tipo == 'admin')
-                                            <img src="{{ asset('img/avatar.png') }}"
-                                                class="img-fluid imgperfil rounded-pill" alt="">
+                                            <img id="updateImgModel" src="{{ asset('img/avatar.png') }}"
+                                                class="img-fluid imgperfil rounded-pill" alt="" role="button">
                                         @else
                                             @if (session('user')->user_img)
-                                                <img src="{{ asset('storage/' . session('user')->user_img) }}"
-                                                    class="img-fluid imgperfil rounded-pill" alt="">
+                                                <img id="updateImgModel" src="{{ asset('storage/' . session('user')->user_img) }}" class="img-fluid imgperfil rounded-pill" alt="" role="button">
                                             @else
-                                                <img src="
+                                                <img id="updateImgModel" src="
                                                         {{ asset('img/avatar.png') }}"
-                                                    class="img-fluid imgperfil rounded-pill" alt="">
+                                                    class="img-fluid imgperfil rounded-pill" alt="" role="button">
                                             @endif
                                         @endif
                                     </div>

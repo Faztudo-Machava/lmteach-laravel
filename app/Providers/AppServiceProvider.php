@@ -25,5 +25,9 @@ class AppServiceProvider extends LaravelServiceProvider
     public function boot()
     {
         Schema::defaultStringLength(191);
+
+        // $this->app->bind('path.public', function(){
+        //     return base_path();
+        // });
     }
 }

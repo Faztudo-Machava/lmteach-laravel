@@ -1,3 +1,7 @@
+$('#btnCadReg').click(function() {
+    $('#login').modal('hide');
+})
+
 $(function() {
     $('#formLogin').submit(function(e) {
         e.preventDefault();

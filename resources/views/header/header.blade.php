@@ -17,19 +17,49 @@
                     <li class="nav-item"><a class="nav-link" href="">Sobre</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="">Ajuda</a></li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="nav-link dropdown-toggle" id="navdropdown" role="button"
-                            data-toggle="dropdown">Usuario</a>
-                        <div class="drop-menu bg-white rounded border-1 border-principle" aria-labelledby="navdropdown">
-                            <button class="dropdown-item nav-link drop-item my-2 px-3" data-bs-toggle="modal"
+                    @if (session('user'))
+
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="navdropdown" role="button"
+                                data-toggle="dropdown">
+                                @if (session('user')->user_tipo == 'admin')
+                                    <img src="{{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user"
+                                        alt="">
+                                @else
+                                    @if (session('user')->user_img)
+                                        <img src="{{ asset('storage/' . session('user')->user_img) }}"
+                                            class="img-fluid rounded-pill img-user" alt="">
+                                    @else
+                                        <img src="{{ asset('img/avatar.png') }}"
+                                            class="img-fluid rounded-pill img-user" alt="">
+                                    @endif
+                                    @endif <span class="fs-6">{{ session('user')->user_nome }}</span>
+                            </a>
+                            <div class="drop-menu bg-white rounded border-1 border-principle"
+                                aria-labelledby="navdropdown">
+                                <a href="{{ url('/usuario') }}" class="dropdown-item nav-link px-3 my-2"><i
+                                        class="fas fa-user"></i> <small>Perfil</small>
+                                    <a href="{{ route('logout') }}" class="dropdown-item nav-link px-3 my-2"><i
+                                            class="bi bi-box-arrow-in-left"></i> <small>Logout</small>
+                                    </a>
+                                </a>
+                            </div>
+                        </li>
+                    @else
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" id="navdropdown" role="button" data-bs-toggle="modal"
                                 data-bs-target="#login"><i class="bi bi-box-arrow-in-right"></i> <small>
-                                    Entrar</small></button>
+                                    Entrar</small></a>
+                            {{-- <div class="drop-menu bg-white rounded border-1 border-principle" aria-labelledby="navdropdown">
+                            <button class="dropdown-item nav-link drop-item my-2 px-3" data-bs-toggle="modal"
+                                data-bs-target="#login"></button>
                             <div class="dropdown-divider"></div>
                             <button class="dropdown-item nav-link my-2 px-3" data-bs-toggle="modal"
                                 data-bs-target="#cadUsers"><i class="bi bi-person-plus"></i>
                                 <small>Registrar-se</small></a>
-                        </div>
-                    </li>
+                        </div> --}}
+                        </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -47,7 +77,7 @@
                 <div class="row modal-body p-0 bg-principle">
                     <div class="col-lg p-4 pr-2 bg-white rounded">
                         <div class="">
-                            <button type="button" class="btn-close float-right"
+                            <button type=" button" class="btn-close float-right"
                             data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="d-flex justify-content-center">
@@ -66,11 +96,17 @@
                                     placeholder="Senha" required>
                                 <label for="log_senha"><i class="bi bi-lock-fill"></i><small>Senha</small></label>
                             </div>
-                            <div class="mb-3">
+                            <div class="my-3">
                                 <div class="nav-item">
-                                    <a class="btn btn-link" href="{{ route('emailReset') }}">
+                                    <a class="" href=" {{ route('emailReset') }}">
                                         {{ __('Esqueceu a senha?') }}
                                     </a>
+                                </div>
+                            </div>
+                            <div class="my-3">
+                                <div class="nav-item">
+                                    <a id="btnCadReg" href="#" class="" data-bs-toggle=" modal"
+                                        data-bs-target="#cadUsers"><small>Registrar-se</small></a>
                                 </div>
                             </div>
                             <div class="form-check mb-3">
@@ -200,8 +236,8 @@
                                                 class="form-control m-2" placeholder="Telefone para contacto">
                                         </p>
                                         <p>
-                                            <input type="email" name="esp_email" id="esp_email" class="form-control m-2"
-                                                placeholder="Endereço de e-mail">
+                                            <input type="email" name="esp_email" id="esp_email"
+                                                class="form-control m-2" placeholder="Endereço de e-mail">
                                         </p>
                                         <p>
                                             <input type="password" name="esp_senha" class="form-control m-2"

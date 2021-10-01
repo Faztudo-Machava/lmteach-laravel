@@ -9,30 +9,27 @@
     @include('header/header')
 @endsection
 @section('conteudo')
-    <div class="bg-primary pb-3">
+    <div class="pb-3 heroHome" style="background-image: url('{{ asset('img/Frame 15.svg') }}'); background-repeat: no-repeat;">
         <div class="container-lg text-white">
             <div class="row">
                 <div class="col-sm-12 col-lg-6 col-md-12">
-                    <div class="mt-sm-0 mt-md-5 mt-lg-5 pt-5 hero" data-aos="fade-up" data-aos-duration="400">
-                        <span class="fs-4">Bem vindo ao lmteacher</span>
-                        <h1 class="mb-4 heroTitle">Melhor plataforma <br> de ajuda <br> academica</h1>
+                    <div class="mt-sm-0 mt-md-5 mt-lg-5 pt-5 mx-lg-0 mx-sm-4 mx-xs-4 mx-md-4 px-lg-0 px-sm-4 px-xs-0 px-md-4" data-aos="fade-up" data-aos-duration="400">
+                        <h1 class="mb-4 heroTitle text-dark">Plataforma <br> de ajuda <br> academica</h1>
                         <div class="mb-4"></div>
                         <div class="row">
-                            <span class="col-9">
+                            <span class="col-10">
                                 <span class="col-sm-12 col-md-6 col-lg-6 me-3 divBtnPedido">
-                                    <button
-                                        class="btn btn-xs btn-sm btn-md btn-lg btn-principle p-4 py-3 text-white rounded-pill h-float btn-pedido"
+                                    <a href="#"
+                                        class="btn btn-principle p-4 py-3 text-white rounded-pill h-float btn-pedido text-nowrap"
                                         data-bs-toggle="modal" data-bs-target="#pedidoModal">
-                                        <span>FAZER PEDIDO</span> <i class="bi bi-arrow-right-short"></i>
-                                    </button>
+                                        FAZER PEDIDO</a>
                                 </span>
                                 <span class="col-sm-12 col-md-6 col-lg-6">
                                     <a href="{{ route('pedidos') }}"
-                                        class="btn btn-outline-light p-4 py-3 btn-jobs rounded-pill h-float">TRABALHOS</a>
+                                        class="btn btn-outline-dark p-4 py-3 btn-jobs rounded-pill h-float">TRABALHOS</a>
                                 </span>
                             </span>
-                            <span class="col-3">
-                            </span>
+                            
                         </div>
                     </div>
                 </div>
@@ -48,8 +45,7 @@
             <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-duration="1000">
                 <div class="p-3 text-center">
                     <h3>Faça seu pedido</h3>
-                    <p>Quer saber quais são os procedimentos para fazer o seu pedido? é muito simples é só seguir os passos
-                        e já está.</p>
+                    <p>Para fazer pedido, siga os passos a seguir.</p>
                 </div>
                 <div class="stepsImg">
                     <img class="img img-fluid" src="{{ asset('img/stepping.svg') }}" alt="steps">
@@ -76,8 +72,8 @@
                             2</p>
                     </div>
                     <div class="col-lg">
-                        <p>Pague 50% do custo do trabalho. Saiba mais sobre as formas de pagamento</p> <a
-                            href="#mais">aqui</a>
+                        <p>Pague 50% do custo do trabalho. Saiba mais sobre as formas de pagamento</p> <a target="blank"
+                            href="https://chat.whatsapp.com/FjPNNWGVuJOBGnJ9A78U6u">aqui</a>
                     </div>
                 </div>
                 <div class="py-3 text-center" data-aos="fade-up" data-aos-duration="1600">
@@ -90,7 +86,7 @@
                             3</p>
                     </div>
                     <div class="row align-items-center col-lg">
-                        <p>Aguarde alguns dias para que nossos especialistas concluam seu pedido</p>
+                        <p>Aguarde algum tempo para que nossos especialistas concluam seu pedido</p>
                     </div>
                 </div>
                 <div class="py-3 text-center" data-aos="fade-up" data-aos-duration="1600">
@@ -103,20 +99,7 @@
                             4</p>
                     </div>
                     <div class="col-lg">
-                        <p>Antes de receber o trabalho, você deve pagar os 50% restantes do custo do trabalho.</p>
-                    </div>
-                </div>
-                <div class="py-3 text-center" data-aos="fade-up" data-aos-duration="1600">
-                    <i class="bi bi-arrow-down text-principle"></i>
-                </div>
-                <div class=" p-2 row shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
-                    <div class="row justify-content-center col-lg-2">
-                        <p
-                            class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
-                            5</p>
-                    </div>
-                    <div class="col-lg">
-                        <p>Resta preparar-se bem para a defesa e executá-la brilhantemente</p>
+                        <p>Antes de receber o trabalho, deverá pagar os 50% restantes do custo do pedido.</p>
                     </div>
                 </div>
             </div>
@@ -148,9 +131,8 @@
                                                 </div>
                                                 <div class="row justify-content-between">
                                                     <span class="col-sm">
-                                                        <button class="btn btn-info text-white" data-bs-toggle="modal"
-                                                            data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><i
-                                                                class="bi bi-info"></i></button>
+                                                        <button class="btn btn-primary text-white btn-job-detalhes" data-bs-toggle="modal"
+                                                            data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><img src="{{asset('img/word-office-ms-file-doc-icon.svg')}}" alt="" class="img img-fluid img-job-card"></button>
                                                     </span>
                                                     <span
                                                         class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
@@ -205,16 +187,6 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="dropdown-divider"></div>
-                                                <div class="my-4">
-                                                    <div class="text-center">
-                                                        <p>Faça já o seu pedido</p>
-                                                        <button class="btn btn-principle text-white rounded-pill px-3 py-2"
-                                                            data-bs-toggle="modal" data-bs-target="#pedidoModal">
-                                                            <span>FAZER PEDIDO </span>
-                                                        </button>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -243,7 +215,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div class="alert alert-danger alert-dismissible fade show ml-4 me-4 espError d-none" role="alert"
+                        <div class="alert alert-dismissible fade show ml-4 me-4 espError d-none" role="alert"
                             id="pedidoMsg"></div>
                         <form class="card p-2" id="formPedido">
                             @csrf

@@ -9,7 +9,7 @@
             <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
                 <div class="card p-4 h-transDown shadow">
                     <div class="img text-center m-2 my-4">
-                        <i class="fa fa-hat-cowboy text-principle fs-1"></i>
+                        <img src="{{asset('img/education-cap.jpg')}}" alt="" class="img img-fluid card-img-service">
                     </div>
                     <div class="text-center h5 text-principle">Monografia</div>
                     <div class="description text-center text-dark">
@@ -26,12 +26,12 @@
             <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
                 <div class="card p-4 h-transDown shadow">
                     <div class="text-center m-2 my-4 img">
-                        <i class="fa fa-hat-cowboy text-principle fs-1"></i>
+                        <img src="{{asset('img/couse-skills.jpg')}}" alt="" class="img img-fluid card-img-service">
                     </div>
                     <div class="text-center h5 text-principle">Trabalho de curso</div>
                     <div class="description text-center">
                         <small>
-                            <p>Preço do trabalho a partir de: 2000MZN</p>
+                            <p>Preço do trabalho a partir de: 100MZN</p>
                             <p>Prazo de conclusão a partir de : 10 dias</p>
                             <p>Verificação antiplagiativo</p>
                         </small>
@@ -43,12 +43,12 @@
             <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
                 <div class="card p-4 h-transDown shadow">
                     <div class="img text-center m-2 my-4">
-                        <i class="fa fa-hat-cowboy text-principle fs-1"></i>
+                        <img src="{{asset('img/exams.jpg')}}" alt="" class="img img-fluid card-img-service">
                     </div>
                     <div class="text-center h5 text-principle">Teste</div>
                     <div class="description text-center">
                         <small>
-                            <p>Preço do trabalho a partir de: 200MZN</p>
+                            <p>Preço do trabalho a partir de: 75MZN</p>
                             <p>Prazo de conclusão a partir de : 1 dia</p>
                             <p>Verificação antiplagiativo</p>
                         </small>
@@ -60,7 +60,7 @@
             <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
                 <div class="card p-4 h-transDown shadow">
                     <div class="img text-center m-2 my-4">
-                        <i class="fa fa-hat-cowboy text-principle fs-1"></i>
+                        <img src="{{asset('img/education-cap-2.jpg')}}" alt="" class="img img-fluid card-img-service">
                     </div>
                     <div class="text-center text-principle h5">Trabalho de Mestrado</div>
                     <div class="description text-center">
@@ -79,14 +79,14 @@
 </div>
 <div class="bg-light py-5" id="contacto">
     <div class="container">
-        <div class="contact_us">
+        <div class="row contact_us">
             <div class="row text-center mb-2">
                 <h2 class="h2">Contacte-nos</h2> 
                 <p>Se você tiver qualquer duvida deixe o seus dados que os nossos especialistas entrarão em contacto</p>
             </div>
             <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1200">
                 <div class="col-sm-0 col-lg-6 col-md-6 divImgContact">
-                    <img class="img img-fluid d-block banner-img" src="{{ asset('img/contact_us.svg') }}" alt="Mo">
+                    <img class="img img-fluid d-block banner-img" src="{{ asset('img/happy-students-or-pupils-watching-study-webinar-isolated-flat-illustration_74855-14070.png') }}" alt="Mo">
                 </div>
                 <div class="col-sm-12 col-lg-6 col-md-6">
                     <div class="mt-5 mt-lg-0">
@@ -126,85 +126,86 @@
 </div>
 <div class="mx-auto bg-principle">
     <div class="container">
-        <div class="row justify-content-center top-part">
-            <div class="row text-center my-5 text-white">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 flex-column">
+        <div class="">
+            <div class="row my-5 text-white">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 flex-column">
                     <div class="text-center">
                         <i class="bi bi-gear fs-1"></i>
                     </div>
                     <div class="text-center">
                         <div class="text-uppercase">Suporte ao cliente</div>
-                        <small>Suporte completo ao projecto</small>
                     </div>
                 </div>
-
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 flex-column">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 flex-column">
                     <div class="text-center">
                         <i class="bi bi-hand-thumbs-up fs-1"></i>
                     </div>
                     <div class="text-center">
                         <div class="text-uppercase">Garantia da qualidade</div>
-                        <small>Somente funcionários profissionais</small>
                     </div>
                 </div>
 
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 flex-column mt-3">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 flex-column mt-3">
                     <div class="text-center">
                         <i class="fa fa-dollar-sign fs-1"></i>
                     </div>
                     <div class="text-center">
                         <div class="text-uppercase">PREÇOS DEMOCRÁTICOS</div>
-                        <small>Não exageramos o custo</small>
                     </div>
                 </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3 flex-column align-items-center">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 flex-column align-items-center">
                     <div class="text-center">
                         <i class="bi bi-pencil-square fs-1"></i>
                     </div>
                     <div class="text-center">
                         <div class="text-uppercase">EDIÇOES GRATUITAS</div>
-                        <small>Corrigindo notas sobre o projeto</small>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="container-xs container-sm container-md container-lg">
-            <div class="row py-3 text-sm-center text-xs-center text-md-center text-lg-start align-items-start footer justify-content-lg-center">
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 order-xs-2 order-sm-2 order-md-1 row justify-content-lg-center">
-                    <div class="col-lg-8">
-                        <div class="">
-                            <h3 class="h3 text-white">LMTEACHER</h3>
-                        </div>
-                        <div class="my-3">
-                            <span class="text-white text-nowrap"> <i class="bi bi-envelope-fill me-2"></i> lmteach.inc@gmail.com </span>
-                        </div>
-                        <div class="flex-row">
-                            <i class="bi bi-facebook text-white fs-3 me-3"></i>
-                            <i class="bi bi-whatsapp text-white fs-3 me-3"></i>
-                            <i class="bi bi-instagram text-white fs-3"></i>
+            <div class="pb-5 text-lg-start align-items-start footer mx-md-auto justify-content-lg-center mt-xs-5 mt-sm-5 mt-lg-0">
+                <div class="row offset-xs-2 offset-sm-1 offset-md-1 offset-lg-0">
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 order-xs-1 order-sm-1 order-md-1 row justify-content-md-center justify-content-lg-start">
+                        <div class="text-md-center text-lg-start col-lg-8 text-nowrap offset-lg-2">
+                            <div class="">
+                                <h3 class="h4 text-white">LMTEACHER</h3>
+                            </div>
+                            <div class="">
+                                <p class="fw-bold text-light">+258-86-798-90-97</p>
+                                <p class="text-light">Centro de Ajuda</p>
+                                <p class="fw-bold text-light">+258-86-798-90-97</p>
+                                <p class="text-light">Suporte ao Cliente</p>
+                                <br>
+                                <p class="text-white">Maputo, av.24 de julho, 232</p>
+                            </div>
+                            <div class="flex-row">
+                                <i class="bi bi-facebook text-white fs-3 me-3"></i>
+                                <i class="bi bi-whatsapp text-white fs-3 me-3"></i>
+                                <i class="bi bi-instagram text-white fs-3"></i>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 order-xs-1 order-sm-1 order-md-2 row justify-content-lg-center">
-                    <div class="col-lg-8">
-                        <h3 class="text-white h3">Serviços</h3>
-                        <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link text-white"> Papéis de teste </a></li>
-                            <li class="nav-item"><a class="nav-link text-white"> Curso </a></li>
-                            <li class="nav-item"><a class="nav-link text-white"> Resolvendo problemas </a></li>
-                            <li class="nav-item"><a class="nav-link text-white"> Tarefas práticas</a></li>
-                        </ul>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 order-xs-2 order-sm-2 order-md-2 row justify-content-lg-center">
+                        <div class="col-lg-8 text-md-center text-lg-start text-nowrap mt-xs-5 mt-sm-0 mt-md-0 mt-lg-0">
+                            <h3 class="text-white h4">SERVIÇOS</h3>
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link text-white"> Resolução de testes </a></li>
+                                <li class="nav-item"><a class="nav-link text-white"> Redição de trabalhos de curso </a></li>
+                                <li class="nav-item"><a class="nav-link text-white"> Redição de diplomas de licenciatura </a></li>
+                                <li class="nav-item"><a class="nav-link text-white"> Redição de diplomas de mestrado</a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-4 order-xs-3 order-sm-3 order-md-3 mt-xs-5 mt-sm-5 mt-lg-0 row justify-content-lg-center">
-                    <div class="col-lg-8">
-                        <h3 class="h3 text-white">Apoio, suporte</h3>
-                        <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link text-white"> Mapa do site </a></li>
-                            <!-- <li><a href="{$contact}">Contatos</a></li> -->
-                        </ul>
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 order-xs-3 order-sm-3 order-md-3 row justify-content-lg-end">
+                        <div class="col-lg-6 text-md-center text-lg-start mt-xs-5 mt-sm-5 mt-md-5 mt-lg-0 offset-lg-3">
+                            <h3 class="h4 text-white">SOBRE</h3>
+                            <ul class="navbar-nav">
+                                <li class="nav-item"><a class="nav-link text-white"> Sobre nos </a></li>
+                                <li class="nav-item"><a class="nav-link text-white"> Contactos </a></li>
+                                <li class="nav-item"><a class="nav-link text-white"> Emprego </a></li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
+                </div>  
             </div>
         </div>
     </div>
@@ -212,8 +213,8 @@
 <div class="bg-light">
     <div class="container">
         <div class="row py-4">
-            <div class="d-flex justify-content-center text-principle fs-8">
-                LMTGROUP &copy 2021 | Todos direitos reservados
+            <div class="ps-5 d-flex justify-content-start text-principle fs-8">
+               &copy LMTGROUP 2021 | Todos direitos reservados
             </div>
         </div>
     </div>

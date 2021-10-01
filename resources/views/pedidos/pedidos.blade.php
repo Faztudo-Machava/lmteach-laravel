@@ -9,38 +9,42 @@
     @include('header/header')
 @endsection
 @section('conteudo')
-    <div class="bg-light">
-        <div class="py-5 container">
-            <div class="row justify-content-center">
-                <div class="p-4">
-                    <div class="my-5 text-center">
-                        <h2 class="h2">Pedidos</h2>
-                    </div>
-                    @if ($numPedidos > 0)
-                        <div class="cards row">
-                            <div class="d-none">{{ $delay = 300 }}</div>
-                            @foreach ($listaPedidos as $pedido)
+<div class="bg-light">
+    <div class="py-5 container">
+        <div class="row justify-content-center">
+            <div class="p-4">
+                <div class="my-5 text-center">
+                    <h2 class="h2">Pedidos recentes</h2>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="">
+                        @if ($numPedidos > 0)
+                            <div class="cards row">
+                        <div class="d-none">{{ $delay = 50 }} {{ $i = 0 }}</div>
+                        @foreach ($listaPedidos as $pedido)
+                            @if ($i < 8)
                                 <div class="col-sm-12 col-md-6 col-lg-auto mb-3">
-                                    <div class="card jobsCard" data-aos="fade-right" data-aos-duration="1200"
+                                    <div class="card jobsCard px-1" data-aos="fade-right" data-aos-duration="1200"
                                         data-aos-delay="{{ $delay }}">
                                         <div class="card-body">
                                             <div class="mb-2">
-                                                <p class="text-muted">{{ $pedido->pedi_assunto }}</p>
+                                                <p class="text-muted pedidoAssunto">{{ $pedido->pedi_assunto }}
+                                                </p>
                                                 <h5 class="card-title">{{ $pedido->pedi_tipo }}</h5>
                                             </div>
                                             <div class="row justify-content-between">
                                                 <span class="col-sm">
-                                                    <button class="btn btn-info text-white" data-bs-toggle="modal"
-                                                        data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><i
-                                                            class="bi bi-info"></i></button>
+                                                    <button class="btn btn-primary text-white btn-job-detalhes" data-bs-toggle="modal"
+                                                        data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><img src="{{asset('img/word-office-ms-file-doc-icon.svg')}}" alt="" class="img img-fluid img-job-card"></button>
                                                 </span>
-                                                <span class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
+                                                <span
+                                                    class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
                                             </div>
-    
+
                                         </div>
                                     </div>
                                 </div>
-                                <div class="d-none">{{ $delay = $delay + 100 }}</div>
+                                <div class="d-none">{{ $delay = $delay + 100 }} {{ $i = $i + 1 }}</div>
                                 <div class="modal fade" id="viewPedido{{ $pedido->pedi_id }}" tabindex="-1"
                                     aria-labelledby="viewPedido{{ $pedido->pedi_id }}" aria-hidden="true">
                                     <br>
@@ -49,7 +53,8 @@
                                             <div class="modal-header">
                                                 <div>
                                                     <p class="text-muted mb-1">{{ $pedido->pedi_assunto }}</p>
-                                                    <h4 class="h4 text-dark font-weight-bold mb-1">{{ $pedido->pedi_tipo }}
+                                                    <h4 class="h4 text-dark font-weight-bold mb-1">
+                                                        {{ $pedido->pedi_tipo }}
                                                     </h4>
                                                 </div>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
@@ -67,7 +72,8 @@
                                                     </div>
                                                     <div class="row mb-3">
                                                         <span class="text-muted col-lg-6">Assunto </span>
-                                                        <span class="col-lg-6">{{ $pedido->pedi_assunto }}</span>
+                                                        <span
+                                                            class="col-lg-6">{{ $pedido->pedi_assunto }}</span>
                                                     </div>
                                                     <div class="row mb-3">
                                                         <span class="text-muted col-lg-6">Estado </span>
@@ -84,30 +90,22 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="dropdown-divider"></div>
-                                            <div class="my-4">
-                                                <div class="text-center">
-                                                    <p>Faça já o seu pedido</p>
-                                                    <button class="btn btn-principle text-white rounded-pill px-3 py-2"
-                                                        data-bs-toggle="modal" data-bs-target="#pedidoModal">
-                                                        <span>FAZER PEDIDO </span>
-                                                    </button>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
-                        </div>
-                    @else
-                        <div class="alert alert-info">
-                            Sem pedidos resolvidos até o momento.
-                        </div>
+                            @endif
+                        @endforeach
+                    </div>
+                @else
+                    <div class="alert alert-info">
+                        Sem pedidos resolvidos até o momento.
+                    </div>
                     @endif
                 </div>
             </div>
         </div>
     </div>
+</div>
     <div class="modais">
         <div class="modal fade" id="pedidoModal" tabindex="-1" aria-labelledby="pedidoModal" aria-hidden="true">
             <br>

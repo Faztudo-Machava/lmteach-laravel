@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\instituicao;
 use App\Models\User;
+use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -45,7 +46,8 @@ class AuthController extends Controller
         $verification_code = \Illuminate\Support\Facades\Request::get('code');
         $user = User::where(['verification_code' => $verification_code])->first();
         if($user){
-            DB::update('update users set is_verified = ?, email_verified_at = ? where verification_code = ?', [1, time(), $verification_code]);
+            $timestamp = now()->timestamp;
+            DB::update('update users set is_verified = ?, email_verified_at = ? where verification_code = ?', [1, $timestamp, $verification_code]);
             return redirect()->route('home');
         }
     }
