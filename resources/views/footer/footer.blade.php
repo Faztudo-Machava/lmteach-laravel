@@ -86,9 +86,9 @@
             </div>
             <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1200">
                 <div class="col-sm-0 col-lg-6 col-md-6 divImgContact">
-                    <img class="img img-fluid d-block banner-img" src="{{ asset('img/happy-students-or-pupils-watching-study-webinar-isolated-flat-illustration_74855-14070.png') }}" alt="Mo">
+                    <img class="img img-fluid" src="{{ asset('img/contact.png') }}" alt="Mo">
                 </div>
-                <div class="col-sm-12 col-lg-6 col-md-6">
+                <div class="col-sm-12 col-lg-6 col-md-6 row justify-content-center align-items-center">
                     <div class="mt-5 mt-lg-0">
                         <div class="alert alert-success d-none" id="mailSuccess">Mensagem enviada com sucesso</div>
                         <div class="alert alert-danger d-none" id="mailFalha">Falha no envio da mensagem</div>
@@ -96,19 +96,19 @@
                             @csrf
     
                             <div class="form-group">
-                                <input type="text" name="mail_nome" class="form-control" id="nome" placeholder="Nome"
+                                <input type="text" name="mail_nome" class="form-control border-none shadow-sm" id="nome" placeholder="Nome"
                                     required>
                             </div>
                             <div class="form-group mt-3">
-                                <input type="email" class="form-control" name="mail_email" id="email" placeholder="Email"
+                                <input type="email" class="form-control border-none shadow-sm" name="mail_email" id="email" placeholder="Email"
                                     required>
                             </div>
                             <div class="form-group mt-3">
-                                <input type="text" class="form-control" name="mail_assunto" id="assunto"
+                                <input type="text" class="form-control border-none shadow-sm" name="mail_assunto" id="assunto"
                                     placeholder="Assunto" required>
                             </div>
                             <div class="form-group mt-3">
-                                <textarea class="form-control" name="mail_mensagem" rows="5" placeholder="Mensagem"
+                                <textarea class="form-control border-none shadow-sm" name="mail_mensagem" rows="5" placeholder="Mensagem"
                                     required></textarea>
                             </div>
                             <div class="text-center form-group mt-3">
@@ -124,88 +124,108 @@
         </div>
     </div>
 </div>
-<div class="mx-auto bg-principle">
+<div class="bg-principle text-white">
     <div class="container">
-        <div class="">
-            <div class="row my-5 text-white">
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 flex-column">
-                    <div class="text-center">
+        <div class="row text-center py-5">
+            <div class="col-xs-6 col-lg">
+                <div class="row flex-column">
+                    <div class="">
                         <i class="bi bi-gear fs-1"></i>
                     </div>
-                    <div class="text-center">
+                    <div class="">
                         <div class="text-uppercase">Suporte ao cliente</div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 flex-column">
-                    <div class="text-center">
+            </div>
+
+            <div class="col-xs-6 col-lg">
+                <div class="row flex-column">
+                    <div class="">
                         <i class="bi bi-hand-thumbs-up fs-1"></i>
                     </div>
-                    <div class="text-center">
+                    <div class="">
                         <div class="text-uppercase">Garantia da qualidade</div>
                     </div>
-                </div>
+                </div> 
+            </div>
 
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 flex-column mt-3">
-                    <div class="text-center">
-                        <i class="fa fa-dollar-sign fs-1"></i>
+            <div class="col-xs-6 col-lg">
+                <div class="row flex-column">
+                    <div class="">
+                        <i class="fa fa-dollar-sign fs-1 mt-3"></i>
                     </div>
-                    <div class="text-center">
+                    <div class="">
                         <div class="text-uppercase">PREÇOS DEMOCRÁTICOS</div>
                     </div>
                 </div>
-                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-3 flex-column align-items-center">
-                    <div class="text-center">
+            </div>
+
+            <div class="col-xs-6 col-lg">
+                <div class="row flex-column">
+                    <div class="">
                         <i class="bi bi-pencil-square fs-1"></i>
                     </div>
-                    <div class="text-center">
+                    <div class="">
                         <div class="text-uppercase">EDIÇOES GRATUITAS</div>
                     </div>
                 </div>
             </div>
-            <div class="pb-5 text-lg-start align-items-start footer mx-md-auto justify-content-lg-center mt-xs-5 mt-sm-5 mt-lg-0">
-                <div class="row offset-xs-2 offset-sm-1 offset-md-1 offset-lg-0">
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 order-xs-1 order-sm-1 order-md-1 row justify-content-md-center justify-content-lg-start">
-                        <div class="text-md-center text-lg-start col-lg-8 text-nowrap offset-lg-2">
-                            <div class="">
-                                <h3 class="h4 text-white">LMTEACHER</h3>
-                            </div>
-                            <div class="">
-                                <p class="fw-bold text-light">+258-86-798-90-97</p>
-                                <p class="text-light">Centro de Ajuda</p>
-                                <p class="fw-bold text-light">+258-86-798-90-97</p>
-                                <p class="text-light">Suporte ao Cliente</p>
-                                <br>
-                                <p class="text-white">Maputo, av.24 de julho, 232</p>
-                            </div>
-                            <div class="flex-row">
-                                <i class="bi bi-facebook text-white fs-3 me-3"></i>
-                                <i class="bi bi-whatsapp text-white fs-3 me-3"></i>
-                                <i class="bi bi-instagram text-white fs-3"></i>
-                            </div>
-                        </div>
+        </div>
+        <div class="row pb-5 partDown">
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3 order-md-1 order-lg-1 order-sm-1 order-xs-1 f-contactUsN">
+                <div class="row flex-column ms-lg-5 ms-md-5 ms-sm-5 ms-xs-1">
+                    <div class="">
+                        <h3 class="h4">LMTEACHER</h3>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 order-xs-2 order-sm-2 order-md-2 row justify-content-lg-center">
-                        <div class="col-lg-8 text-md-center text-lg-start text-nowrap mt-xs-5 mt-sm-0 mt-md-0 mt-lg-0">
-                            <h3 class="text-white h4">SERVIÇOS</h3>
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link text-white"> Resolução de testes </a></li>
-                                <li class="nav-item"><a class="nav-link text-white"> Redição de trabalhos de curso </a></li>
-                                <li class="nav-item"><a class="nav-link text-white"> Redição de diplomas de licenciatura </a></li>
-                                <li class="nav-item"><a class="nav-link text-white"> Redição de diplomas de mestrado</a></li>
-                            </ul>
-                        </div>
+                    <div class="">
+                        <p class="fw-bold text-light">+258-86-798-90-97</p>
+                        <p class="text-light">Centro de Ajuda</p>
+                        <p class="fw-bold text-light">+258-86-798-90-97</p>
+                        <p class="text-light">Suporte ao Cliente</p>
+                        <br>
                     </div>
-                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 order-xs-3 order-sm-3 order-md-3 row justify-content-lg-end">
-                        <div class="col-lg-6 text-md-center text-lg-start mt-xs-5 mt-sm-5 mt-md-5 mt-lg-0 offset-lg-3">
-                            <h3 class="h4 text-white">SOBRE</h3>
-                            <ul class="navbar-nav">
-                                <li class="nav-item"><a class="nav-link text-white"> Sobre nos </a></li>
-                                <li class="nav-item"><a class="nav-link text-white"> Contactos </a></li>
-                                <li class="nav-item"><a class="nav-link text-white"> Emprego </a></li>
-                            </ul>
-                        </div>
+                </div>
+            </div>
+            <div class="col-xs-9 order-xs-2 col-sm-8 order-sm-2 col-md-8 order-md-2 col-lg-4 order-lg-2">
+                <div class="row flex-column offset-lg-1 offset-md-5 offset-sm-5 offset-xs-5">
+                    <div>
+                        <h3 class="h4">SERVIÇOS</h3>
                     </div>
-                </div>  
+                    <div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link  text-white"> Resolução de testes </a></li>
+                            <li class="nav-item"><a class="nav-link  text-white"> Redição de trabalhos de curso </a></li>
+                            <li class="nav-item"><a class="nav-link  text-white"> Redição de diplomas de licenciatura </a></li>
+                            <li class="nav-item"><a class="nav-link  text-white"> Redição de diplomas de mestrado</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-9 order-xs-4 col-sm-8 order-sm-4 col-md-8 order-md-4 col-lg-4 order-lg-3 sobre">
+                <div class="row flex-column offset-lg-5 offset-md-5 offset-sm-5 offset-xs-5">
+                    <div>
+                        <h3 class="h4">SOBRE</h3>
+                    </div>
+                    <div>
+                        <ul class="navbar-nav">
+                            <li class="nav-item"><a class="nav-link  text-white "> Sobre nos </a></li>
+                            <li class="nav-item"><a class="nav-link  text-white"> Contactos </a></li>
+                            <li class="nav-item"><a class="nav-link  text-white"> Emprego </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-3 order-xs-3 col-sm-4 order-sm-3 col-lg col-md-4 order-md-3 order-lg-4 f-contactUs">
+                <div class="row flex-column ms-lg-5 ms-md-5 ms-sm-5 ms-xs-1">
+                    <div class="row">
+                        <p class="text-white">Maputo, av.24 de julho, 232</p>
+                    </div>
+                    <div class="flex-row">
+                        <i class="bi bi-facebook fs-3 me-3"></i>
+                        <i class="bi bi-whatsapp fs-3 me-3"></i>
+                        <i class="bi bi-instagram fs-3"></i>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

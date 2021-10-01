@@ -105,8 +105,8 @@
                             </div>
                             <div class="my-3">
                                 <div class="nav-item">
-                                    <a id="btnCadReg" href="#" class="" data-bs-toggle=" modal"
-                                        data-bs-target="#cadUsers"><small>Registrar-se</small></a>
+                                    <a id="btnCadReg" class="" data-bs-toggle=" modal"
+                                        data-bs-target="#cadUsers" role="button"><small>Registrar-se</small></a>
                                 </div>
                             </div>
                             <div class="form-check mb-3">

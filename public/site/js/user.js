@@ -1,5 +1,6 @@
 $('#btnCadReg').click(function() {
     $('#login').modal('hide');
+    $('#cadUsers').modal('toggle');
 })
 
 $(function() {
