@@ -65,13 +65,13 @@
                                 class="">
                                 @if (session('user')->user_tipo == 'admin')
                                         <img src="
-                                {{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user" alt="">
+                                {{ asset('img/avatar.svg') }}" class="img-fluid rounded-pill img-user" alt="">
                             @else
                                 @if (session('user')->user_img)
                                     <img src="{{ asset('storage/' . session('user')->user_img) }}"
                                         class="img-fluid rounded-pill img-user" alt="">
                                 @else
-                                    <img src="{{ asset('img/avatar.png') }}" class="img-fluid rounded-pill img-user"
+                                    <img src="{{ asset('img/avatar.svg') }}" class="img-fluid rounded-pill img-user"
                                         alt="">
                                 @endif
                                 @endif

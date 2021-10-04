@@ -10,14 +10,14 @@
                                 <div class="d-flex flex-column align-items-center text-center">
                                     <div class="">
                                         @if (session('user')->user_tipo == 'admin')
-                                            <img id="updateImgModel" src="{{ asset('img/avatar.png') }}"
+                                            <img id="updateImgModel" src="{{ asset('img/avatar.svg') }}"
                                                 class="img-fluid imgperfil rounded-pill" alt="" role="button">
                                         @else
                                             @if (session('user')->user_img)
                                                 <img id="updateImgModel" src="{{ asset('storage/' . session('user')->user_img) }}" class="img-fluid imgperfil rounded-pill" alt="" role="button">
                                             @else
                                                 <img id="updateImgModel" src="
-                                                        {{ asset('img/avatar.png') }}"
+                                                        {{ asset('img/avatar.svg') }}"
                                                     class="img-fluid imgperfil rounded-pill" alt="" role="button">
                                             @endif
                                         @endif

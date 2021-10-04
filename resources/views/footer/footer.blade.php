@@ -178,9 +178,9 @@
                         <h3 class="h4">LMTEACHER</h3>
                     </div>
                     <div class="">
-                        <p class="fw-bold text-light"> <i class="bi bi-phone"></i> +258-86-798-90-97</p>
+                        <p class="fw-bold text-light">+258-86-798-90-97</p>
                         <p class="text-light">Centro de Ajuda</p>
-                        <p class="fw-bold text-light"> <i class="bi bi-phone"></i> +258-86-798-90-97</p>
+                        <p class="fw-bold text-light">+258-86-798-90-97</p>
                         <p class="text-light">Suporte ao Cliente</p>
                         <br>
                     </div>
@@ -235,7 +235,7 @@
 <div class="bg-principle">
     <div class="container">
         <div class="row py-4">
-            <div class="ps-5 ms-3 d-flex justify-content-start text-white fs-8">
+            <div class="text-center text-white fs-8">
                LMTGROUP, 2021. Todos direitos reservados
             </div>
         </div>
