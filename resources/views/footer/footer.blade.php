@@ -161,7 +161,7 @@
             </div>
 
             <div class="col-xs-6 col-lg">
-                <div class="row flex-column">
+                <div class="row flex-column mt-sm-3 mt-xs-3 mt-md-0 mt-lg-0">
                     <div class="">
                         <i class="bi bi-pencil-square fs-1"></i>
                     </div>
@@ -171,16 +171,16 @@
                 </div>
             </div>
         </div>
-        <div class="row pb-5 partDown">
+        <div class="row py-5 partDown">
             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-3 order-md-1 order-lg-1 order-sm-1 order-xs-1 f-contactUsN">
                 <div class="row flex-column ms-lg-5 ms-md-5 ms-sm-5 ms-xs-1">
                     <div class="">
                         <h3 class="h4">LMTEACHER</h3>
                     </div>
                     <div class="">
-                        <p class="fw-bold text-light">+258-86-798-90-97</p>
+                        <p class="fw-bold text-light"> <i class="bi bi-phone"></i> +258-86-798-90-97</p>
                         <p class="text-light">Centro de Ajuda</p>
-                        <p class="fw-bold text-light">+258-86-798-90-97</p>
+                        <p class="fw-bold text-light"> <i class="bi bi-phone"></i> +258-86-798-90-97</p>
                         <p class="text-light">Suporte ao Cliente</p>
                         <br>
                     </div>
@@ -193,10 +193,10 @@
                     </div>
                     <div>
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link  text-white"> Resolução de testes </a></li>
-                            <li class="nav-item"><a class="nav-link  text-white"> Redição de trabalhos de curso </a></li>
-                            <li class="nav-item"><a class="nav-link  text-white"> Redição de diplomas de licenciatura </a></li>
-                            <li class="nav-item"><a class="nav-link  text-white"> Redição de diplomas de mestrado</a></li>
+                            <li class="nav-item"><a class="nav-link  text-white"> Testes </a></li>
+                            <li class="nav-item"><a class="nav-link  text-white"> Trabalhos de curso </a></li>
+                            <li class="nav-item"><a class="nav-link  text-white"> Diplomas de licenciatura </a></li>
+                            <li class="nav-item"><a class="nav-link  text-white"> Diplomas de mestrado</a></li>
                         </ul>
                     </div>
                 </div>
@@ -208,9 +208,9 @@
                     </div>
                     <div>
                         <ul class="navbar-nav">
-                            <li class="nav-item"><a class="nav-link  text-white "> Sobre nos </a></li>
-                            <li class="nav-item"><a class="nav-link  text-white"> Contactos </a></li>
-                            <li class="nav-item"><a class="nav-link  text-white"> Emprego </a></li>
+                            <li class="nav-item"><a href="{{route('sobre')}}" class="nav-link  text-white "> Sobre nos </a></li>
+                            <li class="nav-item"><a data-bs-toggle="modal" data-bs-target="#contactoModal" role="button" class="nav-link  text-white"> Contactos </a></li>
+                            <li class="nav-item"><a href="{{route('emprego')}}" class="nav-link  text-white"> Emprego </a></li>
                         </ul>
                     </div>
                 </div>
@@ -218,23 +218,48 @@
             <div class="col-xs-3 order-xs-3 col-sm-4 order-sm-3 col-lg col-md-4 order-md-3 order-lg-4 f-contactUs">
                 <div class="row flex-column ms-lg-5 ms-md-5 ms-sm-5 ms-xs-1">
                     <div class="row">
-                        <p class="text-white">Maputo, av.24 de julho, 232</p>
+                        <p class="text-white"> <i class="bi bi-geo-alt"></i> Maputo, av.24 de <br> julho, 232</p>
                     </div>
-                    <div class="flex-row">
-                        <i class="bi bi-facebook fs-3 me-3"></i>
-                        <i class="bi bi-whatsapp fs-3 me-3"></i>
-                        <i class="bi bi-instagram fs-3"></i>
+                    <div class="">
+                        <ul class="navbar-nav flex-row">
+                            <li class="nav-item"><a href="https://m.facebook.com/lmteach.studentshelper.7?ref=bookmarks" target="blank" class="nav-link  text-white "><i class="bi bi-facebook fs-3 me-3"></i></a></li>
+                            <li class="nav-item"><a href="https://chat.whatsapp.com/FjPNNWGVuJOBGnJ9A78U6u" target="blank" class="nav-link  text-white"><i class="bi bi-whatsapp fs-3 me-3"></i></a></li>
+                            <li class="nav-item"><a href="https://www.instagram.com/lmteach.inc/" target="blank" class="nav-link  text-white"><i class="bi bi-instagram fs-3"></i></a></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="bg-light">
+<div class="bg-principle">
     <div class="container">
         <div class="row py-4">
-            <div class="ps-5 d-flex justify-content-start text-principle fs-8">
-               &copy LMTGROUP 2021 | Todos direitos reservados
+            <div class="ps-5 ms-3 d-flex justify-content-start text-white fs-8">
+               LMTGROUP, 2021. Todos direitos reservados
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{{-- Modal com informacao de contacto --}}
+<div class="modal fade" id="contactoModal" tabindex="-1" aria-labelledby="contactoModal" aria-hidden="true">
+    <br>
+    <div class="modal-dialog modal-dialog-centered modal-lg mx-xs-3 mx-sm-3 mx-md-auto mx-lg-auto" role="document"
+        style="align-content: center; margin: auto;">
+        <div class="modal-content card border-none">
+            <div class="modal-header bg-principle text-white">
+                <h5 class="modal-title" id="exampleModalCenterTitle">Contacto</h5>
+                <button type="button" class="btn-close text-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="my-2">
+                    <p class=""> <span class="text-principle"><i class="bi bi-envelope"></i> E-mail:</span> lmteach.inc@gmail.com</p>
+                </div>
+                <div class="my-2">
+                    <p class=""> <span class="text-principle"><i class="bi bi-phone"></i>Telefone:</span> +258 867989097</p>
+                </div>
             </div>
         </div>
     </div>

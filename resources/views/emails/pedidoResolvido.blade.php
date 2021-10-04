@@ -11,7 +11,7 @@
         <p>Oi {{$detalhes['nome']}}</p>
         <br><br>
         <p>O seu {{$detalhes['tipo_pedido']}} de {{$detalhes['assunto_pedido']}} de codigo {{$detalhes['pedido']}} já foi resolvido.</p>
-        <p>Encontre a resolução do seu pedido na plaforma <a href="{{route('home')}}">LMTEACH</a>.</p>
+        <p>Encontre a resolução do seu pedido na plaforma <a href="{{route('home')}}">LMTEACHER</a>.</p>
     </div>
 </body>
 </html>

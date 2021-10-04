@@ -46,8 +46,7 @@ class AuthController extends Controller
         $verification_code = \Illuminate\Support\Facades\Request::get('code');
         $user = User::where(['verification_code' => $verification_code])->first();
         if($user){
-            $timestamp = now()->timestamp;
-            DB::update('update users set is_verified = ?, email_verified_at = ? where verification_code = ?', [1, $timestamp, $verification_code]);
+            DB::update('update users set is_verified = ? where verification_code = ?', [1, $verification_code]);
             return redirect()->route('home');
         }
     }

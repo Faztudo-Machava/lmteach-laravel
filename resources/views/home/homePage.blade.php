@@ -3,7 +3,7 @@
 
 @endsection
 @section('titulo')
-    LMTEACH
+    LMTEACHER
 @endsection
 @section('header')
     @include('header/header')
@@ -146,11 +146,11 @@
                                         aria-labelledby="viewPedido{{ $pedido->pedi_id }}" aria-hidden="true">
                                         <br>
                                         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                            <div class="modal-content card bg-white">
-                                                <div class="modal-header">
+                                            <div class="modal-content card bg-white border-none">
+                                                <div class="modal-header bg-principle text-white">
                                                     <div>
-                                                        <p class="text-muted mb-1">{{ $pedido->pedi_assunto }}</p>
-                                                        <h4 class="h4 text-dark font-weight-bold mb-1">
+                                                        <p class="text-white mb-1">{{ $pedido->pedi_assunto }}</p>
+                                                        <h4 class="h4 text-white font-weight-bold mb-1">
                                                             {{ $pedido->pedi_tipo }}
                                                         </h4>
                                                     </div>
@@ -208,8 +208,8 @@
         <div class="modal fade" id="pedidoModal" tabindex="-1" aria-labelledby="pedidoModal" aria-hidden="true">
             <br>
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content card bg-white">
-                    <div class="modal-header">
+                <div class="modal-content card bg-white border-none">
+                    <div class="modal-header bg-principle text-white">
                         <h4 class="modal-titlefont-weight-bold" id="exampleModalCenterTitle">DEIXE
                             O SEU PEDIDO</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -230,7 +230,15 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-6 p-3">
-                                    <select class="form-control m-2 selecao" name="pedi_instituicao" id="pedi_instituicao"
+                                    <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
+                                        <option class="form-control" value="">Nível acadêmico</option>
+                                        <option class="form-control">Médio</option>
+                                        <option class="form-control">Técnico profissional</option>
+                                        <option class="form-control">Superior</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 p-3">
+                                    <select class="form-control selecao" name="pedi_instituicao" id="pedi_instituicao"
                                         required="required">
                                         <option class="form-control" value="">Instituição educacional</option>
                                         @foreach ($listaInstituicao as $instituicao)
@@ -239,7 +247,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                                 <div class="col-lg-6 p-3">
                                     <input type="date" name="pedi_prazo" id="pedi_prazo" class="form-control pl-3"
                                         placeholder="Prazo" required>
@@ -285,7 +292,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" id="submeter" class="btn btn-sm btn-principle"> <span
+                                <button type="submit" id="submeter" class="btn btn-sm btn-principle rounded-pill px-3 py-2"> <span
                                         class="text-white">Submeter</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt=""> </button>
                             </div>

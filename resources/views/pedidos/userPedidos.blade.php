@@ -100,7 +100,7 @@
                                 $user = $pedido->find($pedido->pedi_cliente)->relUser;
                             @endphp --}}
                             <div class="col-sm-12 col-md-6 col-lg-auto mb-3 {{ $pedido->pedi_status }} pedidos">
-                                <div class="card" data-aos="fade-right" data-aos-duration="1200"
+                                <div class="card shadow" data-aos="fade-right" data-aos-duration="1200"
                                     data-aos-delay="{{ $delay }}">
                                     <div class="card-body">
                                         <div class="mb-2">
@@ -123,11 +123,11 @@
                                 aria-labelledby="viewPedido{{ $pedido->pedi_id }}" aria-hidden="true">
                                 <br>
                                 <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                    <div class="modal-content card bg-white">
-                                        <div class="modal-header">
+                                    <div class="modal-content card bg-white border-none">
+                                        <div class="modal-header bg-principle text-white">
                                             <div>
-                                                <p class="text-muted mb-1">{{ $pedido->pedi_assunto }}</p>
-                                                <h4 class="h4 text-dark font-weight-bold mb-1">
+                                                <p class="text-white mb-1">{{ $pedido->pedi_assunto }}</p>
+                                                <h4 class="h4 text-white font-weight-bold mb-1">
                                                     {{ $pedido->pedi_tipo }}</h4>
                                             </div>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"

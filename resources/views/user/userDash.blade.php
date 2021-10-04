@@ -85,7 +85,7 @@
                             @endif
                             <div class="row">
                                 <div class="col-sm-12">
-                                    <button class="btn btn-info" data-bs-toggle="modal"
+                                    <button class="btn btn-info rounded-pill px-3 py-2 text-white" data-bs-toggle="modal"
                                         data-bs-target="#userUpdateModal">Atualizar</button>
                                 </div>
                             </div>

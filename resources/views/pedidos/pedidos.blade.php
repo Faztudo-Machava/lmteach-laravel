@@ -24,7 +24,7 @@
                         @foreach ($listaPedidos as $pedido)
                             @if ($i < 8)
                                 <div class="col-sm-12 col-md-6 col-lg-auto mb-3">
-                                    <div class="card jobsCard px-1" data-aos="fade-right" data-aos-duration="1200"
+                                    <div class="card shadow jobsCard px-1" data-aos="fade-right" data-aos-duration="1200"
                                         data-aos-delay="{{ $delay }}">
                                         <div class="card-body">
                                             <div class="mb-2">
@@ -49,11 +49,11 @@
                                     aria-labelledby="viewPedido{{ $pedido->pedi_id }}" aria-hidden="true">
                                     <br>
                                     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                        <div class="modal-content card bg-white">
-                                            <div class="modal-header">
+                                        <div class="modal-content card bg-white border-none">
+                                            <div class="modal-header bg-principle text-white">
                                                 <div>
-                                                    <p class="text-muted mb-1">{{ $pedido->pedi_assunto }}</p>
-                                                    <h4 class="h4 text-dark font-weight-bold mb-1">
+                                                    <p class="text-white mb-1">{{ $pedido->pedi_assunto }}</p>
+                                                    <h4 class="h4 text-white font-weight-bold mb-1">
                                                         {{ $pedido->pedi_tipo }}
                                                     </h4>
                                                 </div>
@@ -111,9 +111,9 @@
             <br>
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content card bg-white">
-                    <div class="modal-header">
+                    <div class="modal-header bg-principle text-white">
                         <h4 class="modal-titlefont-weight-bold" id="exampleModalCenterTitle">DEIXE
-                            O SEU PEDIDO E LIGAREMOS DE VOLTA</h4>
+                            O SEU PEDIDO</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -132,6 +132,14 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-6 p-3">
+                                    <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
+                                        <option class="form-control" value="">Nível acadêmico</option>
+                                        <option class="form-control">Médio</option>
+                                        <option class="form-control">Técnico profissional</option>
+                                        <option class="form-control">Superior</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 p-3">
                                     <select class="form-control m-2 selecao" name="pedi_instituicao" id="pedi_instituicao"
                                         required="required">
                                         <option class="form-control" value="">Instituição educacional</option>
@@ -146,18 +154,9 @@
                                     <input type="date" name="pedi_prazo" id="pedi_prazo" class="form-control pl-3"
                                         placeholder="Prazo" required>
                                 </div>
-
                                 <div class="col-lg-6 p-3">
                                     <input type="text" name="pedi_assunto" id="pedi_assunto"
                                         class="form-control pl-3 inputs" placeholder="Assunto(Ex: Informatica)" required>
-                                </div>
-                                <div class="col-lg-6 p-3">
-                                    <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
-                                        <option class="form-control" value="">Nível acadêmico</option>
-                                        <option class="form-control">Médio</option>
-                                        <option class="form-control">Técnico profissional</option>
-                                        <option class="form-control">Superior</option>
-                                    </select>
                                 </div>
                                 <div class="col-lg-6 p-3">
                                     <div class="text-center">

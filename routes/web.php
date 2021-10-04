@@ -28,6 +28,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('sobre', [HomeController::class, 'sobre'])->name('sobre');
+Route::get('emprego', [HomeController::class, 'emprego'])->name('emprego');
 Route::post('/addicionarCliente', [UserController::class, 'storeCliente'])->name('cliente.add');
 Route::post('/addicionarEspecialista', [UserController::class, 'storeEspecialista'])->name('especialista.add');
 Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos');

@@ -2,6 +2,9 @@ $('#btnCadReg').click(function() {
     $('#login').modal('hide');
     $('#cadUsers').modal('toggle');
 })
+$('#turnEspec').click(function() {
+    $('#cadUsers').modal('toggle');
+})
 
 $(function() {
     $('#formLogin').submit(function(e) {

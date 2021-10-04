@@ -4,7 +4,7 @@
         <nav class=" navbar navbar-expand-lg navbar-light py-2 px-4 shadow-sm bg-light">
         <div class="container">
             <div class="d-flex align-items-center">
-                <a class="navbar-brand font-weight-bold" href="{{ url('/') }}">LMTEACHER</a>
+                <a class="text-dark font-weight-bold h5" href="{{ url('/') }}">LMTeacher</a>
             </div>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHomeContent"
                 aria-controls="navbarHomeContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,7 @@
             <div class="collapse navbar-collapse" id="navbarHomeContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
-                    <li class="nav-item"><a class="nav-link" href="">Sobre</a>
+                    <li class="nav-item"><a class="nav-link" href="{{route('sobre')}}">Sobre</a>
                     </li>
                     <li class="nav-item"><a class="nav-link" href="">Ajuda</a></li>
                     @if (session('user'))
@@ -105,8 +105,7 @@
                             </div>
                             <div class="my-3">
                                 <div class="nav-item">
-                                    <a id="btnCadReg" class="" data-bs-toggle=" modal"
-                                        data-bs-target="#cadUsers" role="button"><small>Registrar-se</small></a>
+                                    <a id="btnCadReg" class="" role="button"><small>Registrar-se</small></a>
                                 </div>
                             </div>
                             <div class="form-check mb-3">
@@ -121,15 +120,7 @@
                                         class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}"
                                         alt=""></button>
                             </div>
-                            <hr class="my-4">
-                            <div class="row d-flex justify-content-center">
-                                <button class="btn btn-login text-uppercase fw-bold" type="submit"> <i
-                                        class="fab fa-google me-2"></i>
-                                </button>
-                                <button class="btn btn-login text-uppercase fw-bold" type="submit"> <i
-                                        class="fab fa-facebook-f me-2"></i>
-                                </button>
-                            </div>
+                            
                         </div>
                     </div>
                     {{-- <div class="col-lg">
@@ -176,7 +167,7 @@
                     <div class="tab-pane fade show active" id="cliente" role="tabpanel" aria-labelledby="cliente-tab">
 
                         <div class="row text-center">
-                            <div class="alert alert-danger alert-dismissible fade show ml-4 me-4 messageBox d-none"
+                            <div class="alert alert-dismissible fade show ml-4 me-4 messageBox d-none"
                                 role="alert"></div>
                             <form id="regCliente" class="py-3">
                                 @csrf
@@ -208,7 +199,7 @@
                                     privacidade
                                 </div>
                                 <div class="my-3 justify-content-center">
-                                    <button type="submit" class="text-center btn btn-principle" id="btnRegCliente"><span
+                                    <button type="submit" class="text-center btn btn-principle rounded-pill px-3 py-2 text-white" id="btnRegCliente"><span
                                             class="text-white">Submeter</span> <img class="img d-none load"
                                             src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
                                 </div>
@@ -219,7 +210,7 @@
                     </div>
                     <div class="tab-pane fade" id="especialista" role="tabpanel" aria-labelledby="especialista-tab">
                         <div class="row">
-                            <div class="alert alert-danger alert-dismissible fade show ml-4 me-4 espError d-none"
+                            <div class="alert alert-dismissible fade show ml-4 me-4 espError d-none"
                                 role="alert"></div>
                             <form id="regEspecialista">
                                 @csrf
@@ -252,7 +243,7 @@
                                     </div>
                                     <div style="overflow:auto;">
                                         <div style="float:right;">
-                                            <button class="btn btn-principle m-2" type="button"
+                                            <button class="btn btn-principle m-2 rounded-pill px-3 py-2 text-white" type="button"
                                                 id="next1">Proximo</button>
                                         </div>
                                     </div>
@@ -290,9 +281,9 @@
                                     </div>
                                     <div style="overflow:auto;">
                                         <div style="float:right;">
-                                            <button class="btn btn-primary m-2" type="button"
+                                            <button class="btn btn-primary m-2 rounded-pill px-3 py-2 text-white" type="button"
                                                 id="ante1">Anterior</button>
-                                            <button class="btn btn-principle m-2" type="button"
+                                            <button class="btn btn-principle m-2 rounded-pill px-3 py-2 text-white" type="button"
                                                 id="next2">Proximo</button>
                                         </div>
                                     </div>
@@ -318,14 +309,15 @@
                                                 <option class="form-control">Trabalhos</option>
                                                 <option class="form-control">TCC's</option>
                                                 <option class="form-control">Exercicios</option>
+                                                <option class="form-control">Todos</option>
                                             </select>
                                         </p>
                                     </div>
                                     <div style="overflow:auto;">
                                         <div style="float:right;">
-                                            <button class="btn btn-primary m-2" type="button"
+                                            <button class="btn btn-primary m-2 rounded-pill px-3 py-2 text-white" type="button"
                                                 id="ante2">Anterior</button>
-                                            <button class="btn btn-principle m-2" type="submit"><span
+                                            <button class="btn btn-principle m-2 rounded-pill px-3 py-2 text-white" type="submit"><span
                                                     class="text-white">Submeter</span> <img
                                                     class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}"
                                                     alt=""></button>

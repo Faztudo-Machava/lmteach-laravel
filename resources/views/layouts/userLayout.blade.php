@@ -96,8 +96,8 @@
         <div class="modal fade" id="pedidoModal" tabindex="-1" aria-labelledby="pedidoModal" aria-hidden="true">
             <br>
             <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                <div class="modal-content card bg-white">
-                    <div class="modal-header">
+                <div class="modal-content card bg-white border-none">
+                    <div class="modal-header bg-principle text-white">
                         <h4 class="modal-titlefont-weight-bold" id="exampleModalCenterTitle">DEIXE
                             O SEU PEDIDO</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -118,7 +118,15 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-6 p-3">
-                                    <select class="form-control m-2 selecao" name="pedi_instituicao" id="pedi_instituicao"
+                                    <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
+                                        <option class="form-control" value="">Nível acadêmico</option>
+                                        <option class="form-control">Médio</option>
+                                        <option class="form-control">Técnico profissional</option>
+                                        <option class="form-control">Superior</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 p-3">
+                                    <select class="form-control selecao" name="pedi_instituicao" id="pedi_instituicao"
                                         required="required">
                                         <option class="form-control" value="">Instituição educacional</option>
                                         @foreach ($listaInstituicao as $instituicao)
@@ -127,7 +135,6 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                                 <div class="col-lg-6 p-3">
                                     <input type="date" name="pedi_prazo" id="pedi_prazo" class="form-control pl-3"
                                         placeholder="Prazo" required>
@@ -137,14 +144,6 @@
                                     <input type="text" name="pedi_assunto" id="pedi_assunto"
                                         class="form-control pl-3 inputs" placeholder="Disciplina (Ex: Informatica)"
                                         required>
-                                </div>
-                                <div class="col-lg-6 p-3">
-                                    <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
-                                        <option class="form-control" value="">Nível acadêmico</option>
-                                        <option class="form-control">Médio</option>
-                                        <option class="form-control">Técnico profissional</option>
-                                        <option class="form-control">Superior</option>
-                                    </select>
                                 </div>
                                 <div class="col-lg-6 p-3">
                                     <div class="text-center">
@@ -173,8 +172,7 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" id="submeter" class="btn btn-sm btn-principle"> <span
-                                        class="text-white">Submeter</span> <img class="img d-none load"
+                                <button type="submit" id="submeter" class="btn btn-sm btn-principle px-3 py-2 rounded-pill text-white"> <span>Submeter</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt=""> </button>
                             </div>
                         </form>
@@ -187,8 +185,8 @@
             <div class="modal-dialog modal-dialog-centered modal-lg mx-xs-3 mx-sm-3 mx-md-auto mx-lg-auto" role="document"
                 style="align-content: center; margin: auto;">
                 <div class="modal-content card">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-dark" id="exampleModalCenterTitle">Atualização de dados</h5>
+                    <div class="modal-header bg-principle text-white">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Atualização de dados</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="alert alert-danger d-none mx-4" id="updateUserFail"></div>
@@ -213,7 +211,7 @@
                             <div class="col-lg-12 mt-3" name="user-mensagem" id="user-mensagem">
                             </div>
                             <div class="col-lg-12 mt-3 justify-content-center">
-                                <button class="btn btn-success" type="submit" name="submeter">
+                                <button class="btn btn-success px-3 py-2 rounded-pill text-white" type="submit" name="submeter">
                                     <span>Atualizar</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
                             </div>
@@ -222,13 +220,13 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="userImgUpdateModal" tabindex="-1" aria-labelledby="pedidoModal" aria-hidden="true">
+        <div class="modal fade" id="userImgUpdateModal" tabindex="-1" aria-labelledby="userImgUpdateModal" aria-hidden="true">
             <br>
             <div class="modal-dialog modal-dialog-centered modal-lg mx-xs-3 mx-sm-3 mx-md-auto mx-lg-auto" role="document"
                 style="align-content: center; margin: auto;">
                 <div class="modal-content card">
-                    <div class="modal-header">
-                        <h5 class="modal-title text-dark" id="exampleModalCenterTitle">Atualização da imagem do perfil</h5>
+                    <div class="modal-header bg-principle text-white">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Atualização da imagem do perfil</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="alert alert-danger d-none mx-4" id="updateUserImgFail"></div>
@@ -246,7 +244,7 @@
                             <div class="col-lg-12 mt-3" name="user-mensagem" id="user-mensagem">
                             </div>
                             <div class="col-lg-12 mt-3 justify-content-center">
-                                <button class="btn btn-success" type="submit" name="submeter">
+                                <button class="btn btn-success px-3 py-2 rounded-pill text-white" type="submit" name="submeter">
                                     <span>Atualizar</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
                             </div>
@@ -257,7 +255,7 @@
         </div>
     </div>
     @if (session('user')->user_tipo == 'cliente')
-        <button class="btn btn-principle text-white" id="addPedido" data-bs-toggle="modal"
+        <button class="btn btn-principle px-3 py-2 rounded-pill text-white" id="addPedido" data-bs-toggle="modal"
             data-bs-target="#pedidoModal">Fazer pedido</button>
     @endif
 @endsection

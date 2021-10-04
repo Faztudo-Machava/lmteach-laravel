@@ -34,6 +34,21 @@ class HomeController extends Controller
         return view('home.homePage', compact('listaEspecialidades','listaInstituicao', 'listaPedidos', 'numPedidos'));
     }
 
+    public function sobre(){
+        $listaEspecialidades = $this->objEspecialidade->all();
+        $listaInstituicao = $this->objInstituicao->all();
+        $listaPedidos = $this->objPedidos->all()->sortByDesc('created_at');
+        $numPedidos = $this->objPedidos->all()->count();
+        return view('about.sobre', compact('listaEspecialidades','listaInstituicao', 'listaPedidos', 'numPedidos'));
+    }
+    public function emprego(){
+        $listaEspecialidades = $this->objEspecialidade->all();
+        $listaInstituicao = $this->objInstituicao->all();
+        $listaPedidos = $this->objPedidos->all()->sortByDesc('created_at');
+        $numPedidos = $this->objPedidos->all()->count();
+        return view('job.emprego', compact('listaEspecialidades','listaInstituicao', 'listaPedidos', 'numPedidos'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *
