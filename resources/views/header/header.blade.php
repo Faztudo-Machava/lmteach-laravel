@@ -40,7 +40,7 @@
                                 <a href="{{ url('/usuario') }}" class="dropdown-item nav-link px-3 my-2"><i
                                         class="fas fa-user"></i> <small>Perfil</small>
                                     <a href="{{ route('logout') }}" class="dropdown-item nav-link px-3 my-2"><i
-                                            class="bi bi-box-arrow-in-left"></i> <small>Logout</small>
+                                            class="bi bi-box-arrow-in-left"></i> <small>Sair</small>
                                     </a>
                                 </a>
                             </div>

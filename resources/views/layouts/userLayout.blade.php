@@ -2,7 +2,7 @@
 @section('conteudo')
     <div class="d-flex" id="wrapper">
         {{-- Side bar starts here --}}
-        <div class="bg-principle" id="sidebar-wrapper">
+        <div class="bg-principle position-fixed" id="sidebar-wrapper">
             <div class="sidebar-heading pt-4 text-white text-uppercase">
                 <a href="{{ route('home') }}"
                     class="list-group-item list-group-item-action bg-transparent second-text active">
@@ -17,27 +17,30 @@
                 @if (session('user')->user_tipo === 'cliente')
                     <a href="{{ route('usuarioPedidos') }}"
                         class="list-group-item list-group-item-action bg-transparent text-white">
-                        <i class="bi bi-collection me-2"></i>Meus Pedidos
+                        <i class="bi bi-collection-fill me-2"></i>Meus Pedidos
                     </a>
                 @elseif (session('user')->user_tipo === 'especialista')
                     <a href="{{ route('usuarioPedidos') }}"
                         class="list-group-item list-group-item-action bg-transparent text-white">
-                        <i class="bi bi-collection me-2"></i> Trabalhos
+                        <i class="bi bi-collection-fill me-2"></i> Trabalhos
                     </a>
                     <a href="{{ route('especialistaPedidos') }}"
                         class="list-group-item list-group-item-action bg-transparent text-white">
-                        <i class="bi bi-collection me-2"></i>Meus Trabalhos
+                        <i class="bi bi-collection-fill me-2"></i>Meus Trabalhos
                     </a>
                     <a href="{{ route('ContactUs') }}"
                         class="list-group-item list-group-item-action bg-transparent text-white">
-                        <i class="bi bi-envelope-fill me-2"></i>Contacte nos
+                        <i class="bi bi-envelope-fill me-2"></i>Resolver pedido
                     </a>
                 @else
                     <a href="{{ route('usuarioPedidos') }}"
                         class="list-group-item list-group-item-action bg-transparent text-white">
-                        <i class="bi bi-collection me-2"></i> Trabalhos
+                        <i class="bi bi-collection-fill me-2"></i> Trabalhos
                     </a>
                 @endif
+                <a href="{{ route('logout') }}" class="list-group-item list-group-item-action bg-transparent text-white bottom-0 position-fixed">
+                    <i class="bi bi-box-arrow-in-left"></i> <small>Sair</small>
+                </a>
             </div>
 
         </div>
@@ -78,10 +81,10 @@
                             </span>
                         </a>
                     </li>
-                    <li class="nav-item">
+                    {{-- <li class="nav-item">
                         <a href="{{ route('logout') }}" role="button" class="nav-link text-center text-principle"><i class="fas fa-arrow-circle-left fs-5 mt-1"></i>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </nav>
             <div class="">
@@ -349,6 +352,12 @@
 
         toggleButton.onclick = function() {
             el.classList.toggle("toggled")
+            var marginleft = $('#page-content-wrapper').css('margin-left')
+            if(marginleft == '240px'){
+                $('#page-content-wrapper').css('margin-left', '0px')
+            } else{
+                $('#page-content-wrapper').css('margin-left', '15rem')
+            }
         }
 
         $('#updateImgModel').click(function(){

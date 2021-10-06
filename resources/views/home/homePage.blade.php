@@ -9,7 +9,7 @@
     @include('header/header')
 @endsection
 @section('conteudo')
-    <div class="pb-3 heroHome" style="background-image: url('{{ asset('img/Frame 15.svg') }}'); background-repeat: no-repeat;">
+    <div class="pb-3 heroHome" style="background-image: url('{{ asset('img/Frame 15.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
         <div class="container-lg text-white">
             <div class="row">
                 <div class="col-sm-12 col-lg-6 col-md-12">

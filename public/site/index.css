@@ -104,7 +104,7 @@ footer {
 }
 
 #sidebar-wrapper {
-    min-height: 100vh;
+    min-height: 100%;
     margin-left: -15rem;
     transition: margin 0.25s ease-out;
 }
@@ -119,6 +119,8 @@ footer {
 
 #page-content-wrapper {
     min-width: 100vw;
+    margin-left: 15rem;
+    transition: margin-left 0.25s ease-out;
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -157,6 +159,7 @@ footer {
     #page-content-wrapper {
         min-width: 0;
         width: 100%;
+        margin-left: 15rem;
     }
     #wrapper.toggled #sidebar-wrapper {
         margin-left: -15rem;
@@ -176,6 +179,9 @@ footer {
     .servicos {
         margin-top: 40px;
         margin-bottom: 40px;
+    }
+    #page-content-wrapper {
+        margin-left: 0px;
     }
 }
 
@@ -324,4 +330,8 @@ footer {
     .heroHome {
         height: 92vh;
     }
+}
+
+.mt-8 {
+    margin-top: 120%;
 }
