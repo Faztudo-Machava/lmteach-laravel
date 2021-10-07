@@ -7,7 +7,7 @@
         </div>
         <div class="row divServicos">
             <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                <div class="card p-4 h-transDown shadow">
+                <div class="card p-4 h-transDown shadow border-none">
                     <div class="img text-center m-2 my-4">
                         <img src="{{asset('img/education-cap.jpg')}}" alt="" class="img img-fluid card-img-service">
                     </div>
@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                <div class="card p-4 h-transDown shadow">
+                <div class="card p-4 h-transDown shadow border-none">
                     <div class="text-center m-2 my-4 img">
                         <img src="{{asset('img/couse-skills.jpg')}}" alt="" class="img img-fluid card-img-service">
                     </div>
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                <div class="card p-4 h-transDown shadow">
+                <div class="card p-4 h-transDown shadow border-none">
                     <div class="img text-center m-2 my-4">
                         <img src="{{asset('img/exams.jpg')}}" alt="" class="img img-fluid card-img-service">
                     </div>
@@ -58,7 +58,7 @@
                 </div>
             </div>
             <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
-                <div class="card p-4 h-transDown shadow">
+                <div class="card p-4 h-transDown shadow border-none">
                     <div class="img text-center m-2 my-4">
                         <img src="{{asset('img/education-cap-2.jpg')}}" alt="" class="img img-fluid card-img-service">
                     </div>

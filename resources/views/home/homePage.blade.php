@@ -10,10 +10,10 @@
 @endsection
 @section('conteudo')
     <div class="pb-3 heroHome" style="background-image: url('{{ asset('img/Frame 15.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
-        <div class="container-lg text-white">
-            <div class="row">
+        <div class="container text-white">
+            <div class="row d-flex justify-content-center">
                 <div class="col-sm-12 col-lg-6 col-md-12">
-                    <div class="mt-sm-0 mt-md-5 mt-lg-5 pt-5 mx-lg-0 mx-sm-4 mx-xs-4 mx-md-4 px-lg-0 px-sm-4 px-xs-0 px-md-4" data-aos="fade-up" data-aos-duration="400">
+                    <div class="mt-sm-0 mt-md-0 mt-lg-5 py-5 mx-xs-4 mx-sm-0 px-sm-0" data-aos="fade-up" data-aos-duration="400">
                         <h1 class="mb-4 heroTitle text-dark">Plataforma <br> de ajuda <br> academica</h1>
                         <div class="mb-4"></div>
                         <div class="row">
@@ -52,53 +52,52 @@
                 </div>
             </div>
             <div class="col-lg-6 shadow p-3" data-aos="fade-up" data-aos-duration="1000">
-                <div class="p-2 row shadow-sm m-2" data-aos="fade-up" data-aos-duration="1300">
-                    <div class="row justify-content-center col-lg-2">
-                        <p
-                            class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
+                <div class="p-2 row justify-content-center shadow-sm m-2" data-aos="fade-up" data-aos-duration="1300">
+                    <div class="row justify-content-center align-items-center col-lg-2">
+                        <p class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
                             1</p>
                     </div>
-                    <div class="col-lg row justify-content-center">
+                    <div class="col-lg row justify-content-center text-xs-center text-sm-center text-md-center text-lg-start">
                         <p>Faça o pedido através do formulário em nosso site</p>
                     </div>
                 </div>
                 <div class="py-3 text-center" data-aos="fade-up" data-aos-duration="1600">
                     <i class="bi bi-arrow-down text-principle"></i>
                 </div>
-                <div class=" p-2 row shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
-                    <div class="row justify-content-center col-lg-2">
+                <div class="p-2 row justify-content-center shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
+                    <div class="row justify-content-center align-items-center align-items-center col-lg-2">
                         <p
                             class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
                             2</p>
                     </div>
-                    <div class="col-lg">
-                        <p>Pague 50% do custo do trabalho. Saiba mais sobre as formas de pagamento</p> <a target="blank"
-                            href="https://chat.whatsapp.com/FjPNNWGVuJOBGnJ9A78U6u">aqui</a>
+                    <div class="col-lg row justify-content-center text-xs-center text-sm-center text-md-center text-lg-start">
+                        <p>Pague 50% do custo do trabalho. Saiba mais sobre as formas de pagamento <a target="blank"
+                            href="https://chat.whatsapp.com/FjPNNWGVuJOBGnJ9A78U6u">aqui</a></p>
                     </div>
                 </div>
                 <div class="py-3 text-center" data-aos="fade-up" data-aos-duration="1600">
                     <i class="bi bi-arrow-down text-principle"></i>
                 </div>
-                <div class="p-2 row shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
-                    <div class="row justify-content-center col-lg-2">
+                <div class="p-2 row justify-content-center shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
+                    <div class="row justify-content-center align-items-center col-lg-2">
                         <p
                             class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
                             3</p>
                     </div>
-                    <div class="row align-items-center col-lg">
+                    <div class="row justify-content-center text-xs-center text-sm-center text-md-center text-lg-start col-lg">
                         <p>Aguarde algum tempo para que nossos especialistas concluam seu pedido</p>
                     </div>
                 </div>
                 <div class="py-3 text-center" data-aos="fade-up" data-aos-duration="1600">
                     <i class="bi bi-arrow-down text-principle"></i>
                 </div>
-                <div class=" p-2 row shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
-                    <div class="row justify-content-center col-lg-2">
+                <div class="p-2 row justify-content-center shadow-sm m-2 mt-3" data-aos="fade-up" data-aos-duration="1600">
+                    <div class="row justify-content-center align-items-center col-lg-2">
                         <p
                             class="bg-principle text-white car-title row justify-content-center align-items-center rounded-pill">
                             4</p>
                     </div>
-                    <div class="col-lg">
+                    <div class="col-lg row justify-content-center text-xs-center text-sm-center text-md-center text-lg-start">
                         <p>Antes de receber o trabalho, deverá pagar os 50% restantes do custo do pedido.</p>
                     </div>
                 </div>
@@ -121,7 +120,7 @@
                             @foreach ($listaPedidos as $pedido)
                                 @if ($i < 4)
                                     <div class="col-sm-12 col-md-6 col-lg-auto mb-3">
-                                        <div class="card shadow jobsCard px-1" data-aos="fade-right" data-aos-duration="1200"
+                                        <div class="card shadow border-none jobsCard px-1" data-aos="fade-right" data-aos-duration="1200"
                                             data-aos-delay="{{ $delay }}">
                                             <div class="card-body">
                                                 <div class="mb-2">
@@ -217,7 +216,7 @@
                     <div class="modal-body">
                         <div class="alert alert-dismissible fade show ml-4 me-4 espError d-none" role="alert"
                             id="pedidoMsg"></div>
-                        <form class="card p-2" id="formPedido">
+                        <form class="card border-none p-2" id="formPedido">
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 p-3">

@@ -25,7 +25,7 @@
                                 $user = $pedido->find($pedido->pedi_cliente)->relUser;
                             @endphp --}}
                             <div class="col-sm-12 col-md-6 col-lg-auto mb-3 {{ $pedido->pedi_status }} pedidos">
-                                <div class="card shadow" data-aos="fade-right" data-aos-duration="1200"
+                                <div class="card shadow border-none" data-aos="fade-right" data-aos-duration="1200"
                                     data-aos-delay="{{ $delay }}">
                                     <div class="card-body">
                                         <div class="mb-2">

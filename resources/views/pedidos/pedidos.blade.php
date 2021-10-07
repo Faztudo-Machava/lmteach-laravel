@@ -24,7 +24,7 @@
                         @foreach ($listaPedidos as $pedido)
                             @if ($i < 8)
                                 <div class="col-sm-12 col-md-6 col-lg-auto mb-3">
-                                    <div class="card shadow jobsCard px-1" data-aos="fade-right" data-aos-duration="1200"
+                                    <div class="card shadow jobsCard px-1 border-none" data-aos="fade-right" data-aos-duration="1200"
                                         data-aos-delay="{{ $delay }}">
                                         <div class="card-body">
                                             <div class="mb-2">
