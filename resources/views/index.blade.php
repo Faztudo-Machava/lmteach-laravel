@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>LMTEACHER</title>
+    <link rel="shortcut icon" href="{{asset('img/logo.jpeg')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('site/bootstrap.css') }}">
     <link rel="stylesheet" href="{{ asset('site/index.css') }}">
     <link rel="stylesheet" href="{{ asset('site/css/catto.css') }}">
