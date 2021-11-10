@@ -24,22 +24,6 @@
                         <div class="row no-gutters align-items-center">
                             <div class="text-center col mr-2">
                                 <div class="text-xs font-weight-bold text-principle text-uppercase mb-1">
-                                    Pedidos pendentes</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $numPedidosPendentes }}</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="bi bi-collection-fill fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="text-center col mr-2">
-                                <div class="text-xs font-weight-bold text-principle text-uppercase mb-1">
                                     Pedidos em resolução</div>
                                 <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $numPedidosEm }}</div>
                             </div>
@@ -144,6 +128,10 @@
                                                     <span class="col-lg-6">{{ $pedido->pedi_tipo }}</span>
                                                 </div>
                                                 <div class="row mb-3">
+                                                    <span class="text-muted col-lg-6">Nível acadêmico </span>
+                                                    <span class="col-lg-6">{{ $pedido->pedi_nivel }}</span>
+                                                </div>
+                                                <div class="row mb-3">
                                                     <span class="text-muted col-lg-6">Assunto </span>
                                                     <span class="col-lg-6">{{ $pedido->pedi_assunto }}</span>
                                                 </div>
@@ -199,16 +187,16 @@
                                                 @endif
                                             </div>
                                         </div>
-                                        @if (session('user')->user_tipo === 'especialista' || session('user')->user_tipo === 'admin')
+                                        @if ( (session('user')->user_tipo === 'especialista' && $pedido->pedi_tipo == 'Monografia' ) || session('user')->user_tipo === 'admin')
                                             <div class="dropdown-divider"></div>
                                             <div class="my-4">
                                                 <div class="text-center">
                                                     @if ($pedido->pedi_status == 0)
-                                                    <p>Analise o trabalho antes de resolver</p>
-                                                    @endif
-                                                    <a href="/arquivoPedido/{{ $pedido->pedi_id }}"
-                                                        class="btn btn-principle text-white rounded-pill px-3 py-2"><span class="me-2">Baixar</span><i class="bi bi-download"></i>
+                                                    <p>Entre em contacto com a LMTGROUP para ter acesso ao trabalho</p>
+                                                    <a target="blank" href="https://wa.me/message/VSTXHOHVRHT2L1"
+                                                        class="btn btn-principle text-white rounded-pill px-3 py-2"><span class="me-2">Contactar</span>
                                                     </a>
+                                                    @endif
                                                 </div>
                                             </div>
                                         @endif

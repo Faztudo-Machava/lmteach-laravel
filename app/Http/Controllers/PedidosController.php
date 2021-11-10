@@ -64,6 +64,7 @@ class PedidosController extends Controller
                 $pedido->pedi_prazo = $request->input('pedi_prazo');
                 $pedido->pedi_cliente = session('user')->user_id;
                 $pedido->pedi_arquivo = $request->file('pedi_arquivo')->store('pedidos\\'.session('user')->email);
+                $pedido->pedi_nivel = $request->input('pedi_nivel');
                 $pedido->pedi_descricao = $request->input('pedi_descricao');
                 $pedido->pedi_assunto = $request->input('pedi_assunto');
                     if(! $pedido->save()){

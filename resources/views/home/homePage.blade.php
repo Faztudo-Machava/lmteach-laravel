@@ -167,6 +167,10 @@
                                                             <span class="col-lg-6">{{ $pedido->pedi_tipo }}</span>
                                                         </div>
                                                         <div class="row mb-3">
+                                                            <span class="text-muted col-lg-6">Nível acadêmico </span>
+                                                            <span class="col-lg-6">{{ $pedido->pedi_nivel }}</span>
+                                                        </div>
+                                                        <div class="row mb-3">
                                                             <span class="text-muted col-lg-6">Assunto </span>
                                                             <span
                                                                 class="col-lg-6">{{ $pedido->pedi_assunto }}</span>
@@ -220,20 +224,20 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 p-3">
-                                    <select class="form-control pl-3" name="pedi_tipo" id="pedi_tipo" required>
-                                        <option class="form-control" value="">Tipo de trabalho</option>
-                                        <option class="form-control">Monografia</option>
-                                        <option class="form-control">Trabalho de Curso</option>
-                                        <option class="form-control">Trabalho de Mestrado</option>
-                                        <option class="form-control">Teste</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 p-3">
                                     <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
                                         <option class="form-control" value="">Nível acadêmico</option>
                                         <option class="form-control">Médio</option>
                                         <option class="form-control">Técnico profissional</option>
                                         <option class="form-control">Superior</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 p-3">
+                                    <select class="form-control pl-3" name="pedi_tipo" id="pedi_tipo" required>
+                                        <option class="form-control" value="">Tipo de trabalho</option>
+                                        <option id="monografia" class="form-control">Monografia</option>
+                                        <option id="trabCurso" class="form-control">Trabalho de Curso</option>
+                                        <option id="trabMestrado" class="form-control">Trabalho de Mestrado</option>
+                                        <option id="teste" class="form-control">Teste</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-6 p-3">
@@ -255,14 +259,6 @@
                                     <input type="text" name="pedi_assunto" id="pedi_assunto"
                                         class="form-control pl-3 inputs" placeholder="Disciplina (Ex: Informatica)"
                                         required>
-                                </div>
-                                <div class="col-lg-6 p-3">
-                                    <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
-                                        <option class="form-control" value="">Nível acadêmico</option>
-                                        <option class="form-control">Médio</option>
-                                        <option class="form-control">Técnico profissional</option>
-                                        <option class="form-control">Superior</option>
-                                    </select>
                                 </div>
                                 <div class="col-lg-6 p-3">
                                     <div class="form-group">
@@ -301,11 +297,47 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="cadMensagem" tabindex="-1" aria-labelledby="cadMensagem" aria-hidden="true">
+        <br>
+        <div class="modal-dialog modal-dialog-centered modal-lg mx-xs-3 mx-sm-3 mx-md-auto mx-lg-auto" role="document"
+            style="align-content: center; margin: auto;">
+            <div class="modal-content card border-none">
+                <div class="modal-header @php
+                    if (session('sucesso')) {
+                        if(session('sucesso') == true){
+                            echo 'bg-success';
+                        } else {
+                            echo 'bg-danger';
+                        }
+                    }
+                @endphp text-white">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Mensagem</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="text-center col mr-2">
+                            <div class="text-xl text-success text-uppercase mb-1">
+                                <i class="bi bi-check2-circle fa-2x text-success"></i></div>
+                            <div class="h5 mb-0 text-gray-800">{{ session('mensagem') }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('footer')
     @include('footer/footer')
 @endsection
 @section('js')
+    @if (session('mensagem'))
+    <script>
+        $(function() {
+            $('#cadMensagem').modal('toggle');
+        })
+    </script>
+    @endif
     <script src="{{ asset('site/js/user.js') }}"></script>
     <script src="{{ asset('site/js/contact.js') }}"></script>
 @endsection

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ConfirmarEspecialistaMail;
 use App\Mail\ContactMail;
 use App\Mail\VerifyMail;
 use App\Models\especialidade;
@@ -14,6 +15,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -38,7 +40,9 @@ class UserController extends Controller
     {   
         $listaEspecialidades = $this->objEspecialidade->all();
         $listaInstituicao = $this->objInstituicao->all();
-        return view('user.userDash', compact('listaInstituicao', 'listaEspecialidades'));
+        $instituicao = $this->objInstituicao->all()->where('inst_id', '=', session('user')->user_instituicao)->first();
+        return view('user.userDash', compact('listaInstituicao', 'listaEspecialidades', 'instituicao'));
+        
     }
 
     public function indexPedidos(){
@@ -49,11 +53,27 @@ class UserController extends Controller
             $numPedidosResolvido = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->where('pedi_status','=', 2)->count();
             $numPedidosEm = $this->objPedidos->all()->where('pedi_cliente','=',session('user')->user_id)->where('pedi_status','=', 1)->count();
         } else{
-            $listaPedidos = $this->objPedidos->all()->sortByDesc('pedi_prazo');
-            $numPedidos = $this->objPedidos->all()->count();
-            $numPedidosPendentes = $this->objPedidos->all()->where('pedi_status','=', 0)->count();
-            $numPedidosResolvido = $this->objPedidos->all()->where('pedi_status','=', 2)->count();
-            $numPedidosEm = $this->objPedidos->all()->where('pedi_status','=', 1)->count();
+            if(session('user')->user_tipo == 'admin'){
+                $listaPedidos = $this->objPedidos->all()->sortByDesc('pedi_prazo');
+                $numPedidos = $this->objPedidos->all()->count();
+                $numPedidosPendentes = $this->objPedidos->all()->where('pedi_status','=', 0)->count();
+                $numPedidosResolvido = $this->objPedidos->all()->where('pedi_status','=', 2)->count();
+                $numPedidosEm = $this->objPedidos->all()->where('pedi_status','=', 1)->count();
+            } else{
+                if(session('user')->esp_nivel == 'Médio' || session('user')->esp_nivel == 'Técnico profissional'){
+                    $listaPedidos = $this->objPedidos->all()->where('pedi_nivel','=', session('user')->esp_nivel)->sortByDesc('pedi_prazo');
+                    $numPedidos = $this->objPedidos->all()->where('pedi_nivel','=', session('user')->esp_nivel)->count();
+                    $numPedidosPendentes = $this->objPedidos->all()->where('pedi_nivel','=', session('user')->esp_nivel)->where('pedi_status','=', 0)->count();
+                    $numPedidosResolvido = $this->objPedidos->all()->where('pedi_nivel','=', session('user')->esp_nivel)->where('pedi_status','=', 2)->count();
+                    $numPedidosEm = $this->objPedidos->all()->where('pedi_status','=', 1)->count();
+                } else{
+                    $listaPedidos = $this->objPedidos->all()->sortByDesc('pedi_prazo');
+                    $numPedidos = $this->objPedidos->all()->count();
+                    $numPedidosPendentes = $this->objPedidos->all()->where('pedi_status','=', 0)->count();
+                    $numPedidosResolvido = $this->objPedidos->all()->where('pedi_status','=', 2)->count();
+                    $numPedidosEm = $this->objPedidos->all()->where('pedi_status','=', 1)->count();
+                }
+            }
         }
         $listaEspecialidades = $this->objEspecialidade->all();
         $listaInstituicao = $this->objInstituicao->all();
@@ -97,6 +117,7 @@ class UserController extends Controller
         $emailSend = $request->input('cli_email');
         $utilizador->password = Hash::make($request->input('cli_senha'));
         $utilizador->user_tipo = 'cliente';
+        $utilizador->user_telefone = $request->input('cli_mob');
         $utilizador->verification_code = sha1(time());
         //$utilizador->user_img = $request->file('cli_img')->store('usuarios/'.$emailSend);
         $utilizador->user_img = "";
@@ -113,11 +134,11 @@ class UserController extends Controller
                 'verification_code' => $utilizador->verification_code
             ];
             //session(['user' => $utilizador]);
-            if(!!Mail::to($emailSend)->send(new VerifyMail($detalhes))){
-                $addCliente['mensagem'] = 'Houve algum problema no processo de envio de email de confimação.';
-                $addCliente['success'] = false;
-                return response()->json($addCliente);
-            }
+            // if(!!Mail::to($emailSend)->send(new VerifyMail($detalhes))){
+            //     $addCliente['mensagem'] = 'Houve algum problema no processo de envio de email de confimação.';
+            //     $addCliente['success'] = false;
+            //     return response()->json($addCliente);
+            // }
             $addCliente['mensagem'] = 'Cadastrado com sucesso, porfavor confirme o seu email.';
             $addCliente['success'] = true;
             return response()->json($addCliente);
@@ -125,8 +146,6 @@ class UserController extends Controller
         $addCliente['mensagem'] = 'Houve um problema no seu registo.';
         $addCliente['success'] = false;
         return response()->json($addCliente);
-        
-        
     }
 
      /**
@@ -143,6 +162,8 @@ class UserController extends Controller
         $utilizador->user_telefone = $request->input('esp_telefone');
         $utilizador->user_especialidade = $request->input('esp_especialidade');
         $utilizador->user_instituicao = $request->input('esp_instituicao');
+        $utilizador->esp_nivel = $request->input('esp_nivel');
+        $utilizador->user_diploma = $request->file('user_diploma')->store('usuarios/'.$utilizador->email);
         $utilizador->password = Hash::make($request->input('esp_senha'));
         $utilizador->user_tipo = 'especialista';
         $utilizador->verification_code = sha1(time());
@@ -262,6 +283,19 @@ class UserController extends Controller
         return response()->json($upEspecialista);
     }
 
+    public function updateDoc(Request $request){
+        $usuario_id = session('user')->user_id;
+        $doc = $request->file('user_diploma')->store('usuarios\\'.session('user')->email);
+        $resultado = DB::table('users')->where('user_id', $usuario_id)->update(['user_diploma' => $doc]);
+        if($resultado){
+            session('user')->user_diploma = $doc;
+            $detalhes = session('user');
+            Mail::to("lmteach.inc@gmail.com")->send(new ConfirmarEspecialistaMail($detalhes));
+            return redirect()->route('usuario')->with(['mensagem' => 'Documento atualizado com sucesso, aguarde com que a nossa equipe faça a validação do documento/certificado, a notificação de confirmação será enviada para o seu email', 'sucesso' => true]);
+        }
+        return redirect()->route('usuario')->with(['mensagem' => 'Houve algum problema no processo de actualização', 'sucesso' => false]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *
@@ -307,5 +341,33 @@ class UserController extends Controller
         $resposta['success'] = false;
         $resposta['mensagem'] = 'Esse utilizador não encontrado.';
         return response()->json($resposta);
+    }
+
+    public function certificado()
+    {
+        $verification_code = \Illuminate\Support\Facades\Request::get('code');
+        $user = User::where(['verification_code' => $verification_code])->first();
+        return Storage::download($user->user_diploma);
+    }
+
+    public function actualizarNivel(Request $request){
+        $usuario_id = session('user')->user_id;
+        $nivel = $request->input('esp_nivel');
+        $resultado = DB::table('users')->where('user_id', $usuario_id)->update(['esp_nivel' => $nivel]);
+        if($resultado){
+            session('user')->esp_nivel = $nivel;
+            return redirect()->route('usuario');
+        }
+        return redirect()->route('usuario')->withErrors('Houve um problema');
+    }
+    public function updateCelular(Request $request){
+        $usuario_id = session('user')->user_id;
+        $celular = $request->input('contacto');
+        $resultado = DB::table('users')->where('user_id', $usuario_id)->update(['user_telefone' => $celular]);
+        if($resultado){
+            session('user')->user_telefone = $celular;
+            return redirect()->route('usuario');
+        }
+        return redirect()->route('usuario')->withErrors('Houve um problema');
     }
 }

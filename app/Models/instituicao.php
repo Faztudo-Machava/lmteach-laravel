@@ -10,4 +10,8 @@ class instituicao extends Model
     use HasFactory;
 
     protected $table = 'instituicaos';
+
+    public function relUser(){
+        return $this->hasMany('App\Models\User', 'user_instituicao', 'inst_id');
+    }
 }

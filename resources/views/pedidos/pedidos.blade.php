@@ -71,6 +71,10 @@
                                                         <span class="col-lg-6">{{ $pedido->pedi_tipo }}</span>
                                                     </div>
                                                     <div class="row mb-3">
+                                                        <span class="text-muted col-lg-6">Nível acadêmico </span>
+                                                        <span class="col-lg-6">{{ $pedido->pedi_nivel }}</span>
+                                                    </div>
+                                                    <div class="row mb-3">
                                                         <span class="text-muted col-lg-6">Assunto </span>
                                                         <span
                                                             class="col-lg-6">{{ $pedido->pedi_assunto }}</span>
@@ -123,20 +127,20 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 p-3">
-                                    <select class="form-control pl-3" name="pedi_tipo" id="pedi_tipo" required>
-                                        <option class="form-control" value="">Tipo de trabalho</option>
-                                        <option class="form-control">Monografia</option>
-                                        <option class="form-control">Trabalho de Curso</option>
-                                        <option class="form-control">Trabalho de Mestrado</option>
-                                        <option class="form-control">Teste</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 p-3">
                                     <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
                                         <option class="form-control" value="">Nível acadêmico</option>
                                         <option class="form-control">Médio</option>
                                         <option class="form-control">Técnico profissional</option>
                                         <option class="form-control">Superior</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 p-3">
+                                    <select class="form-control pl-3" name="pedi_tipo" id="pedi_tipo" required>
+                                        <option class="form-control" value="">Tipo de trabalho</option>
+                                        <option id="monografia" class="form-control">Monografia</option>
+                                        <option id="trabCurso" class="form-control">Trabalho de Curso</option>
+                                        <option id="trabMestrado" class="form-control">Trabalho de Mestrado</option>
+                                        <option id="teste" class="form-control">Teste</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-6 p-3">

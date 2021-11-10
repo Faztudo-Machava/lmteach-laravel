@@ -44,7 +44,8 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    // public function relPedido(){
-    //     return $this->hasMany('App\Models\pedidos','pedi_cliente');
-    // }
+    public function relInstituicao(){
+        return $this->hasOne('App\Models\Instituicao', 'inst_id', 'user_instituicao');
+        //return $this->hasOne('App\Models\Istituicao','user_instituicao');
+    }
 }

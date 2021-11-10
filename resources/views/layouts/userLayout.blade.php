@@ -21,15 +21,27 @@
                     </a>
                 @elseif (session('user')->user_tipo === 'especialista')
                     <a href="{{ route('usuarioPedidos') }}"
-                        class="list-group-item list-group-item-action bg-transparent text-white">
+                        class="@php
+                            if(!!session('user')->esp_nivel && session('user')->is_confirmed == 0){
+                                echo 'disabled';
+                            }
+                        @endphp list-group-item list-group-item-action bg-transparent text-white">
                         <i class="bi bi-collection-fill me-2"></i> Trabalhos
                     </a>
                     <a href="{{ route('especialistaPedidos') }}"
-                        class="list-group-item list-group-item-action bg-transparent text-white">
+                        class="@php
+                            if(!!session('user')->esp_nivel && session('user')->is_confirmed == 0){
+                                echo 'disabled';
+                            }
+                        @endphp list-group-item list-group-item-action bg-transparent text-white">
                         <i class="bi bi-collection-fill me-2"></i>Meus Trabalhos
                     </a>
                     <a href="{{ route('ContactUs') }}"
-                        class="list-group-item list-group-item-action bg-transparent text-white">
+                        class="@php
+                            if(!!session('user')->esp_nivel && session('user')->is_confirmed == 0){
+                                echo 'disabled';
+                            }
+                        @endphp list-group-item list-group-item-action bg-transparent text-white">
                         <i class="bi bi-envelope-fill me-2"></i>Resolver pedido
                     </a>
                 @else
@@ -38,7 +50,8 @@
                         <i class="bi bi-collection-fill me-2"></i> Trabalhos
                     </a>
                 @endif
-                <a href="{{ route('logout') }}" class="list-group-item list-group-item-action bg-transparent text-white bottom-0 position-fixed">
+                <a href="{{ route('logout') }}"
+                    class="list-group-item list-group-item-action bg-transparent text-white bottom-0 position-fixed">
                     <i class="bi bi-box-arrow-in-left"></i> <small>Sair</small>
                 </a>
             </div>
@@ -64,19 +77,18 @@
                 <ul class="ms-auto mb-2 d-flex flex-nowrap">
                     <li class="nav-item">
                         <a href="#" class="nav-link img-perfil" role="button">
-                            <span
-                                class="">
+                            <span class="">
                                 @if (session('user')->user_tipo == 'admin')
-                                        <img src="
-                                {{ asset('img/avatar.svg') }}" class="img-fluid rounded-pill img-user" alt="">
-                            @else
-                                @if (session('user')->user_img)
-                                    <img src="{{ asset('storage/' . session('user')->user_img) }}"
-                                        class="img-fluid rounded-pill img-user" alt="">
+                                    <img src="
+                                    {{ asset('img/avatar.svg') }}" class="img-fluid rounded-pill img-user" alt="">
                                 @else
-                                    <img src="{{ asset('img/avatar.svg') }}" class="img-fluid rounded-pill img-user"
-                                        alt="">
-                                @endif
+                                    @if (session('user')->user_img)
+                                        <img src="{{ asset('storage/' . session('user')->user_img) }}"
+                                            class="img-fluid rounded-pill img-user" alt="">
+                                    @else
+                                        <img src="{{ asset('img/avatar.svg') }}" class="img-fluid rounded-pill img-user"
+                                            alt="">
+                                    @endif
                                 @endif
                             </span>
                         </a>
@@ -87,13 +99,13 @@
                     </li> --}}
                 </ul>
             </nav>
-            <div class="">
-                <div class=" container-fluid px-4">
-                @yield('content')
+            <div class="bg-light">
+                <div class="container-fluid px-4">
+                    @yield('content')
+                </div>
             </div>
         </div>
-    </div>
-    {{-- Page content end here --}}
+        {{-- Page content end here --}}
     </div>
     <div class="modais">
         <div class="modal fade" id="pedidoModal" tabindex="-1" aria-labelledby="pedidoModal" aria-hidden="true">
@@ -112,20 +124,20 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 p-3">
-                                    <select class="form-control pl-3" name="pedi_tipo" id="pedi_tipo" required>
-                                        <option class="form-control" value="">Tipo de trabalho</option>
-                                        <option class="form-control">Monografia</option>
-                                        <option class="form-control">Trabalho de Curso</option>
-                                        <option class="form-control">Trabalho de Mestrado</option>
-                                        <option class="form-control">Teste</option>
-                                    </select>
-                                </div>
-                                <div class="col-lg-6 p-3">
                                     <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
                                         <option class="form-control" value="">Nível acadêmico</option>
                                         <option class="form-control">Médio</option>
                                         <option class="form-control">Técnico profissional</option>
                                         <option class="form-control">Superior</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-6 p-3">
+                                    <select class="form-control pl-3" name="pedi_tipo" id="pedi_tipo" required>
+                                        <option class="form-control" value="">Tipo de trabalho</option>
+                                        <option id="monografia" class="form-control">Monografia</option>
+                                        <option id="trabCurso" class="form-control">Trabalho de Curso</option>
+                                        <option id="trabMestrado" class="form-control">Trabalho de Mestrado</option>
+                                        <option id="teste" class="form-control">Teste</option>
                                     </select>
                                 </div>
                                 <div class="col-lg-6 p-3">
@@ -175,7 +187,9 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" id="submeter" class="btn btn-sm btn-principle px-3 py-2 rounded-pill text-white"> <span>Submeter</span> <img class="img d-none load"
+                                <button type="submit" id="submeter"
+                                    class="btn btn-sm btn-principle px-3 py-2 rounded-pill text-white">
+                                    <span>Submeter</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt=""> </button>
                             </div>
                         </form>
@@ -187,7 +201,7 @@
             <br>
             <div class="modal-dialog modal-dialog-centered modal-lg mx-xs-3 mx-sm-3 mx-md-auto mx-lg-auto" role="document"
                 style="align-content: center; margin: auto;">
-                <div class="modal-content card">
+                <div class="modal-content card border-none">
                     <div class="modal-header bg-principle text-white">
                         <h5 class="modal-title" id="exampleModalCenterTitle">Atualização de dados</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -214,7 +228,8 @@
                             <div class="col-lg-12 mt-3" name="user-mensagem" id="user-mensagem">
                             </div>
                             <div class="col-lg-12 mt-3 justify-content-center">
-                                <button class="btn btn-success px-3 py-2 rounded-pill text-white" type="submit" name="submeter">
+                                <button class="btn btn-success px-3 py-2 rounded-pill text-white" type="submit"
+                                    name="submeter">
                                     <span>Atualizar</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
                             </div>
@@ -223,11 +238,43 @@
                 </div>
             </div>
         </div>
-        <div class="modal fade" id="userImgUpdateModal" tabindex="-1" aria-labelledby="userImgUpdateModal" aria-hidden="true">
+
+        <div class="modal fade" id="certiMensagem" tabindex="-1" aria-labelledby="certiMensagem" aria-hidden="true">
             <br>
             <div class="modal-dialog modal-dialog-centered modal-lg mx-xs-3 mx-sm-3 mx-md-auto mx-lg-auto" role="document"
                 style="align-content: center; margin: auto;">
-                <div class="modal-content card">
+                <div class="modal-content card border-none">
+                    <div class="modal-header @php
+                        if (session('sucesso')) {
+                            if(session('sucesso') == true){
+                                echo 'bg-success';
+                            } else {
+                                echo 'bg-danger';
+                            }
+                        }
+                    @endphp text-white">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Mensagem</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="text-center col mr-2">
+                                <div class="text-xl text-success text-uppercase mb-1">
+                                    <i class="bi bi-check2-circle fa-2x text-success"></i></div>
+                                <div class="h5 mb-0 text-gray-800">{{ session('mensagem') }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="userImgUpdateModal" tabindex="-1" aria-labelledby="userImgUpdateModal"
+            aria-hidden="true">
+            <br>
+            <div class="modal-dialog modal-dialog-centered modal-lg mx-xs-3 mx-sm-3 mx-md-auto mx-lg-auto" role="document"
+                style="align-content: center; margin: auto;">
+                <div class="modal-content card border-none">
                     <div class="modal-header bg-principle text-white">
                         <h5 class="modal-title" id="exampleModalCenterTitle">Atualização da imagem do perfil</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -247,11 +294,42 @@
                             <div class="col-lg-12 mt-3" name="user-mensagem" id="user-mensagem">
                             </div>
                             <div class="col-lg-12 mt-3 justify-content-center">
-                                <button class="btn btn-success px-3 py-2 rounded-pill text-white" type="submit" name="submeter">
+                                <button class="btn btn-success px-3 py-2 rounded-pill text-white" type="submit"
+                                    name="submeter">
                                     <span>Atualizar</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="infoImportant" tabindex="-1" aria-labelledby="infoImportant" aria-hidden="true">
+            <br>
+            <div class="modal-dialog modal-dialog-centered modal-lg mx-xs-3 mx-sm-3 mx-md-auto mx-lg-auto border-none"
+                role="document" style="align-content: center; margin: auto;">
+                <div class="modal-content card border-none">
+                    <div class="modal-header bg-info text-white">
+                        <h5 class="modal-title" id="exampleModalCenterTitle">Informação</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="">A LMTGROUP informa aos utilizadores que, foram levadas a cabo algumas
+                            actualizações dentro da plataforma para garantir qualidade dos trabalhos e segurança dos
+                            utilizadores da plataforma.</p>
+                        <br>
+                        <h5>Actualizações feitas</h5>
+                        <div>
+                            1. Foi adicionado um espaço para que os especialista anexem um documento que comprova a sua
+                            especialidade ou que comprova a identidade do especialista.
+                            <br>
+                            2. Foi adicionado um espaço para que os especialista coloque o seu nivel academico.
+                        </div>
+                        <br>
+                        <h3>NOTA</h3>
+                        As funcionalidades de trabalhos, meus trabalhos e resolver pedido campos ficarão bloqueiadas até que
+                        o especialista actualize o seu nível acadêmico e anexe o documento requerido no ponto 1.
                     </div>
                 </div>
             </div>
@@ -263,6 +341,20 @@
     @endif
 @endsection
 @section('js')
+    @if (session('user')->is_confirmed == 0 && session('user')->user_tipo == 'especialista')
+        <script>
+            $(function() {
+                $('#infoImportant').modal('toggle');
+            })
+        </script>
+    @endif
+    @if (session('mensagem'))
+        <script>
+            $(function() {
+                $('#certiMensagem').modal('toggle');
+            })
+        </script>
+    @endif
     <script>
         $(function() {
             $('#atualizarUser').submit(function(e) {
@@ -310,9 +402,11 @@
                     },
                     success: function(response) {
                         if (response.success === true) {
-                            $('#updateUserImgDone').removeClass('d-none').html(response.mensagem)
+                            $('#updateUserImgDone').removeClass('d-none').html(response
+                                .mensagem)
                         } else {
-                            $('#updateUserImgFail').removeClass('d-none').html(response.mensagem)
+                            $('#updateUserImgFail').removeClass('d-none').html(response
+                                .mensagem)
                         }
                         console.log(response)
                     }
@@ -353,15 +447,15 @@
         toggleButton.onclick = function() {
             el.classList.toggle("toggled")
             var marginleft = $('#page-content-wrapper').css('margin-left')
-            if(marginleft == '240px'){
+            if (marginleft == '240px') {
                 $('#page-content-wrapper').css('margin-left', '0px')
-            } else{
+            } else {
                 $('#page-content-wrapper').css('margin-left', '15rem')
             }
         }
 
-        $('#updateImgModel').click(function(){
-           $('#userImgUpdateModal').modal('toggle');
+        $('#updateImgModel').click(function() {
+            $('#userImgUpdateModal').modal('toggle');
         })
     </script>
 @endsection

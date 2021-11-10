@@ -1,6 +1,43 @@
+$('#pedi_nivel').change(function() {
+    var nivel = $('#pedi_nivel').val()
+    if (nivel == '') {
+        $('#monografia').removeClass('d-none')
+        $('#trabCurso').removeClass('d-none')
+        $('#trabMestrado').removeClass('d-none')
+        $('#teste').removeClass('d-none')
+    } else if (nivel == 'Médio') {
+        $('#monografia').addClass('d-none')
+        $('#trabCurso').addClass('d-none')
+        $('#trabMestrado').addClass('d-none')
+        $('#teste').removeClass('d-none')
+    } else if (nivel == 'Técnico profissional') {
+        $('#monografia').addClass('d-none')
+        $('#trabCurso').removeClass('d-none')
+        $('#trabMestrado').addClass('d-none')
+        $('#teste').removeClass('d-none')
+    } else {
+        $('#monografia').removeClass('d-none')
+        $('#trabCurso').removeClass('d-none')
+        $('#trabMestrado').removeClass('d-none')
+        $('#teste').removeClass('d-none')
+    }
+})
+
 $('#btnCadReg').click(function() {
     $('#login').modal('hide');
     $('#cadUsers').modal('toggle');
+})
+$('#btnTermos').click(function() {
+    $('#cadUsers').modal('hide');
+    $('#termosModal').modal('toggle');
+})
+$('#termosEsp').click(function() {
+    $('#cadUsers').modal('hide');
+    $('#termosEspModal').modal('toggle');
+})
+$('#termosCompro').click(function() {
+    $('#cadUsers').modal('hide');
+    $('#termosCompromisso').modal('toggle');
 })
 $('#turnEspec').click(function() {
     $('#cadUsers').modal('toggle');
@@ -110,8 +147,10 @@ $(function() {
             },
             success: function(response) {
                 if (response.success === true) {
+                    $('.espError').addClass('alert-success').html(response.mensagem)
                     $('.espError').removeClass('d-none').html(response.mensagem)
                 } else {
+                    $('.espError').addClass('alert-danger').html(response.mensagem)
                     $('.espError').removeClass('d-none').html(response.mensagem)
                 }
             }
@@ -272,6 +311,7 @@ next2.onclick = function() {
     var instituicao = $('#esp_instituicao').val()
     var especialidade = $('#esp_especialidade').val()
     var estado = $('#esp_estado').val()
+    var nivel = $('#esp_nivel').val()
     if (instituicao == "") {
         $('#esp_instituicao').focus();
         $('#esp_instituicao').css('border-color', 'red');
@@ -280,10 +320,10 @@ next2.onclick = function() {
         $('#esp_especialidade').focus();
         $('#esp_especialidade').css('border-color', 'red');
         $('#esp_especialidade').addClass('bounce');
-    } else if (estado == "") {
-        $('#esp_estado').focus();
-        $('#esp_estado').css('border-color', 'red');
-        $('#esp_estado').addClass('bounce');
+    } else if (nivel == "") {
+        $('#esp_nivel').focus();
+        $('#esp_nivel').css('border-color', 'red');
+        $('#esp_nivel').addClass('bounce');
     } else {
         $('#esp_instituicao').css('border-color', '');
         $('#esp_instituicao').removeClass('bounce');

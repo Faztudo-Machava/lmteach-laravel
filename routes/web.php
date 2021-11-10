@@ -41,10 +41,11 @@ Route::get('/pedidos', [PedidosController::class, 'index'])->name('pedidos');
 Route::post('/enviarEmail', [ContactController::class, 'enviarEmail'])->name('enviarEmail');
 Route::get('cadastrarAdmin', [UserController::class, 'cadAdmin']);
 Route::get('/verificar',[AuthController::class, 'verificarUser'])->name('verificarUser');
+Route::get('/confirmar',[AuthController::class, 'confirmarEspecialista'])->name('confirmarEspecialista');
+Route::get('/certificado',[UserController::class, 'certificado'])->name('baixarCertificado');
 Route::post('/resetPassword',[ContactController::class, 'emailPassreset'])->name('resetPassword');
 Route::get('/resetPasswordPage',[AuthController::class, 'passResetPage'])->name('resetPasswordPage');
 Route::get('/emailReset',[AuthController::class, 'reset'])->name('emailReset');
-
 Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/resetPasswordMain', [UserController::class, 'resetPassword'])->name('resetPasswordMain');
 Route::post('/addPedido', [PedidosController::class, 'store'])->name('fazerPedido');
@@ -52,6 +53,9 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::get('/usuario', [UserController::class, 'index'])->name('usuario');
     Route::get('/usuarioPedidos', [UserController::class, 'indexPedidos'])->name('usuarioPedidos');
     Route::get('/especialistaPedidos', [UserController::class, 'indexEspecialista'])->name('especialistaPedidos')->middleware(verificarEspecialista::class);
+    Route::post('/updateCelular', [UserController::class, 'updateCelular'])->name('updateCelular');
+    Route::post('/updateNivel', [UserController::class, 'actualizarNivel'])->name('updateNivel')->middleware(verificarEspecialista::class);
+    Route::post('/updateDoc', [UserController::class, 'updateDoc'])->name('updateDoc')->middleware(verificarEspecialista::class);
     Route::get('resolver/{pedido_id}', [PedidosController::class, 'resolver'])->name('resolver')->middleware(verificarEspecialista::class);
     Route::get('arquivoPedido/{id}', [PedidosController::class, 'show']);
     Route::get('arquivoResolvido/{id}', [PedidosController::class, 'resolucao'])->middleware(verificarCliente::class);
@@ -75,7 +79,7 @@ Route::get('/clear-cache', function() {
     $exitCode = Artisan::call('view:clear');
     $exitCode = Artisan::call('clear-compiled');
     $exitCode = Artisan::call('config:cache');
-    return 'DONE'; //Return anything
+    return 'Concluido'; //Return anything
 });
 
 Route::get('/storage', function(){

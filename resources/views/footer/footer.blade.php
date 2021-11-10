@@ -178,9 +178,9 @@
                         <h3 class="h4">LMTEACHER</h3>
                     </div>
                     <div class="">
-                        <p class="fw-bold text-light">+258-86-798-90-97</p>
+                        <p class="fw-bold text-light">+258 858 800 406</p>
                         <p class="text-light">Centro de Ajuda</p>
-                        <p class="fw-bold text-light">+258-86-798-90-97</p>
+                        <p class="fw-bold text-light">+258 858 800 406</p>
                         <p class="text-light">Suporte ao Cliente</p>
                         <br>
                     </div>
@@ -258,7 +258,7 @@
                     <p class=""> <span class="text-principle"><i class="bi bi-envelope"></i> E-mail:</span> lmteach.inc@gmail.com</p>
                 </div>
                 <div class="my-2">
-                    <p class=""> <span class="text-principle"><i class="bi bi-phone"></i>Telefone:</span> +258 867989097</p>
+                    <p class=""> <span class="text-principle"><i class="bi bi-phone"></i>Telefone:</span> +258 858 800 406</p>
                 </div>
             </div>
         </div>
