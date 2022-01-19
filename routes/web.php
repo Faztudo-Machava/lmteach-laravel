@@ -85,3 +85,5 @@ Route::get('/clear-cache', function() {
 Route::get('/storage', function(){
     $exitCode = Artisan::call('storage:link');
 });
+
+Route::view('contactoMailTeste', 'emails.contactMail');

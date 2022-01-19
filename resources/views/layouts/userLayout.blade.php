@@ -458,4 +458,5 @@
             $('#userImgUpdateModal').modal('toggle');
         })
     </script>
+    <script src="{{ asset('site/js/user.js') }}"></script>
 @endsection
