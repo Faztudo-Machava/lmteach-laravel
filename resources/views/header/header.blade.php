@@ -1,10 +1,11 @@
 <!-- ======= Header ======= -->
 <header class="header">
     <div class="">
-        <nav class=" navbar navbar-expand-lg navbar-light py-2 px-4 shadow-sm bg-light">
+        <nav class=" navbar navbar-expand-lg navbar-light py-4 px-4 bg-white">
             <div class="container">
                 <div class="d-flex align-items-center">
-                    <a class="text-dark font-weight-bold h5" href="{{ url('/') }}">LMTeacher</a>
+                    <a class="text-dark font-weight-bold h5" href="{{ url('/') }}">LM<span
+                            class="" style="color: #AB6AD3;">Teacher</span></a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarHomeContent" aria-controls="navbarHomeContent" aria-expanded="false"
@@ -13,55 +14,53 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarHomeContent">
-                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#servicos">Serviços</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ route('sobre') }}">Sobre</a>
-                        </li>
-                        <li class="nav-item"><a class="nav-link" href="">Ajuda</a></li>
-                        @if (session('user'))
-
-                            <li class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" id="navdropdown" role="button"
-                                    data-toggle="dropdown">
-                                    @if (session('user')->user_tipo == 'admin')
-                                        <img src="{{ asset('img/avatar.svg') }}"
-                                            class="img-fluid rounded-pill img-user" alt="">
-                                    @else
-                                        @if (session('user')->user_img)
-                                            <img src="{{ asset('storage/' . session('user')->user_img) }}"
-                                                class="img-fluid rounded-pill img-user" alt="">
+                    <div class="d-lg-flex justify-content-lg-between" style="width: 100%;">
+                        <div></div>
+                        <div>
+                            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                                <li class="nav-item"><a class="nav-link text-black" href="#servicos">Serviços</a></li>
+                                <li class="nav-item"><a class="nav-link text-black"
+                                        href="{{ route('sobre') }}">Sobre</a>
+                                </li>
+                                <li class="nav-item"><a class="nav-link text-black" href="">Ajuda</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            @if (session('user'))
+                                <li class="nav-item dropdown">
+                                    <a href="#" class="dropdown-toggle" id="navdropdown" role="button"
+                                        data-toggle="dropdown">
+                                        @if (session('user')->user_tipo == 'admin')
+                                            <img src="{{ asset('img/avatar.svg') }}" class="img-fluid rounded-pill img-user"
+                                                alt="">
                                         @else
-                                            <img src="{{ asset('img/avatar.svg') }}"
-                                                class="img-fluid rounded-pill img-user" alt="">
-                                        @endif
+                                            @if (session('user')->user_img)
+                                                <img src="{{ asset('storage/' . session('user')->user_img) }}"
+                                                    class="img-fluid rounded-pill img-user" alt="">
+                                            @else
+                                                <img src="{{ asset('img/avatar.svg') }}"
+                                                    class="img-fluid rounded-pill img-user" alt="">
+                                            @endif
                                         @endif <span class="fs-6">{{ session('user')->user_nome }}</span>
-                                </a>
-                                <div class="drop-menu bg-white rounded border-1 border-principle"
-                                    aria-labelledby="navdropdown">
-                                    <a href="{{ url('/usuario') }}" class="dropdown-item nav-link px-3 my-2"><i
-                                            class="fas fa-user"></i> <small>Perfil</small>
-                                        <a href="{{ route('logout') }}" class="dropdown-item nav-link px-3 my-2"><i
-                                                class="bi bi-box-arrow-in-left"></i> <small>Sair</small>
-                                        </a>
                                     </a>
-                                </div>
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a href="#" class="nav-link" id="navdropdown" role="button" data-bs-toggle="modal"
-                                    data-bs-target="#login"><i class="bi bi-box-arrow-in-right"></i> <small>
-                                        Entrar</small></a>
-                                {{-- <div class="drop-menu bg-white rounded border-1 border-principle" aria-labelledby="navdropdown">
-                            <button class="dropdown-item nav-link drop-item my-2 px-3" data-bs-toggle="modal"
-                                data-bs-target="#login"></button>
-                            <div class="dropdown-divider"></div>
-                            <button class="dropdown-item nav-link my-2 px-3" data-bs-toggle="modal"
-                                data-bs-target="#cadUsers"><i class="bi bi-person-plus"></i>
-                                <small>Registrar-se</small></a>
-                        </div> --}}
-                            </li>
-                        @endif
-                    </ul>
+                                    <div class="drop-menu bg-white rounded border-1 border-principle"
+                                        aria-labelledby="navdropdown">
+                                        <a href="{{ url('/usuario') }}" class="dropdown-item nav-link px-3 my-2"><i
+                                                class="fas fa-user"></i> <small>Perfil</small>
+                                            <a href="{{ route('logout') }}" class="dropdown-item nav-link px-3 my-2"><i
+                                                    class="bi bi-box-arrow-in-left"></i> <small>Sair</small>
+                                            </a>
+                                        </a>
+                                    </div>
+                                </li>
+                            @else
+                                <li class="">
+                                    <a href="#" class="nav-link text-black px-0" id="navdropdown" role="button" data-bs-toggle="modal"
+                                        data-bs-target="#login"><i class="bi bi-arrow-right-circle fs-5"></i> Entrar</a>
+                                </li>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </nav>
@@ -117,29 +116,14 @@
                                 </label>
                             </div>
                             <div class="d-grid">
-                                <button class="btn btn-principle text-uppercase fw-bold rounded-pill text-white"
-                                    type="submit"><span class="text-white">Entrar</span> <img
+                                <button class="btn btn-light btn-pedido text-uppercase fw-bold"
+                                    type="submit"><span class="text-black">Entrar</span> <img
                                         class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}"
                                         alt=""></button>
                             </div>
 
                         </div>
                     </div>
-                    {{-- <div class="col-lg">
-                        <div class="p-3 modal-header">
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="d-flex flex-column justify-content-center p-4">
-                            <div class="p-3 text-white">
-                                <h3>Entrar</h3>
-                                <p>Quer saber quais são os procedimentos para fazer o seu pedido? é muitos simples é só
-                                    seguir os passos e já está.</p>
-                            </div>
-                            <div>
-                                <img class="img img-fluid" src="{{ asset('img/login.svg') }}" alt="steps">
-                            </div>
-                        </div>
-                    </div> --}}
                 </div>
             </div>
         </div>
@@ -174,12 +158,6 @@
                             <form id="regCliente" class="py-3">
                                 @csrf
                                 <div class="row">
-                                    {{-- <div class="col-sm">
-                                        <input class="form-control my-1" type="file" name="cli_img" id="cli_img">
-                                        <div class="img-holder mb-2" name>
-                                        </div>
-                                        <p class="errorFileType d-none alert-danger">Ficheiro invalido</p>
-                                    </div> --}}
                                     <div class="col-sm">
                                         <input type="email" name="cli_email" class="form-control my-2"
                                             placeholder="Endereço de e-mail" required="required" id="cli_email">
@@ -194,9 +172,6 @@
                                             placeholder="Nome Completo" id="cli_nome">
                                     </div>
                                 </div>
-                                {{-- <div class="text-left">
-                                    <input type="checkbox" name="ruser_checkc" class="checkbox" required> <span>Eu concordo com o <a class="nav-link" href="#">contrato de oferta</a></span>
-                                </div> --}}
                                 <div class="text-left">
                                     <input type="checkbox" name="termos" id="termos" class="checkbox" required>
                                     Concordo com os <a data-bs-toggle="modal" role="button" href=""
@@ -209,8 +184,8 @@
                                 </div>
                                 <div class="my-3 justify-content-center">
                                     <button type="submit"
-                                        class="text-center btn btn-principle rounded-pill px-3 py-2 text-white"
-                                        id="btnRegCliente"><span class="text-white">Submeter</span> <img
+                                        class="text-center btn btn-light btn-pedido px-3 py-2 text-black"
+                                        id="btnRegCliente"><span class="text-black">Submeter</span> <img
                                             class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}"
                                             alt=""></button>
                                 </div>
@@ -253,7 +228,7 @@
                                     </div>
                                     <div style="overflow:auto;">
                                         <div style="float:right;">
-                                            <button class="btn btn-principle m-2 rounded-pill px-3 py-2 text-white"
+                                            <button class="btn btn-light btn-pedido m-2 px-3 py-2 text-black"
                                                 type="button" id="next1">Proximo</button>
                                         </div>
                                     </div>
@@ -291,9 +266,9 @@
                                     </div>
                                     <div style="overflow:auto;">
                                         <div style="float:right;">
-                                            <button class="btn btn-primary m-2 rounded-pill px-3 py-2 text-white"
+                                            <button class="btn btn-light btn-pedido m-2 px-3 py-2 text-black"
                                                 type="button" id="ante1">Anterior</button>
-                                            <button class="btn btn-principle m-2 rounded-pill px-3 py-2 text-white"
+                                            <button class="btn btn-light btn-pedido m-2 px-3 py-2 text-black"
                                                 type="button" id="next2">Proximo</button>
                                         </div>
                                     </div>
@@ -310,7 +285,8 @@
                                         </p> --}}
                                         <p class="form-group">
                                             <label for="" class="">Certificado/BI</label>
-                                        <p class="text-danger mb-2">*Coloque um documento que prove a sua especialização ou bilhete de identidade
+                                        <p class="text-danger mb-2">*Coloque um documento que prove a sua
+                                            especialização ou bilhete de identidade
                                         </p>
                                         <input class="form-control" type="file" placeholder="Anexe o seu certificado"
                                             name="user_diploma">
@@ -346,9 +322,9 @@
                                     </div>
                                     <div style="overflow:auto;">
                                         <div style="float:right;">
-                                            <button class="btn btn-primary m-2 rounded-pill px-3 py-2 text-white"
+                                            <button class="btn btn-light btn-pedido m-2 px-3 py-2 text-black"
                                                 type="button" id="ante2">Anterior</button>
-                                            <button class="btn btn-principle m-2 rounded-pill px-3 py-2 text-white"
+                                            <button class="btn btn-light btn-pedido m-2 px-3 py-2 text-black"
                                                 type="submit"><span class="text-white">Submeter</span> <img
                                                     class="img d-none load" src="{{ asset('img/ajax-loader.gif') }}"
                                                     alt=""></button>
@@ -475,19 +451,31 @@
                     <div class="my-3">
                         <p>Todo especialista registado na plataforma lmteacher, assume o compromisso de cumprir com
                             todos os termos e condições impostas pela plataforma.</p>
-                        <p>Os especialistas cadastrados dentro da plataforma devem possuir habilidades numa determinada area academica para resolver trabalhos com excepção a diplomas. É imperioso que o especialista possua um nivel de licenciatura ou mestrado de modo a escrever e elaborar diplomas. </p>
-                        <p>Todo o especialista deve submeter dentro da plataforma um certificado de habilitações, podendo provisoriamente anexar um bilhete de identidade com uma descrição de suas habilidades</p>
-                        <p> A lmteacher possui total controle de todos os trabalhos elaborados dentro da plataforma, autorizando a entrega depois de uma analise plena de 24h. O especialista propoe o preço a cobrar pelo seu trabalho, onde no mesmo a lmteacher fica com 20% do valor para os especialistas com o anexo do certificado de habilitações e 30% caso não tenham anexo. O pré-pagamento dos 50% do valor previsto é feito depois de apresentar 50% da resolução do trabalho. Apos a conclusão do mesmo lhe é pago os restantes. </p>
+                        <p>Os especialistas cadastrados dentro da plataforma devem possuir habilidades numa determinada
+                            area academica para resolver trabalhos com excepção a diplomas. É imperioso que o
+                            especialista possua um nivel de licenciatura ou mestrado de modo a escrever e elaborar
+                            diplomas. </p>
+                        <p>Todo o especialista deve submeter dentro da plataforma um certificado de habilitações,
+                            podendo provisoriamente anexar um bilhete de identidade com uma descrição de suas
+                            habilidades</p>
+                        <p> A lmteacher possui total controle de todos os trabalhos elaborados dentro da plataforma,
+                            autorizando a entrega depois de uma analise plena de 24h. O especialista propoe o preço a
+                            cobrar pelo seu trabalho, onde no mesmo a lmteacher fica com 20% do valor para os
+                            especialistas com o anexo do certificado de habilitações e 30% caso não tenham anexo. O
+                            pré-pagamento dos 50% do valor previsto é feito depois de apresentar 50% da resolução do
+                            trabalho. Apos a conclusão do mesmo lhe é pago os restantes. </p>
                         <p>Contudo, os especialistas registados se comprometem a:</p>
                         <ul>
                             <li>1. Respeitar todos os termos e condições impostas pela plataforma.</li>
-                            <li>2. A resolver os trabalhos de forma excelente, trazendo nesse caso a menor margem de erros
+                            <li>2. A resolver os trabalhos de forma excelente, trazendo nesse caso a menor margem de
+                                erros
                                 possivel.</li>
                             <li>3. Seguir os padrões pre-requisitados pelo cliente.</li>
                             <li>4. Entregar o trabalho ate a data prevista</li>
                             <li>5. Elaborar diplomas somente possuindo o nivel de licenciatura ou mestrado</li>
                         </ul>
-                        <p>O infringimento dos termos e condições impostas pela plataforma são de plena responsabilidade do especialista.</p>
+                        <p>O infringimento dos termos e condições impostas pela plataforma são de plena responsabilidade
+                            do especialista.</p>
                     </div>
                 </div>
             </div>

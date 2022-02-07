@@ -60,19 +60,11 @@
         {{-- Side bar end here --}}
 
         {{-- Page content starts here --}}
-        <div id="page-content-wrapper" class="bg-cinza">
+        <div id="page-content-wrapper" class="bg-white">
             <nav class="navbar navbar-expand-lg navbar-light bg-white py-2 px-4 shadow-sm">
                 <div class="d-flex align-items-center">
                     <i class="fas fa-align-left text-principle me-3 fs-3" id="menu-toggle"></i>
                 </div>
-                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                    aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button> --}}
-                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    
-                </div> --}}
 
                 <ul class="ms-auto mb-2 d-flex flex-nowrap">
                     <li class="nav-item">
@@ -188,7 +180,7 @@
                             </div>
                             <div class="text-center">
                                 <button type="submit" id="submeter"
-                                    class="btn btn-sm btn-principle px-3 py-2 rounded-pill text-white">
+                                    class="btn btn-sm btn-principle px-3 py-2 text-white">
                                     <span>Submeter</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt=""> </button>
                             </div>
@@ -228,7 +220,7 @@
                             <div class="col-lg-12 mt-3" name="user-mensagem" id="user-mensagem">
                             </div>
                             <div class="col-lg-12 mt-3 justify-content-center">
-                                <button class="btn btn-success px-3 py-2 rounded-pill text-white" type="submit"
+                                <button class="btn btn-success px-3 py-2 text-white" type="submit"
                                     name="submeter">
                                     <span>Atualizar</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>
@@ -294,7 +286,7 @@
                             <div class="col-lg-12 mt-3" name="user-mensagem" id="user-mensagem">
                             </div>
                             <div class="col-lg-12 mt-3 justify-content-center">
-                                <button class="btn btn-success px-3 py-2 rounded-pill text-white" type="submit"
+                                <button class="btn btn-success px-3 py-2 text-white" type="submit"
                                     name="submeter">
                                     <span>Atualizar</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt=""></button>

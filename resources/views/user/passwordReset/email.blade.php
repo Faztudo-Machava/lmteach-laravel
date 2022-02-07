@@ -40,7 +40,7 @@
 
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-4">
-                                    <button type="submit" class="btn btn-primary my-2 text-white">
+                                    <button type="submit" class="btn btn-pedido my-2">
                                         {{ __('Enviar link de redefinição da senha') }}<img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt="">
                                     </button>

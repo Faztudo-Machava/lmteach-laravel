@@ -57,19 +57,19 @@
                     @if (session('user')->user_tipo == 'especialista' || session('user')->user_tipo == 'admin')
                         <h3 class=" h3">Trabalhos</h3>
                     @else
-                    <h3 class=" h3">Pedidos</h3>   
+                        <h3 class=" h3">Pedidos</h3>
                     @endif
                     <form action="" id="procurarPedido-form">
                         <div class="form-group">
                             <select id="tipo_pedido" class="form-control" name="estado_pedi" required>
-                                @if(session('user')->user_tipo == 'especialista' || session('user')->user_tipo == 'admin')
-                                <option value="3">Selecione o estado do trabalho</option>
+                                @if (session('user')->user_tipo == 'especialista' || session('user')->user_tipo == 'admin')
+                                    <option value="3">Selecione o estado do trabalho</option>
                                 @else
-                                <option value="">Selecione o estado do pedido</option>
+                                    <option value="">Selecione o estado do pedido</option>
                                 @endif
                                 <option value="1">Em resolução</option>
-                                <option value="0">Pendente</option>
-                                <option value="2">Resolvido</option>
+                                <option value="2">Pendente</option>
+                                <option value="0">Resolvido</option>
                                 <option value="3">Todos</option>
                             </select>
                         </div>
@@ -77,32 +77,34 @@
                 </div>
                 <div class="dropdown-divider my-5"></div>
                 @if ($numPedidos > 0)
-                    <div id="pedidos" class="cards row">
+                    <div id="pedidos" class="cards row d-flex justify-content-center">
                         <div class="d-none">{{ $delay = 50 }}</div>
                         @foreach ($listaPedidos as $pedido)
                             {{-- @php
                                 $user = $pedido->find($pedido->pedi_cliente)->relUser;
                             @endphp --}}
                             <div class="col-sm-12 col-md-6 col-lg-auto mb-3 {{ $pedido->pedi_status }} pedidos">
-                                <div class="card shadow border-none" data-aos="fade-right" data-aos-duration="1200"
-                                    data-aos-delay="{{ $delay }}">
+                                <div class="card shadow border-none jobsCard px-1" data-aos="fade-right">
                                     <div class="card-body">
                                         <div class="mb-2">
-                                            <p class="text-muted">{{ $pedido->pedi_assunto }}</p>
-                                            <h5 class="card-title">{{ $pedido->pedi_tipo }}</h5>
+                                            <p class="text-muted pedidoAssunto text-center">
+                                                {{ $pedido->pedi_assunto }}
+                                            </p>
+                                            <h5 class="card-title text-center">{{ $pedido->pedi_tipo }}
+                                            </h5>
                                         </div>
                                         <div class="row justify-content-between">
-                                            <span class="col-sm">
-                                                <button class="btn btn-primary text-white btn-job-detalhes" data-bs-toggle="modal"
-                                                    data-bs-target="#viewPedido{{ $pedido->pedi_id }}"><img src="{{asset('img/word-office-ms-file-doc-icon.svg')}}" alt="" class="img img-fluid img-job-card"></button>
+                                            <span class="d-flex justify-content-center my-3 job-card-span"
+                                                data-bs-toggle="modal" data-bs-target="#viewPedido{{ $pedido->pedi_id }}">
+                                                <img src="{{ asset('img/Group 7.svg') }}" alt=""
+                                                    class="img img-fluid img-job-card">
                                             </span>
-                                            <span class="text-muted col-sm text-right">{{ $pedido->pedi_prazo }}</span>
+                                            <span class="text-muted text-center">{{ $pedido->pedi_prazo }}</span>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-none">{{ $delay = $delay + 50 }}</div>
                             <div class="modal fade" id="viewPedido{{ $pedido->pedi_id }}" tabindex="-1"
                                 aria-labelledby="viewPedido{{ $pedido->pedi_id }}" aria-hidden="true">
                                 <br>
@@ -110,9 +112,11 @@
                                     <div class="modal-content card bg-white border-none">
                                         <div class="modal-header bg-principle text-white">
                                             <div>
-                                                <p class="text-white mb-1">{{ $pedido->pedi_assunto }}</p>
+                                                <p class="text-white mb-1">{{ $pedido->pedi_assunto }}
+                                                </p>
                                                 <h4 class="h4 text-white font-weight-bold mb-1">
-                                                    {{ $pedido->pedi_tipo }}</h4>
+                                                    {{ $pedido->pedi_tipo }}
+                                                </h4>
                                             </div>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
@@ -128,7 +132,8 @@
                                                     <span class="col-lg-6">{{ $pedido->pedi_tipo }}</span>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <span class="text-muted col-lg-6">Nível acadêmico </span>
+                                                    <span class="text-muted col-lg-6">Nível acadêmico
+                                                    </span>
                                                     <span class="col-lg-6">{{ $pedido->pedi_nivel }}</span>
                                                 </div>
                                                 <div class="row mb-3">
@@ -137,15 +142,8 @@
                                                 </div>
                                                 <div class="row mb-3">
                                                     <span class="text-muted col-lg-6">Estado </span>
-                                                    <span class="col-lg-6">
-                                                        @if ($pedido->pedi_status == 2)
-                                                            {{ 'Resolvido' }}
-                                                        @elseif($pedido->pedi_status == 1)
-                                                            {{ 'No processo de resolução' }}
-                                                        @else
-                                                            {{ 'Pendente' }}
-                                                        @endif
-                                                    </span>
+                                                    <span
+                                                        class="col-lg-6">{{ $pedido->pedi_status == 1 ? 'Pendente' : 'Resolvido' }}</span>
                                                 </div>
                                             </div>
                                             <div class="col-lg-6">
@@ -155,61 +153,8 @@
                                                 <div>
                                                     {{ $pedido->pedi_descricao }}
                                                 </div>
-                                                @if (session('user')->user_tipo === 'especialista' && $pedido->pedi_status == 0)
-                                                    <div class="my-5"> <p>Pretende resolver o trabalho? <a href="/resolver/{{ $pedido->pedi_id }}">clique aqui</a></p>
-                                                    </div>
-                                                @endif
-                                                @if (session('user')->user_tipo === 'admin' && $pedido->pedi_status === 1)
-                                                    <div class="my-5">
-                                                        <form id="formTrabResolvido">
-                                                            @csrf
-                                                            <div id="errorEnvioResolucao" class="alert alert-danger d-none">Houve algum problema no momento de submissão do trabalho
-                                                            </div>
-                                                            <div id="sucessoEnvioRsolucao"
-                                                                class="alert alert-success d-none">Trabalho enviado para o cliente.</div>
-                                                            <div class="form-group my-2">
-                                                                <label for="my-select fs-2">Anexar a resolução</label>
-                                                                <input type="file" name="fileTrabResolvido" id="anexo"
-                                                                    class="form-control" required>
-                                                                <input type="hidden" name="pedido_id"
-                                                                    value="{{ $pedido->pedi_id }}">
-                                                                <input type="hidden" name="pedido_cliente"
-                                                                    value="{{ $pedido->pedi_cliente }}">
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <button class="btn btn-principle text-white"
-                                                                    type="submit">Enviar <img class="img d-none load"
-                                                                        src="{{ asset('img/ajax-loader.gif') }}"
-                                                                        alt=""></button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                                @endif
                                             </div>
                                         </div>
-                                        @if ( (session('user')->user_tipo === 'especialista' && $pedido->pedi_tipo == 'Monografia' ) || session('user')->user_tipo === 'admin')
-                                            <div class="dropdown-divider"></div>
-                                            <div class="my-4">
-                                                <div class="text-center">
-                                                    @if ($pedido->pedi_status == 0)
-                                                    <p>Entre em contacto com a LMTGROUP para ter acesso ao trabalho</p>
-                                                    <a target="blank" href="https://wa.me/message/VSTXHOHVRHT2L1"
-                                                        class="btn btn-principle text-white rounded-pill px-3 py-2"><span class="me-2">Contactar</span>
-                                                    </a>
-                                                    @endif
-                                                </div>
-                                            </div>
-                                        @endif
-                                        @if (session('user')->user_tipo === 'cliente' && $pedido->pedi_status == 2)
-                                        <div class="my-4">
-                                            <div class="text-center">
-                                                <p>Encontre abaixo a resolucão do trabalho</p>
-                                                <a href="/arquivoResolvido/{{ $pedido->pedi_id }}"
-                                                    class="btn btn-principle text-white rounded-pill px-3 py-2"><span class="me-2">Baixar</span><i class="bi bi-download"></i>
-                                                </a>
-                                            </div>
-                                        </div>
-                                        @endif
                                     </div>
                                 </div>
                             </div>

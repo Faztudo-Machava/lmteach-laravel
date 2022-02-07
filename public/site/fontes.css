@@ -1,74 +1,19 @@
 @font-face {
-    font-family: Helvetica_Neue_Regular;
-    src: url(../Fonts/Helvetica_Neue/HelveticaNeue.ttf);
+    font-family: Monda_Bold;
+    src: url(./fontes/Monda/Monda-Bold.ttf);
 }
 
 @font-face {
-    font-family: Helvetica_Neue_Light;
-    src: url(../Fonts/Helvetica_Neue/HelveticaNeueLt.ttf);
-}
-
-@font-face {
-    font-family: Helvetica_Neue_Thin;
-    src: url(../Fonts/Helvetica_Neue/HelveticaNeue\ Thin.ttf);
-}
-
-@font-face {
-    font-family: Helvetica_Neue_Bold;
-    src: url(../Fonts/Helvetica_Neue/HelveticaNeueBd.ttf);
-}
-
-@font-face {
-    font-family: Roboto_Light;
-    src: url(../Fonts/Roboto/Roboto-Light.ttf);
-}
-
-@font-face {
-    font-family: Roboto_Regular;
-    src: url(../Fonts/Roboto/Roboto-Regular.ttf);
+    font-family: Monda_Regular;
+    src: url(./fontes/Monda/Monda-Regular.ttf);
 }
 
 @font-face {
     font-family: Roboto_Bold;
-    src: url(../Fonts/Roboto/Roboto-Bold.ttf);
+    src: url(./fontes/Roboto/Roboto-Bold.ttf);
 }
 
 @font-face {
-    font-family: Spartan_Light;
-    src: url(../Fonts/Spartan/static/Spartan-Light.ttf);
-}
-
-@font-face {
-    font-family: Spartan_Regular;
-    src: url(../Fonts/Spartan/static/Spartan-Regular.ttf);
-}
-
-@font-face {
-    font-family: Spartan_Bold;
-    src: url(../Fonts/Spartan/static/Spartan-Bold.ttf);
-}
-
-@font-face {
-    font-family: Dosis_Light;
-    src: url(../Fonts/Dosis/static/Dosis-Light.ttf);
-}
-
-@font-face {
-    font-family: Dosis_Regular;
-    src: url(../Fonts/Dosis/static/Dosis-Regular.ttf);
-}
-
-@font-face {
-    font-family: Dosis_Bold;
-    src: url(../Fonts/Dosis/static/Dosis-Bold.ttf);
-}
-
-@font-face {
-    font-family: Karla_Regular;
-    src: url(../Fonts/Karla/Karla-Regular.ttf);
-}
-
-@font-face {
-    font-family: Karla_Bold;
-    src: url(../Fonts/Karla/Karla-Bold.ttf);
+    font-family: Roboto_Regular;
+    src: url(./fontes/Roboto/Roboto-Regular.ttf);
 }

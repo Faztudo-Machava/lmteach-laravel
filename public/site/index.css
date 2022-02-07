@@ -1,7 +1,29 @@
+@import url('./fontes.css');
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Roboto_Regular;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border: 1px solid #AB6AD3 !important;
+    box-shadow: none !important;
+}
+
+.btn {
+    border-radius: 12px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Monda_Bold;
 }
 
 a {
@@ -92,6 +114,16 @@ footer {
 
 .float-right {
     float: right;
+}
+
+.card-servicos {
+    border-top-left-radius: 180px;
+    border-top-right-radius: 180px;
+}
+
+#servicos {
+    padding-top: 120px;
+    padding-bottom: 80px;
 }
 
 
@@ -189,6 +221,31 @@ footer {
     .stepsImg {
         display: none;
     }
+    .esp-text {
+        position: absolute;
+        top: -40px;
+    }
+    .esp-icon {
+        position: absolute;
+        left: 74px;
+        top: 30px;
+    }
+    .cli-text {
+        position: absolute;
+        top: -50px;
+        right: 0px;
+    }
+    .cli-icon {
+        position: absolute;
+        right: 60px;
+        top: 10px;
+    }
+    .coment1 {
+        transform: none;
+    }
+    .coment3 {
+        transform: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -236,6 +293,20 @@ footer {
 
 .btn-contacte {
     padding: 10px 30px;
+    border: 1px solid #AB6AD3;
+}
+
+.btn-contacte {
+    transition: ease-out 0.3s;
+    box-shadow: inset 0 0 0 0 #AB6AD3;
+    border: 1px solid #AB6AD3;
+    border-bottom: 8px solid #AB6AD3;
+    color: black;
+}
+
+.btn-contacte:hover {
+    color: white;
+    box-shadow: inset 0 -165px 0 0 #AB6AD3;
 }
 
 .border-left-primary {
@@ -307,13 +378,19 @@ footer {
 }
 
 .card-img-service {
-    width: 117px;
-    height: 100px;
+    width: 71px;
+    height: 116px;
 }
 
-.img-job-card {
+
+/* .img-job-card {
     width: 35px;
     height: 35px;
+} */
+
+.img-job-card {
+    background-color: bisque;
+    border-radius: 12px;
 }
 
 .img-perfil {
@@ -324,12 +401,116 @@ footer {
     padding: 0rem 0rem;
 }
 
+.btn-pedido {
+    transition: ease-out 0.3s !important;
+    box-shadow: inset 0 0 0 0 #AB6AD3 !important;
+    border: none !important;
+}
+
+.btn-pedido:hover {
+    box-shadow: inset 0 -165px 0 0 #AB6AD3 !important;
+    color: white;
+}
+
+.sendPicture {
+    position: relative;
+}
+
+.send-text {
+    position: absolute;
+    top: -140px;
+    left: -70px;
+}
+
+.send-icon {
+    position: absolute;
+    left: 0px;
+    top: -70px;
+}
+
+.partDown {
+    padding-top: 130px;
+}
+
+#pedCard {
+    display: none;
+}
+
+.divPedidos {
+    margin-top: 90px;
+    background-color: rgb(255, 238, 217);
+}
+
+.ajudaSection {
+    position: relative;
+}
+
+.help-text {
+    position: absolute;
+    right: 0px;
+    top: -30px;
+}
+
+.star-icon {
+    position: absolute;
+    right: 60px;
+    top: 30px;
+}
+
+#coments {
+    padding-top: 100px;
+}
+
+.esp {
+    position: relative;
+}
+
 @media (min-width: 992px) {
     .heroHome {
-        height: 92vh;
+        height: 100vh;
+    }
+    .esp-text {
+        position: absolute;
+        top: -120px;
+    }
+    .esp-icon {
+        position: absolute;
+        left: 74px;
+        top: -50px;
+    }
+    .cli-text {
+        position: absolute;
+        top: -120px;
+        right: 0px;
+    }
+    .cli-icon {
+        position: absolute;
+        right: 60px;
+        top: -50px;
+    }
+    .coment1 {
+        transform: translate(60px, 20px);
+    }
+    .coment3 {
+        transform: translate(-87px, -20px);
+    }
+    .coment2 {
+        margin: 10px 30px;
     }
 }
 
 .mt-8 {
     margin-top: 120%;
+}
+
+.bg {
+    background-color: #FFFFE8;
+}
+
+.mb {
+    margin-top: -7rem;
+}
+
+.brd {
+    border: 1px solid #AB6AD3;
 }
