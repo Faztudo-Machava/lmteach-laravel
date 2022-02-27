@@ -15,15 +15,15 @@
             <div class="row">
                 <div class="col-sm-12 col-lg-6 col-md-12">
                     <div class="pt-5" data-aos="fade-up" data-aos-duration="400">
-                        <h1 class="mb-4 heroTitle text-dark">Plataforma de <span class="text-principle">ajuda</span> <br>
+                        <h1 class="mb-4 heroTitle text-dark">Plataforma de <span class="text-principle"
+                                style="font-size: 30px"> ajuda </span> <br>
                             academica</h1>
                         <div class="mb-4"></div>
-                        <p class="fs-5 mb-2">Faça pedido de trabalhos de curso, monografias,</p>
-                        <p class="fs-5 mb-2">testes para qualquer nivel academico. Trabalhos</p>
-                        <p class="fs-5 mb-2">de qualidade em pouco tempo de resolução</p>
+                        <p class="fs-5 mb-2 pe-5">Faça pedido de trabalhos de curso, monografias, testes para qualquer nivel
+                            academico. Trabalhos de qualidade em pouco tempo de resolução</p>
                         <div class="mb-5"></div>
                         <div class="row">
-                            <span class="col-10">
+                            <span class="col-10 py-4">
                                 <span class="col-sm-12 col-md-6 col-lg-6 me-3 divBtnPedido">
                                     <a href="#"
                                         class="btn bg-light p-4 py-3 text-bold btn-pedido text-nowrap font-weight-bold"
@@ -32,7 +32,7 @@
                                 </span>
                                 <span class="col-sm-12 col-md-6 col-lg-6">
                                     <a href="{{ route('pedidos') }}"
-                                        class="btn bg-light p-4 py-3 btn-jobs fw-bold">TRABALHOS</a>
+                                        class="btn bg-light mt-0 p-4 py-3 btn-jobs fw-bold">TRABALHOS</a>
                                 </span>
                             </span>
 
@@ -60,27 +60,23 @@
                     <p class="text-muted">Para fazer pedido, siga os passos a seguir.</p>
                 </div>
                 <div class="px-2 row justify-content-center m-2">
-                    <div
-                        class="col-lg row">
+                    <div class="col-lg row">
                         <p>1. Faça o pedido através do formulário em nosso site</p>
                     </div>
                 </div>
                 <div class="px-2 row justify-content-center m-2">
-                    <div
-                        class="col-lg row">
+                    <div class="col-lg row">
                         <p>2. Pague 50% do custo do trabalho. Saiba mais sobre as formas de pagamento <a target="blank"
                                 href="https://chat.whatsapp.com/FjPNNWGVuJOBGnJ9A78U6u">aqui</a></p>
                     </div>
                 </div>
                 <div class="px-2 row justify-content-center m-2">
-                    <div
-                        class="row col-lg">
+                    <div class="row col-lg">
                         <p>3. Aguarde algum tempo para que nossos especialistas concluam seu pedido</p>
                     </div>
                 </div>
                 <div class="px-2 row justify-content-center m-2">
-                    <div
-                        class="col-lg row">
+                    <div class="col-lg row">
                         <p>4. Antes de receber o trabalho, deverá pagar os 50% restantes do custo do pedido.</p>
                     </div>
                 </div>
@@ -96,36 +92,33 @@
                     <h1 class="fs-1">Seja um especialista</h1>
                     <p class="text-muted">Para ser um especialista, siga os passos a seguir.</p>
                 </div>
-                <div class="px-2 row justify-content-center m-2">
-                    <div
-                        class="col-lg row">
+                {{-- <div class="d-flex flex-column justify-content-arround"> --}}
+                <div class="px-2 row m-2">
+                    <div class="col-lg row">
                         <p>1. Clique na ENTRAR opção em nosso site. </p>
                     </div>
                 </div>
-                <div class="px-2 row justify-content-center m-2">
-                    <div
-                        class="col-lg row">
+                <div class="px-2 row m-2">
+                    <div class="col-lg row">
                         <p>2. Escolha a opção REGISTRAR-SE.</p>
                     </div>
                 </div>
-                <div class="px-2 row justify-content-center m-2">
-                    <div
-                        class="row col-lg">
+                <div class="px-2 row m-2">
+                    <div class="row col-lg">
                         <p>3. Cadastre-se como um ESPECIALISTA.</p>
                     </div>
                 </div>
-                <div class="px-2 row justify-content-center m-2">
-                    <div
-                        class="col-lg row">
+                <div class="px-2 row m-2">
+                    <div class="col-lg row">
                         <p>4. Acesse o seu email e confirme o registro.</p>
                     </div>
                 </div>
-                <div class="px-2 row justify-content-center m-2">
-                    <div
-                        class="col-lg row">
+                <div class="px-2 row m-2">
+                    <div class="col-lg row">
                         <p>5. Acesse o painel de utilizador para ver os trab;hos disponiveis.</p>
                     </div>
                 </div>
+                {{-- </div> --}}
             </div>
             <div class="col-lg-6 d-flex flex-column justify-content-center"
                 style="background-image: url('{{ asset('img/back1.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center;">
@@ -140,119 +133,117 @@
         </div>
     </div>
     <div class="divPedidos">
-        <div class="py-4 container">
-            <div class="row justify-content-center">
-                <div class="p-4">
-                    <div class="my-5 text-center">
-                        <h2 class="h2">Pedidos recentes</h2>
-                    </div>
+        <div class="container" style="padding: 60px 0px">
+            <div class="row justify-content-center p-4 mx-0">
+
+                <div class="my-5 text-center">
+                    <h2 class="h2">Pedidos recentes</h2>
+                </div>
+                <div class="">
                     <div class="">
-                        <div class="">
-                            @if ($numPedidos > 0)
-                                <div class="cards row d-flex justify-content-center">
-                                    <div class="d-none">{{ $delay = 50 }} {{ $i = 0 }}</div>
-                                    @foreach ($listaPedidos as $pedido)
-                                        @if ($i < 4)
-                                            <div class="col-sm-12 col-md-6 col-lg-auto mb-3">
-                                                <div class="card border-none jobsCard px-1" data-aos="fade-right">
-                                                    <div class="card-body">
-                                                        <div class="mb-2">
-                                                            <p class="text-muted pedidoAssunto text-center">
-                                                                {{ $pedido->pedi_assunto }}
+                        @if ($numPedidos > 0)
+                            <div class="cards row d-flex justify-content-center">
+                                <div class="d-none">{{ $delay = 50 }} {{ $i = 0 }}</div>
+                                @foreach ($listaPedidos as $pedido)
+                                    @if ($i < 4)
+                                        <div class="col-sm-12 col-md-6 col-lg-auto mb-3">
+                                            <div class="card border-none jobsCard px-1">
+                                                <div class="card-body">
+                                                    <div class="mb-2">
+                                                        <p class="text-muted pedidoAssunto text-center">
+                                                            {{ $pedido->pedi_assunto }}
+                                                        </p>
+                                                        <h5 class="card-title text-center">{{ $pedido->pedi_tipo }}
+                                                        </h5>
+                                                    </div>
+                                                    <div class="row justify-content-between">
+                                                        <span class="d-flex justify-content-center my-3 job-card-span"
+                                                            data-bs-toggle="modal"
+                                                            data-bs-target="#viewPedido{{ $pedido->pedi_id }}">
+                                                            <img src="{{ asset('img/Group 7.svg') }}" alt=""
+                                                                class="img img-fluid img-job-card">
+                                                        </span>
+                                                        <span
+                                                            class="text-muted text-center">{{ $pedido->pedi_prazo }}</span>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="d-none">{{ $delay = $delay + 100 }} {{ $i = $i + 1 }}
+                                        </div>
+                                        <div class="modal fade" id="viewPedido{{ $pedido->pedi_id }}" tabindex="-1"
+                                            aria-labelledby="viewPedido{{ $pedido->pedi_id }}" aria-hidden="true">
+                                            <br>
+                                            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+                                                <div class="modal-content card bg-white border-none">
+                                                    <div class="modal-header bg-principle text-white">
+                                                        <div>
+                                                            <p class="text-white mb-1">{{ $pedido->pedi_assunto }}
                                                             </p>
-                                                            <h5 class="card-title text-center">{{ $pedido->pedi_tipo }}
-                                                            </h5>
+                                                            <h4 class="h4 text-white font-weight-bold mb-1">
+                                                                {{ $pedido->pedi_tipo }}
+                                                            </h4>
                                                         </div>
-                                                        <div class="row justify-content-between">
-                                                            <span class="d-flex justify-content-center my-3 job-card-span"
-                                                                data-bs-toggle="modal"
-                                                                data-bs-target="#viewPedido{{ $pedido->pedi_id }}">
-                                                                <img src="{{ asset('img/Group 7.svg') }}" alt=""
-                                                                    class="img img-fluid img-job-card">
-                                                            </span>
-                                                            <span
-                                                                class="text-muted text-center">{{ $pedido->pedi_prazo }}</span>
-                                                        </div>
-
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
                                                     </div>
-                                                </div>
-                                            </div>
-                                            <div class="d-none">{{ $delay = $delay + 100 }} {{ $i = $i + 1 }}
-                                            </div>
-                                            <div class="modal fade" id="viewPedido{{ $pedido->pedi_id }}"
-                                                tabindex="-1" aria-labelledby="viewPedido{{ $pedido->pedi_id }}"
-                                                aria-hidden="true">
-                                                <br>
-                                                <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-                                                    <div class="modal-content card bg-white border-none">
-                                                        <div class="modal-header bg-principle text-white">
+                                                    <div class="modal-body row">
+                                                        <div class="col-lg-6 row">
+                                                            <div class="row mb-3">
+                                                                <span class="text-muted col-lg-6">Numero pedido </span>
+                                                                <span
+                                                                    class="col-lg-6">{{ $pedido->pedi_id }}</span>
+                                                            </div>
+                                                            <div class="row mb-3">
+                                                                <span class="text-muted col-lg-6">Tipo </span>
+                                                                <span
+                                                                    class="col-lg-6">{{ $pedido->pedi_tipo }}</span>
+                                                            </div>
+                                                            <div class="row mb-3">
+                                                                <span class="text-muted col-lg-6">Nível acadêmico
+                                                                </span>
+                                                                <span
+                                                                    class="col-lg-6">{{ $pedido->pedi_nivel }}</span>
+                                                            </div>
+                                                            <div class="row mb-3">
+                                                                <span class="text-muted col-lg-6">Assunto </span>
+                                                                <span
+                                                                    class="col-lg-6">{{ $pedido->pedi_assunto }}</span>
+                                                            </div>
+                                                            <div class="row mb-3">
+                                                                <span class="text-muted col-lg-6">Estado </span>
+                                                                <span
+                                                                    class="col-lg-6">{{ $pedido->pedi_status == 1 ? 'Pendente' : 'Resolvido' }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="mb-3">
+                                                                <h4>Descrição</h4>
+                                                            </div>
                                                             <div>
-                                                                <p class="text-white mb-1">{{ $pedido->pedi_assunto }}
-                                                                </p>
-                                                                <h4 class="h4 text-white font-weight-bold mb-1">
-                                                                    {{ $pedido->pedi_tipo }}
-                                                                </h4>
-                                                            </div>
-                                                            <button type="button" class="btn-close"
-                                                                data-bs-dismiss="modal" aria-label="Close"></button>
-                                                        </div>
-                                                        <div class="modal-body row">
-                                                            <div class="col-lg-6 row">
-                                                                <div class="row mb-3">
-                                                                    <span class="text-muted col-lg-6">Numero pedido </span>
-                                                                    <span
-                                                                        class="col-lg-6">{{ $pedido->pedi_id }}</span>
-                                                                </div>
-                                                                <div class="row mb-3">
-                                                                    <span class="text-muted col-lg-6">Tipo </span>
-                                                                    <span
-                                                                        class="col-lg-6">{{ $pedido->pedi_tipo }}</span>
-                                                                </div>
-                                                                <div class="row mb-3">
-                                                                    <span class="text-muted col-lg-6">Nível acadêmico
-                                                                    </span>
-                                                                    <span
-                                                                        class="col-lg-6">{{ $pedido->pedi_nivel }}</span>
-                                                                </div>
-                                                                <div class="row mb-3">
-                                                                    <span class="text-muted col-lg-6">Assunto </span>
-                                                                    <span
-                                                                        class="col-lg-6">{{ $pedido->pedi_assunto }}</span>
-                                                                </div>
-                                                                <div class="row mb-3">
-                                                                    <span class="text-muted col-lg-6">Estado </span>
-                                                                    <span
-                                                                        class="col-lg-6">{{ $pedido->pedi_status == 1 ? 'Pendente' : 'Resolvido' }}</span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-lg-6">
-                                                                <div class="mb-3">
-                                                                    <h4>Descrição</h4>
-                                                                </div>
-                                                                <div>
-                                                                    {{ $pedido->pedi_descricao }}
-                                                                </div>
+                                                                {{ $pedido->pedi_descricao }}
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endif
-                                    @endforeach
-                                </div>
+                                        </div>
+                                    @endif
+                                @endforeach
+                            </div>
 
-                            @else
-                                <div class="alert alert-info">
-                                    Sem pedidos resolvidos até o momento.
-                                </div>
-                            @endif
-                        </div>
+                        @else
+                            <div class="alert alert-info">
+                                Sem pedidos resolvidos até o momento.
+                            </div>
+                        @endif
                     </div>
                 </div>
-                <div class="esp" id="ajudaSection">
-                    <img class="help-text" src="{{ asset('img/Group10.svg') }}" alt="" srcset="">
-                    <img class="star-icon" src="{{ asset('img/Star 1.svg') }}" alt="" srcset="">
-                </div>
+            </div>
+            <div class="esp" id="ajudaSection">
+                <img class="help-text" src="{{ asset('img/Group10.svg') }}" alt="" srcset="">
+                <img class="star-icon" src="{{ asset('img/Star 1.svg') }}" alt="" srcset="">
             </div>
         </div>
     </div>
@@ -263,19 +254,24 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="d-flex justify-content-center">
-                        <p class="fw-bold fs-5">Mais de <span class="text-principle">300 <br> estudantes</span> <br> escolheram-nos <br> e esse é apenas <br> o começo</p>
+                    <div class="d-flex justify-content-start ms-md-5">
+                        <p class="fw-bold fs-5">Mais de <span class="text-principle">300 <br> estudantes</span> <br>
+                            escolheram-nos <br> e esse é apenas <br> o começo</p>
                     </div>
-                    <div class="p-5 shadow coment1 ml-lg-" style="background-image: url('{{ asset('img/Rectangle 9.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center; border-top-left-radius: 120px; border-top-right-radius: 120px; z-index: 1;">
-                        <h3 class="mt-4">Eric da Silva</h3>
-                        <p>
-                            Ajudaram-me com o trabalho de monografia e defendi com 18. O tema era realmente dificil, mas
-                            os especialistas em pouco tempo o fizeram. São muito profissipnais e serios. Aconselho-vos!
-                        </p>
+                    <div class="d-flex justify-content-center">
+                        <div class="p-5 shadow coment1 coment"
+                            style="background-image: url('{{ asset('img/Rectangle 9.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center; border-top-left-radius: 120px; border-top-right-radius: 120px; z-index: 1;">
+                            <h3 class="mt-4">Eric da Silva</h3>
+                            <p>
+                                Ajudaram-me com o trabalho de monografia e defendi com 18. O tema era realmente dificil, mas
+                                os especialistas em pouco tempo o fizeram. São muito profissipnais e serios. Aconselho-vos!
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="col d-flex align-items-center">
-                    <div class="p-5 shadow coment2" style="background-image: url('{{ asset('img/Rectangle 3.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center; border-radius: 160px;">
+                <div class="col d-flex align-items-center justify-content-center">
+                    <div class="p-5 shadow coment2 coment"
+                        style="background-image: url('{{ asset('img/Rectangle 3.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center; border-radius: 160px;">
                         <h3 class="mt-4">Kevin Manuel</h3>
                         <p>
                             Ajudaram-me com o trabalho de monografia e defendi com 18. O tema era realmente dificil, mas
@@ -284,14 +280,19 @@
                     </div>
                 </div>
                 <div class="col">
-                    <div class="p-5 shadow coment3" style="background-image: url('{{ asset('img/Rectangle 4.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center; margin: 10px 30px; border-top-left-radius: 120px; border-top-right-radius: 120px; z-index: 5;">
-                        <h3 class="mt-4">Carla Francisco</h3>
-                        <p>
-                            Resolveram o meu teste de mecânica aplicada em menos de uma hora. Resolveram todo ele correctamente. A plaforma é muito boa e a interactividade é incrivel.
-                        </p>
+                    <div class="d-flex justify-content-center">
+                        <div class="p-5 shadow coment3 coment"
+                            style="background-image: url('{{ asset('img/Rectangle 4.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center; margin: 10px 30px; border-top-left-radius: 120px; border-top-right-radius: 120px; z-index: 5;">
+                            <h3 class="mt-4">Carla Francisco</h3>
+                            <p>
+                                Resolveram o meu teste de mecânica aplicada em menos de uma hora. Resolveram todo ele
+                                correctamente. A plaforma é muito boa e a interactividade é incrivel.
+                            </p>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-center mt-5">
-                        <p class="fw-bold fs-5">A nossa equipe <br> <span class="text-principle">agradece</span> pela <br> vossa confiança!</p>
+                    <div class="d-flex justify-content-end mt-5">
+                        <p class="fw-bold fs-5">A nossa equipe <br> <span class="text-principle">agradece</span> pela
+                            <br> vossa confiança!</p>
                     </div>
                 </div>
             </div>
@@ -305,8 +306,7 @@
                     <div class="modal-header bg-principle text-white">
                         <h4 class="modal-titlefont-weight-bold" id="exampleModalCenterTitle">DEIXE
                             O SEU PEDIDO</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close"></button>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <div class="alert alert-dismissible fade show ml-4 me-4 espError d-none" role="alert"
@@ -315,8 +315,7 @@
                             @csrf
                             <div class="row">
                                 <div class="col-lg-6 p-3">
-                                    <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel"
-                                        required>
+                                    <select class="form-control pl-3 selecao" name="pedi_nivel" id="pedi_nivel" required>
                                         <option class="form-control" value="">Nível acadêmico</option>
                                         <option class="form-control">Médio</option>
                                         <option class="form-control">Técnico profissional</option>
@@ -379,9 +378,8 @@
                                 </div>
                             </div>
                             <div class="text-center">
-                                <button type="submit" id="submeter"
-                                    class="btn btn-sm btn-light btn-pedido px-3 py-2"> <span
-                                        class="text-black">Submeter</span> <img class="img d-none load"
+                                <button type="submit" id="submeter" class="btn btn-sm btn-light btn-pedido px-3 py-2">
+                                    <span class="text-black">Submeter</span> <img class="img d-none load"
                                         src="{{ asset('img/ajax-loader.gif') }}" alt="loader"> </button>
                             </div>
                         </form>

@@ -1,12 +1,12 @@
 <div class="bg-white" id="servicos">
     <div class="container">
-        <div class="row justify-content-center pb-5" data-aos="fade-up" data-aos-duration="1200">
+        <div class="row justify-content-center pb-5">
             <div class="col-md-7 text-center">
                 <h2 class="mb-3">Nossos Serviços</h2>
             </div>
         </div>
         <div class="row divServicos">
-            <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
+            <div class="p-2 col-sm-12 col-md-6 col-lg-3">
                 <div class="card p-4 border-none card-servicos" style="background-image: url('{{ asset('img/Rectangle 3.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
                     <div class="text-center h5 text-black py-2"> Monografia </div>
                     <div class="img text-center my-4">
@@ -23,7 +23,7 @@
                         data-bs-target="#pedidoModal">Pedir</button>
                 </div>
             </div>
-            <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
+            <div class="p-2 col-sm-12 col-md-6 col-lg-3">
                 <div class="card p-4 border-none card-servicos" style="background-image: url('{{ asset('img/Rectangle 9.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
                     <div class="text-center h5 text-black">Trabalho <br> de curso</div>
                     <div class="text-center my-4 img">
@@ -40,7 +40,7 @@
                         data-bs-target="#pedidoModal">Pedir</button>
                 </div>
             </div>
-            <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
+            <div class="p-2 col-sm-12 col-md-6 col-lg-3">
                 <div class="card p-4 border-none card-servicos" style="background-image: url('{{ asset('img/Rectangle 5.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
                     <div class="text-center h5 text-black py-2">Teste</div>
                     <div class="img text-center my-4">
@@ -57,7 +57,7 @@
                         data-bs-target="#pedidoModal">Pedir</button>
                 </div>
             </div>
-            <div class="p-2 col-sm-12 col-md-6 col-lg-3" data-aos="zoom-in" data-aos-duration="1200">
+            <div class="p-2 col-sm-12 col-md-6 col-lg-3">
                 <div class="card p-4 border-none card-servicos" style="background-image: url('{{ asset('img/Rectangle 4.svg') }}'); background-repeat: no-repeat; background-size: cover; background-position: center center">
                     <div class="text-center text-black h5">Trabalho <br> de Mestrado</div>
                     <div class="img text-center my-4">
@@ -84,7 +84,7 @@
                 <h2 class="h2">Contacte-nos</h2>
                 <p>Se você tiver qualquer duvida deixe o seus dados que os nossos especialistas entrarão em contacto</p>
             </div>
-            <div class="row justify-content-center" data-aos="fade-up" data-aos-duration="1200">
+            <div class="row justify-content-center">
 
                 <div class="col-sm-12 col-lg-6 col-md-6 row justify-content-center align-items-center">
                     <div class="mt-5 mt-lg-0">
@@ -132,7 +132,7 @@
                         <h3 class="h4">LMTEACHER</h3>
                     </div>
                     <div class="">
-                        <p class="fw-bold">+258-86-798-90-97</p>
+                        <p class="fw-bold">+258-85-880-04-06</p>
                         <br>
                     </div>
                     <div class="f-contactUs">
@@ -166,7 +166,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-9 order-xs-4 col-sm-8 order-sm-4 col-md-8 order-md-4 col-lg-4 order-lg-3 sobre">
+            <div class="col-xs-4 order-xs-4 col-sm-4 order-sm-4 col-md-8 order-md-4 col-lg-4 order-lg-3 sobre">
                 <div class="row flex-column offset-lg-5 offset-md-5 offset-sm-5 offset-xs-5">
                     <div>
                         <h3 class="h4">SOBRE</h3>
@@ -180,39 +180,27 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="row text-center py-5">
-            <div class="col-xs-6 col-lg">
-                <div class="row flex-column">
-
-                    <div class="">
-                        <div class="text-uppercase">Suporte ao cliente</div>
+            <div class="row py-lg-4 ms-xs-2 ms-lg-4 mt-md-3 col-xs-6 order-xs-3 col-sm-4 order-sm-3 col-md-4 order-md-3 col-lg-12 order-lg-4">
+                <div class="col-lg mb-2">
+                    <div class="row flex-column">
+                            <div class="text-uppercase">Suporte ao cliente</div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-xs-6 col-lg">
-                <div class="row flex-column">
-
-                    <div class="">
+    
+                <div class="col-lg mb-2">
+                    <div class="row flex-column">
                         <div class="text-uppercase">Garantia da qualidade</div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-xs-6 col-lg">
-                <div class="row flex-column">
-
-                    <div class="">
+    
+                <div class="col-lg mb-2">
+                    <div class="row flex-column">
                         <div class="text-uppercase">PREÇOS DEMOCRÁTICOS</div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-xs-6 col-lg">
-                <div class="row flex-column mt-sm-3 mt-xs-3 mt-md-0 mt-lg-0">
-
-                    <div class="">
+    
+                <div class="col-lg mb-2">
+                    <div class="row flex-column mt-sm-3 mt-xs-3 mt-md-0 mt-lg-0">
                         <div class="text-uppercase">EDIÇOES GRATUITAS</div>
                     </div>
                 </div>
